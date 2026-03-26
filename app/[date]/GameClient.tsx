@@ -26,6 +26,16 @@ function formatDate(dateStr: string): string {
 const GREEN = '#16a34a'
 const RED   = '#dc2626'
 
+// Truncate text to fit within maxWidth, appending ellipsis if needed
+function truncateText(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string {
+  if (ctx.measureText(text).width <= maxWidth) return text
+  let t = text
+  while (t.length > 0 && ctx.measureText(t + '…').width > maxWidth) {
+    t = t.slice(0, -1)
+  }
+  return t + '…'
+}
+
 function generateShareImage(
   date: string,
   score: number,
@@ -35,8 +45,8 @@ function generateShareImage(
   streak: number,
 ): Promise<Blob> {
   return new Promise((resolve, reject) => {
-    const W = 600
-    const H = 380
+    const W   = 600
+    const H   = 320
     const dpr = typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1
     const canvas = document.createElement('canvas')
     canvas.width  = W * dpr
@@ -45,7 +55,7 @@ function generateShareImage(
     ctx.scale(dpr, dpr)
 
     const PAD = 32
-    const R   = 7   // bar border radius
+    const R   = 5   // bar border radius
 
     // ── Background ──────────────────────────────────────────────────────────
     ctx.fillStyle = '#ffffff'
@@ -55,12 +65,12 @@ function generateShareImage(
     ctx.fillStyle = GREEN
     ctx.fillRect(0, 0, W, 5)
 
-    // ── Header — mirrors the in-app header exactly ──────────────────────────
+    // ── Header ──────────────────────────────────────────────────────────────
     ctx.fillStyle = '#111827'
     ctx.font = 'bold 22px system-ui, -apple-system, sans-serif'
     ctx.fillText('Sports Brain', PAD, 38)
 
-    ctx.fillStyle = '#15803d'  // green-700, matches app
+    ctx.fillStyle = '#15803d'
     ctx.font = '600 14px system-ui, -apple-system, sans-serif'
     ctx.fillText('Premier League Edition', PAD, 57)
 
@@ -68,43 +78,56 @@ function generateShareImage(
     ctx.font = '14px system-ui, -apple-system, sans-serif'
     ctx.fillText(formatDate(date), PAD, 76)
 
-    // ── Score (right-aligned, matches header height) ────────────────────────
+    // ── Score (right-aligned) ───────────────────────────────────────────────
     ctx.fillStyle = '#111827'
     ctx.font = 'bold 30px system-ui, -apple-system, sans-serif'
     const scoreText = `${score}/${maxScore}`
-    const scoreW = ctx.measureText(scoreText).width
-    ctx.fillText(scoreText, W - PAD - scoreW, 57)
+    ctx.fillText(scoreText, W - PAD - ctx.measureText(scoreText).width, 57)
 
     ctx.fillStyle = '#9ca3af'
     ctx.font = '13px system-ui, sans-serif'
-    const ptsW = ctx.measureText('points').width
-    ctx.fillText('points', W - PAD - ptsW, 76)
+    ctx.fillText('points', W - PAD - ctx.measureText('points').width, 76)
 
-    // ── Bars ────────────────────────────────────────────────────────────────
-    const BAR_TOP = 104
-    const BAR_H   = 30
-    const BAR_GAP = 10
-    const MAX_BAR_W = W - PAD * 2
-    const maxLen = Math.max(...questions.map(q => q.answer.length))
+    // ── Question rows: clue left, bar right ─────────────────────────────────
+    const ROW_TOP  = 102
+    const ROW_H    = 26   // total row height
+    const ROW_GAP  = 8
+    const BAR_H    = 16   // thinner bar to leave room for text
+    const TEXT_W   = 230  // max width for clue column
+    const BAR_X    = PAD + TEXT_W + 16
+    const MAX_BAR_W = W - PAD - BAR_X  // ≈ 290px
+    const maxLen   = Math.max(...questions.map(q => q.answer.length))
 
     questions.forEach((question, i) => {
-      const qState = questionStates[i]
-      const y      = BAR_TOP + i * (BAR_H + BAR_GAP)
-      const barW   = Math.round((question.answer.length / maxLen) * MAX_BAR_W)
+      const qState  = questionStates[i]
+      const rowY    = ROW_TOP + i * (ROW_H + ROW_GAP)
+      const midY    = rowY + ROW_H / 2
 
-      // Solid green = correct, solid red = wrong — no segments
+      // Question label
+      ctx.fillStyle = '#9ca3af'
+      ctx.font = 'bold 11px system-ui, -apple-system, sans-serif'
+      ctx.fillText(`Q${i + 1}`, PAD, midY + 4)
+
+      // Clue text (truncated)
+      ctx.fillStyle = '#374151'
+      ctx.font = '11px system-ui, -apple-system, sans-serif'
+      const clue = truncateText(ctx, question.clue, TEXT_W - 24)
+      ctx.fillText(clue, PAD + 24, midY + 4)
+
+      // Coloured bar
+      const barW = Math.round((question.answer.length / maxLen) * MAX_BAR_W)
       ctx.fillStyle = qState.status === 'won' ? GREEN : RED
       ctx.beginPath()
-      ctx.roundRect(PAD, y, barW, BAR_H, R)
+      ctx.roundRect(BAR_X, midY - BAR_H / 2, barW, BAR_H, R)
       ctx.fill()
     })
 
     // ── Footer ──────────────────────────────────────────────────────────────
-    const footerY = BAR_TOP + 5 * (BAR_H + BAR_GAP) + 22
+    const footerY = ROW_TOP + 5 * (ROW_H + ROW_GAP) + 16
 
     if (streak > 1) {
       ctx.fillStyle = '#ea580c'
-      ctx.font = 'bold 14px system-ui, sans-serif'
+      ctx.font = 'bold 13px system-ui, sans-serif'
       ctx.fillText(`🔥 ${streak}-day streak`, PAD, footerY)
     }
 
