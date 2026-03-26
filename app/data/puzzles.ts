@@ -5,7 +5,7 @@ export const PUZZLES: DailyPuzzle[] = [
     date: '2026-03-25',
     questions: [
       {
-        clue: 'He holds the all-time Premier League scoring record with 260 goals',
+        clue: 'Holds the all-time Premier League scoring record with 260 goals',
         answer: 'SHEARER',
         category: 'player',
         difficulty: 2,
@@ -19,14 +19,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Norwegian striker who set a new single-season Premier League goals record with 36 in 2022/23',
+        clue: 'Set a new single-season PL goals record with 36 in 2022/23',
         answer: 'HAALAND',
         category: 'player',
         difficulty: 1,
         isProperNoun: true,
       },
       {
-        clue: 'Club given 5000-1 odds at the start of 2015/16 who went on to win the Premier League under Claudio Ranieri',
+        clue: 'Club given 5000-1 odds who won the Premier League in 2015/16',
         answer: 'LEICESTER',
         category: 'club',
         difficulty: 1,
@@ -219,7 +219,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Won the 2012 Champions League with Chelsea as caretaker manager",
+        clue: "Led Chelsea to the 2012 Champions League as caretaker manager",
         answer: 'DIMATTEO',
         category: 'manager',
         difficulty: 3,
@@ -233,7 +233,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: 'Won the PL with Chelsea in 2004/05',
+        clue: 'Led Chelsea to the PL title in 2004/05',
         answer: 'MOURINHO',
         category: 'manager',
         difficulty: 1,
@@ -292,7 +292,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Middlesbrough's common abbreviated nickname",
+        clue: "Middlesbrough's nickname",
         answer: 'BORO',
         category: 'club',
         difficulty: 2,
@@ -339,7 +339,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Manager who led newly-promoted Ipswich Town to a remarkable fifth-place Premier League finish in 2000/01',
+        clue: 'Led newly-promoted Ipswich Town to a remarkable 5th-place Premier League finish in 2000/01',
         answer: 'BURLEY',
         category: 'manager',
         difficulty: 5,
@@ -525,7 +525,7 @@ export const PUZZLES: DailyPuzzle[] = [
     date: '2026-04-07',
     questions: [
       {
-        clue: "London club who play at Craven Cottage on the banks of the Thames",
+        clue: "Club who play at Craven Cottage on the banks of the Thames",
         answer: 'FULHAM',
         category: 'club',
         difficulty: 1,
@@ -556,7 +556,7 @@ export const PUZZLES: DailyPuzzle[] = [
         clue: "Aston Villa's nickname",
         answer: 'VILLANS',
         category: 'club',
-        difficulty: 3,
+        difficulty: 2,
         isProperNoun: false,
       },
     ],
@@ -605,7 +605,7 @@ export const PUZZLES: DailyPuzzle[] = [
     date: '2026-04-09',
     questions: [
       {
-        clue: "Leeds United's nickname, a reference to their traditional all-white home kit",
+        clue: "Leeds United's nickname",
         answer: 'WHITES',
         category: 'club',
         difficulty: 1,
@@ -673,7 +673,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Ended Nottingham Forest's 23-year absence from the top flight",
+        clue: "Guided Nottingham Forest back to the top flight after a 23-year absence",
         answer: 'COOPER',
         category: 'manager',
         difficulty: 5,
@@ -699,7 +699,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the FA Cup with Wigan against Man City in 2013',
+        clue: 'Guided Wigan to FA Cup glory against Man City in 2013',
         answer: 'MARTINEZ',
         category: 'manager',
         difficulty: 3,
@@ -713,7 +713,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who guided Swansea City into the Premier League for the first time in their history in 2011, later taking Liverpool to the brink of the title",
+        clue: "Guided Swansea into the Premier League in 2011, later taking Liverpool to the brink of the title",
         answer: 'RODGERS',
         category: 'manager',
         difficulty: 5,
@@ -753,7 +753,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Midfielder who won 11 Premier League titles with Manchester United and never played for another English club',
+        clue: 'Won 11 Premier League titles with Manchester United and never played for another English club',
         answer: 'SCHOLES',
         category: 'player',
         difficulty: 4,
@@ -779,21 +779,21 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Brazilian defensive midfielder who was the engine of Pep Guardiola\'s dominant Manchester City sides across five title-winning campaigns',
+        clue: "The engine of Guardiola's dominant Manchester City sides across five title-winning campaigns",
         answer: 'FERNANDINHO',
         category: 'player',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: 'Danish playmaker who scored 51 Premier League goals for Tottenham between 2013 and 2020 before joining Inter Milan',
+        clue: 'Scored 51 Premier League goals for Tottenham between 2013 and 2020 before joining Inter Milan',
         answer: 'ERIKSEN',
         category: 'player',
         difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: "Midfielder who won the Premier League with Leicester City in 2016 then joined Chelsea, never recapturing that form",
+        clue: "Won the Premier League with Leicester in 2016 then joined Chelsea, never recapturing that form",
         answer: 'DRINKWATER',
         category: 'player',
         difficulty: 5,
@@ -812,28 +812,28 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: 'Gabonese striker who shared the 2018/19 Premier League Golden Boot with 22 goals, alongside Salah and Mané',
+        clue: 'Shared the 2018/19 Golden Boot with 22 goals, alongside Salah and Mané',
         answer: 'AUBAMEYANG',
         category: 'player',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: 'Manager who took Bournemouth from League Two to the Premier League in four years, transforming a near-bankrupt club',
+        clue: 'Guided Bournemouth from League Two to the Premier League in four years',
         answer: 'HOWE',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: 'Belgian substitute who scored twice in Liverpool\'s stunning 4-0 comeback against Barcelona in the 2019 Champions League semi-final',
+        clue: "Scored twice in Liverpool's stunning 4-0 comeback vs Barcelona in the 2019 CL semi-final",
         answer: 'ORIGI',
         category: 'player',
         difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: 'Manager who kept Crystal Palace in the Premier League for four consecutive seasons from 2017, defying the odds each time',
+        clue: 'Guided Crystal Palace through four consecutive Premier League seasons from 2017',
         answer: 'HODGSON',
         category: 'manager',
         difficulty: 5,
@@ -845,14 +845,14 @@ export const PUZZLES: DailyPuzzle[] = [
     date: '2026-04-15',
     questions: [
       {
-        clue: 'Sheffield United striker who scored the very first goal in Premier League history, against Manchester United in August 1992',
+        clue: 'Scored the very first goal in Premier League history, against Manchester United in August 1992',
         answer: 'DEANE',
         category: 'player',
-        difficulty: 2,
+        difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: 'Spanish midfielder who joined Arsenal from Everton in 2011 and returned two decades later as the club\'s manager',
+        clue: 'Joined Arsenal from Everton in 2011 and returned as the club\'s manager',
         answer: 'ARTETA',
         category: 'player',
         difficulty: 2,
@@ -873,7 +873,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Manager who guided Crystal Palace to Premier League promotion via the 2013 Championship play-off final',
+        clue: 'Guided Crystal Palace to Premier League promotion via the 2013 Championship play-off final',
         answer: 'HOLLOWAY',
         category: 'manager',
         difficulty: 5,
@@ -892,14 +892,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: 'German playmaker who joined Arsenal from Real Madrid in 2013, winning PL Player of the Season in 2015/16',
+        clue: 'Joined Arsenal from Real Madrid in 2013, winning PL Player of the Season in 2015/16',
         answer: 'OZIL',
         category: 'player',
         difficulty: 2,
         isProperNoun: true,
       },
       {
-        clue: 'Midfielder who holds the all-time Premier League appearance record with 653 games across eight clubs',
+        clue: 'Holds the all-time Premier League appearance record with 653 games across eight clubs',
         answer: 'BARRY',
         category: 'player',
         difficulty: 3,
@@ -913,7 +913,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the PL twice with Arsenal',
+        clue: 'Won the PL twice with Arsenal after joining from Inter Milan in 1999',
         answer: 'KANU',
         category: 'player',
         difficulty: 4,
@@ -932,14 +932,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: 'Portuguese winger who scored 31 Premier League goals for Manchester United in 2007/08 before joining Real Madrid',
+        clue: 'Scored 31 Premier League goals for Manchester United in 2007/08 before joining Real Madrid',
         answer: 'RONALDO',
         category: 'player',
         difficulty: 2,
         isProperNoun: true,
       },
       {
-        clue: 'Won the PL with Chelsea in 2009/10',
+        clue: 'Led Chelsea to the PL title in 2009/10',
         answer: 'ANCELOTTI',
         category: 'manager',
         difficulty: 3,
@@ -979,7 +979,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Manager who kept Bolton Wanderers in the Premier League for six seasons through results-driven, pragmatic football',
+        clue: 'Guided Bolton Wanderers through six consecutive Premier League seasons',
         answer: 'ALLARDYCE',
         category: 'manager',
         difficulty: 3,
@@ -993,7 +993,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Swedish winger who ran Arsenal's left flank for nearly a decade under Arsène Wenger, winning two Premier League titles",
+        clue: "Ran Arsenal's left flank for nearly a decade under Wenger, winning two Premier League titles",
         answer: 'LJUNGBERG',
         category: 'player',
         difficulty: 4,
@@ -1012,14 +1012,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: "Leicester City striker who scored 24 Premier League goals in the title-winning 2015/16 season",
+        clue: "Scored 24 Premier League goals in Leicester's title-winning 2015/16 season",
         answer: 'VARDY',
         category: 'player',
         difficulty: 2,
         isProperNoun: true,
       },
       {
-        clue: 'Manager who succeeded Sir Alex Ferguson at Manchester United in 2013',
+        clue: 'Took over from Sir Alex Ferguson at Manchester United in 2013',
         answer: 'MOYES',
         category: 'manager',
         difficulty: 3,
@@ -1045,10 +1045,10 @@ export const PUZZLES: DailyPuzzle[] = [
     date: '2026-04-20',
     questions: [
       {
-        clue: "Blackpool's nickname, a reference to their distinctive tangerine home kit",
+        clue: "Blackpool's nickname",
         answer: 'TANGERINES',
         category: 'club',
-        difficulty: 1,
+        difficulty: 2,
         isProperNoun: false,
       },
       {
@@ -1066,7 +1066,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Lifted the Premier League trophy with Arsenal in 1997/98 and 2001/02",
+        clue: "Captained Arsenal to the Premier League title in 1997/98 and 2001/02",
         answer: 'ADAMS',
         category: 'player',
         difficulty: 4,
@@ -1092,7 +1092,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: "Won four Premier League titles at Manchester City between 2012 and 2021",
+        clue: "Spent a decade at Manchester City winning four Premier League titles",
         answer: 'SILVA',
         category: 'player',
         difficulty: 2,
@@ -1132,7 +1132,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: "Striker who scored 24 Premier League goals for Sunderland in 2009/10, one of the most prolific individual seasons by a player outside the top four",
+        clue: "Scored 24 Premier League goals for Sunderland in 2009/10",
         answer: 'BENT',
         category: 'player',
         difficulty: 2,
@@ -1179,7 +1179,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who guided Middlesbrough to the 2006 UEFA Cup final while competing in the Premier League",
+        clue: "Guided Middlesbrough to the 2006 UEFA Cup final",
         answer: 'MCLAREN',
         category: 'manager',
         difficulty: 3,
@@ -1193,7 +1193,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who guided Queens Park Rangers to Premier League promotion in 2010/11, only to be sacked early in the following top-flight season",
+        clue: "Guided QPR to Premier League promotion in 2010/11, only to be sacked early the following season",
         answer: 'WARNOCK',
         category: 'manager',
         difficulty: 5,
@@ -1259,7 +1259,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Dutch player-manager who brought a continental style to Chelsea in the late 1990s before leaving under a cloud",
+        clue: "Brought a continental style to Chelsea in the late 1990s as player-manager",
         answer: 'GULLIT',
         category: 'manager',
         difficulty: 3,
@@ -1273,7 +1273,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who kept Stoke City in the Premier League for a decade from 2008 with physical, direct football",
+        clue: "Guided Stoke City through a decade of Premier League football from 2008",
         answer: 'PULIS',
         category: 'manager',
         difficulty: 5,
@@ -1299,14 +1299,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who guided Sheffield United from League One to the Premier League in successive promotions",
+        clue: "Guided Sheffield United from League One to the Premier League in successive promotions",
         answer: 'WILDER',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: "Midfielder who joined Tottenham from Leicester in 2023 and scored 10 Premier League goals in his debut season at the club",
+        clue: "Joined Tottenham from Leicester in 2023 and scored 10 Premier League goals in his debut season",
         answer: 'MADDISON',
         category: 'player',
         difficulty: 4,
@@ -1325,7 +1325,7 @@ export const PUZZLES: DailyPuzzle[] = [
     date: '2026-04-27',
     questions: [
       {
-        clue: "Fulham's nickname, a nod to their picturesque riverside ground",
+        clue: "Fulham's nickname",
         answer: 'COTTAGERS',
         category: 'club',
         difficulty: 1,
@@ -1353,7 +1353,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who guided Wigan Athletic into the Premier League for the first time in their history in 2005",
+        clue: "Guided Wigan Athletic into the Premier League for the first time in 2005",
         answer: 'JEWELL',
         category: 'manager',
         difficulty: 5,
@@ -1365,14 +1365,14 @@ export const PUZZLES: DailyPuzzle[] = [
     date: '2026-04-28',
     questions: [
       {
-        clue: "Wimbledon's nickname, the club that famously beat Liverpool in the 1988 FA Cup final",
+        clue: "Wimbledon's nickname",
         answer: 'DONS',
         category: 'club',
         difficulty: 1,
         isProperNoun: false,
       },
       {
-        clue: "Midfielder who joined Manchester United from Juventus in 2016 for a then world-record fee",
+        clue: "Joined Manchester United from Juventus in 2016 for a then world-record fee",
         answer: 'POGBA',
         category: 'player',
         difficulty: 2,
@@ -1386,14 +1386,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Defender who spent his entire professional career at Liverpool, making over 700 appearances for the club between 1996 and 2013",
+        clue: "Spent his entire career at Liverpool, making over 700 appearances between 1996 and 2013",
         answer: 'CARRAGHER',
         category: 'player',
         difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: "Manager who kept Hull City in the Premier League in their debut top-flight season of 2008/09",
+        clue: "Guided Hull City through their debut Premier League season of 2008/09",
         answer: 'BROWN',
         category: 'manager',
         difficulty: 5,
@@ -1419,14 +1419,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who won the FA Cup with Portsmouth in 2008 while they were competing in the Premier League",
+        clue: "Led Portsmouth to the FA Cup in 2008",
         answer: 'REDKNAPP',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: "Midfielder who captained Liverpool to Premier League glory in 2019/20, ending the club's 30-year wait for a title",
+        clue: "Captained Liverpool to Premier League glory in 2019/20, ending the club's 30-year wait",
         answer: 'HENDERSON',
         category: 'player',
         difficulty: 4,
@@ -1452,14 +1452,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: "Uruguayan striker who joined Liverpool from Benfica in 2022 for a fee that could rise to £85m",
+        clue: "Joined Liverpool from Benfica in 2022 for a fee that could rise to £85m",
         answer: 'NUNEZ',
         category: 'player',
         difficulty: 2,
         isProperNoun: true,
       },
       {
-        clue: "Manager who took Brighton from a relegation battle to 6th place and European football within three seasons",
+        clue: "Guided Brighton from a relegation battle to 6th place and European football within three seasons",
         answer: 'POTTER',
         category: 'manager',
         difficulty: 3,
@@ -1499,21 +1499,21 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager controversially dismissed from Southampton in January 2013 despite keeping them comfortably in mid-table in their first top-flight season back",
+        clue: "Controversially dismissed from Southampton in January 2013 despite keeping them in mid-table",
         answer: 'ADKINS',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: "Portuguese striker who scored 9 Premier League goals in his debut Liverpool season of 2020/21, immediately becoming a key player",
+        clue: "Scored 9 Premier League goals in his debut Liverpool season of 2020/21",
         answer: 'JOTA',
         category: 'player',
         difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: "Manager who kept Birmingham City in the Premier League for several seasons from 2002 despite limited resources",
+        clue: "Guided Birmingham City through several Premier League seasons from 2002",
         answer: 'BRUCE',
         category: 'manager',
         difficulty: 5,
@@ -1539,21 +1539,21 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who guided Leicester City through their great escape from relegation in 2014/15, hauling them from 9 points adrift",
+        clue: "Guided Leicester through their great escape from relegation in 2014/15 when 9 points adrift",
         answer: 'PEARSON',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: "Liverpool striker who scored twice in the 2001 FA Cup final against Arsenal as part of the club's historic treble",
+        clue: "Scored twice in the 2001 FA Cup final against Arsenal",
         answer: 'OWEN',
         category: 'player',
         difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: "Manager who kept Coventry City in the Premier League for five consecutive seasons with limited resources before joining Southampton",
+        clue: "Guided Coventry City through five consecutive Premier League seasons before joining Southampton",
         answer: 'STRACHAN',
         category: 'manager',
         difficulty: 5,
@@ -1593,7 +1593,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who guided Barnsley to their first and only Premier League season in 1997/98",
+        clue: "Guided Barnsley to their first and only Premier League season in 1997/98",
         answer: 'WILSON',
         category: 'manager',
         difficulty: 5,
@@ -1619,10 +1619,10 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Arsenal's famous old ground where they played for 93 years before moving to the Emirates Stadium in 2006",
+        clue: "Arsenal's old ground, replaced by the Emirates Stadium in 2006",
         answer: 'HIGHBURY',
         category: 'stadium',
-        difficulty: 3,
+        difficulty: 2,
         isProperNoun: true,
       },
       {
@@ -1633,7 +1633,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who guided Charlton Athletic to their highest ever Premier League finish of 7th in 2003/04",
+        clue: "Guided Charlton Athletic to their highest ever Premier League finish of 7th in 2003/04",
         answer: 'CURBISHLEY',
         category: 'manager',
         difficulty: 5,
@@ -1659,14 +1659,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who guided Southampton to an 8th-place Premier League finish in 2016/17",
+        clue: "Guided Southampton to 8th place in 2016/17",
         answer: 'PUEL',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: "Midfielder who was part of Blackburn Rovers' 1994/95 Premier League title-winning team and later managed Tottenham Hotspur",
+        clue: "Part of Blackburn's 1994/95 title-winning team and later managed Tottenham",
         answer: 'SHERWOOD',
         category: 'player',
         difficulty: 4,
@@ -1699,14 +1699,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Manager who guided Swansea City to an 8th-place Premier League finish in 2014/15 in his first full managerial role",
+        clue: "Guided Swansea City to 8th place in 2014/15",
         answer: 'MONK',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: "Pacey forward who thrilled Premier League fans at Coventry City in the late 1990s before joining Leeds United",
+        clue: "Thrilled Premier League fans at Coventry City in the late 1990s before joining Leeds United",
         answer: 'HUCKERBY',
         category: 'player',
         difficulty: 4,
@@ -1716,7 +1716,7 @@ export const PUZZLES: DailyPuzzle[] = [
         clue: "The most expensive British transfer when he joined Chelsea from Liverpool in January 2011 for £50m",
         answer: 'TORRES',
         category: 'player',
-        difficulty: 5,
+        difficulty: 3,
         isProperNoun: true,
       },
     ],
@@ -1746,7 +1746,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Controversial midfielder who played for Manchester City and Newcastle United, one of the Premier League's most combustible figures in the 2000s",
+        clue: "Played for Manchester City and Newcastle, notorious for on-pitch controversy in the 2000s",
         answer: 'BARTON',
         category: 'player',
         difficulty: 4,
