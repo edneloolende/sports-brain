@@ -13,7 +13,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${bitter.variable} h-full`}>
-      <body className="min-h-full antialiased font-[var(--font-inter)]">{children}</body>
+      <body className="min-h-full antialiased font-[var(--font-inter)] flex flex-col">
+        <div className="flex-1">{children}</div>
+        <footer className="text-center py-4 text-xs text-gray-400">
+          made by Roy Opata Olende ⚽
+        </footer>
+      </body>
     </html>
   )
 }
