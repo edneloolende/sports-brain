@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import type { GameProgress, Question } from '@/app/lib/types'
-import { calcQuestionScore } from '@/app/lib/gameLogic'
+import { calcQuestionScore, evaluateGuess } from '@/app/lib/gameLogic'
 
 interface Props {
   progress: GameProgress
@@ -29,33 +29,46 @@ export default function ResultsModal({ progress, questions, date, streak, onClos
     return () => { document.body.style.overflow = '' }
   }, [])
 
+  /**
+   * Build a colour bar for one question.
+   * Correct answer → coloured squares from the winning guess (green/yellow/white).
+   * Wrong answer   → solid red bar, answer-length wide.
+   * Squares are joined with no space so they read as a continuous strip.
+   */
+  function buildBar(qIndex: number): string {
+    const q = progress.questions[qIndex]
+    const answer = questions[qIndex].answer
+
+    if (q.status !== 'won') {
+      // Lost: flat red bar
+      return '🟥'.repeat(answer.length)
+    }
+
+    // Won: evaluate the winning guess for its colour distribution
+    const winningGuess = q.guesses[q.guesses.length - 1]
+    const states = evaluateGuess(winningGuess, answer)
+    return states
+      .map((s) => s === 'correct' ? '🟩' : s === 'present' ? '🟨' : '⬜')
+      .join('')
+  }
+
   function buildShareText(): string {
-    // Header
     const lines: string[] = [
       `⚽ PL Daily — ${date}`,
-      `${totalScore}/${maxScore} ${scoreStars(totalScore, maxScore)}`,
+      `${totalScore}/${maxScore}`,
       '',
     ]
 
-    // One emoji per question on a single row
-    const questionEmojis = progress.questions.map((q) => {
-      if (q.status !== 'won') return '❌'
-      const hint = q.hintUsed ? '💡' : ''
-      const result = q.guesses.length === 1 ? '🟩' : '🟨🟩'
-      return `${hint}${result}`
+    // One bar per question
+    progress.questions.forEach((_, i) => {
+      lines.push(buildBar(i))
     })
-    lines.push(questionEmojis.join('  '))
-    lines.push('')
 
+    lines.push('')
     if (streak > 1) lines.push(`🔥 ${streak}-day streak`)
     lines.push(SITE_URL)
 
     return lines.join('\n')
-  }
-
-  function scoreStars(score: number, max: number): string {
-    const filled = Math.round((score / max) * 5)
-    return '⭐'.repeat(filled) + '☆'.repeat(5 - filled)
   }
 
   async function handleShare() {
@@ -104,7 +117,7 @@ export default function ResultsModal({ progress, questions, date, streak, onClos
             {totalScore}
             <span className="text-xl font-normal text-gray-400">/{maxScore}</span>
           </p>
-          <p className="text-sm text-gray-400 mt-0.5">{scoreStars(totalScore, maxScore)}</p>
+          <p className="text-sm text-gray-400 mt-0.5">points</p>
         </div>
 
         {/* Per-question breakdown */}
