@@ -272,6 +272,12 @@ export default function GameClient({ puzzle }: Props) {
     updateQuestion(idx, (q) => ({ ...q, hintUsed: true }))
   }
 
+  function handleSkip() {
+    const idx = progress.currentQuestion
+    // Mark as lost so the red answer banner shows before auto-advancing
+    updateQuestion(idx, (q) => ({ ...q, status: 'lost' }))
+  }
+
   function handleNext() {
     const nextIdx = progress.currentQuestion + 1
     const isLast  = nextIdx >= puzzle.questions.length
@@ -376,6 +382,7 @@ export default function GameClient({ puzzle }: Props) {
             state={currentState}
             onGuessSubmit={handleGuessSubmit}
             onHintUsed={handleHintUsed}
+            onSkip={handleSkip}
             onNext={handleNext}
             isLast={currentQ === puzzle.questions.length - 1}
             totalScore={totalScore}

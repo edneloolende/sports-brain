@@ -12,6 +12,7 @@ interface Props {
   state: QuestionState
   onGuessSubmit: (guess: string) => void
   onHintUsed: () => void
+  onSkip: () => void
   onNext: () => void
   isLast: boolean
   totalScore: number
@@ -37,6 +38,7 @@ export default function QuestionPanel({
   state,
   onGuessSubmit,
   onHintUsed,
+  onSkip,
   onNext,
   totalScore,
   maxScore,
@@ -102,7 +104,7 @@ export default function QuestionPanel({
           <GuessInput
             onSubmit={handleSubmit}
             onHint={onHintUsed}
-            onSkip={onNext}
+            onSkip={onSkip}
             hintUsed={state.hintUsed}
             hintText={state.hintUsed ? `${question.answer.length} letters` : undefined}
             disabled={false}
