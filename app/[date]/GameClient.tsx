@@ -189,7 +189,67 @@ function ShareButton({
   )
 }
 
-// ─── Countdown ────────────────────────────────────────────────────────────────
+// ─── Remind button ────────────────────────────────────────────────────────────
+
+function RemindButton({ currentDate }: { currentDate: string }) {
+  const [done, setDone] = useState(false)
+
+  function handleRemind() {
+    // Build tomorrow's date string
+    const [y, m, d] = currentDate.split('-').map(Number)
+    const tomorrow = new Date(y, m - 1, d + 1)
+    const pad = (n: number) => String(n).padStart(2, '0')
+    const tomorrowStr = `${tomorrow.getFullYear()}-${pad(tomorrow.getMonth() + 1)}-${pad(tomorrow.getDate())}`
+
+    // Recurring daily event at 9am (floating/local time)
+    const dtBase = `${tomorrow.getFullYear()}${pad(tomorrow.getMonth() + 1)}${pad(tomorrow.getDate())}`
+    const dtStart = `${dtBase}T090000`
+    const dtEnd   = `${dtBase}T091500`
+
+    const origin = typeof window !== 'undefined' ? window.location.origin : ''
+    const nextUrl = `${origin}/${tomorrowStr}`
+
+    const ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Sports Brain//PL Daily//EN',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VEVENT',
+      `DTSTART:${dtStart}`,
+      `DTEND:${dtEnd}`,
+      'RRULE:FREQ=DAILY',
+      'SUMMARY:⚽ Sports Brain — Daily PL Quiz',
+      `URL:${origin}`,
+      `DESCRIPTION:Your daily Premier League quiz is ready!\\n\\n👉 ${nextUrl}`,
+      'BEGIN:VALARM',
+      'ACTION:DISPLAY',
+      'DESCRIPTION:⚽ Time for your Sports Brain quiz!',
+      'TRIGGER:PT0S',
+      'END:VALARM',
+      'END:VEVENT',
+      'END:VCALENDAR',
+    ].join('\r\n')
+
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' })
+    const url  = URL.createObjectURL(blob)
+    const a    = document.createElement('a')
+    a.href     = url
+    a.download = 'sports-brain-daily.ics'
+    a.click()
+    URL.revokeObjectURL(url)
+    setDone(true)
+  }
+
+  return (
+    <button
+      onClick={handleRemind}
+      className="w-full py-4 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-gray-300 hover:bg-gray-50 active:scale-95 transition-all text-base"
+    >
+      {done ? '📅 Added to calendar!' : '🔔 Remind me tomorrow'}
+    </button>
+  )
+}
 
 // ─── Main game component ──────────────────────────────────────────────────────
 
@@ -351,7 +411,7 @@ export default function GameClient({ puzzle }: Props) {
               <p className="text-base font-semibold text-orange-500">🔥 {streak}-day streak</p>
             )}
 
-            <div className="w-full max-w-sm mx-auto">
+            <div className="w-full max-w-sm mx-auto flex flex-col gap-3">
               <ShareButton
                 score={totalScore}
                 max={puzzle.questions.length * 2}
@@ -360,6 +420,7 @@ export default function GameClient({ puzzle }: Props) {
                 questions={puzzle.questions}
                 questionStates={progress.questions}
               />
+              <RemindButton currentDate={puzzle.date} />
             </div>
 
             {/* Score reaction GIF */}
