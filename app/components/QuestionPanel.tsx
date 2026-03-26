@@ -68,8 +68,8 @@ export default function QuestionPanel({
   }, [state.status])
 
   const handleSubmit = useCallback((guess: string) => {
-    if (!isValidGuess(guess, question)) {
-      setErrorMsg('Not a recognised word. Try again.')
+    if (!isValidGuess(guess)) {
+      setErrorMsg('Letters only — no spaces or numbers.')
       setShake(true)
       setTimeout(() => setShake(false), 600)
       setTimeout(() => setErrorMsg(undefined), 2500)
@@ -77,7 +77,7 @@ export default function QuestionPanel({
     }
     setErrorMsg(undefined)
     onGuessSubmit(guess)
-  }, [question, onGuessSubmit])
+  }, [onGuessSubmit])
 
   return (
     <div className="w-full max-w-xl mx-auto flex flex-col gap-4">

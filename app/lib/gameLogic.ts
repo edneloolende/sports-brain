@@ -1,11 +1,4 @@
-import type { LetterState, Question, QuestionState } from './types'
-import { PUZZLES } from '../data/puzzles'
-import { WORDLIST } from '../data/wordlist'
-
-// Set of all puzzle answers — always valid guesses
-const ALL_ANSWERS = new Set(
-  PUZZLES.flatMap((p) => p.questions.map((q) => q.answer.toUpperCase()))
-)
+import type { LetterState, QuestionState } from './types'
 
 /**
  * Evaluate a guess against the answer using Wordle rules.
@@ -97,12 +90,9 @@ export function calcQuestionScore(state: QuestionState): 0 | 1 | 2 {
 
 /**
  * Validate a guess before accepting it.
- * Proper nouns only require A-Z characters.
- * Regular words must be in the wordlist or be a puzzle answer.
+ * Any sequence of A–Z letters is valid — football answers are often proper
+ * nouns, abbreviations, and nicknames that won't appear in a standard wordlist.
  */
-export function isValidGuess(guess: string, question: Question): boolean {
-  const upper = guess.toUpperCase()
-  if (!/^[A-Z]+$/.test(upper)) return false
-  if (question.isProperNoun) return true
-  return WORDLIST.has(upper) || ALL_ANSWERS.has(upper)
+export function isValidGuess(guess: string): boolean {
+  return /^[A-Z]+$/i.test(guess)
 }
