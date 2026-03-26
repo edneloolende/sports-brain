@@ -167,7 +167,7 @@ function ShareButton({
     <button
       onClick={handleShare}
       disabled={phase === 'busy'}
-      className="flex-1 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 active:scale-95 disabled:opacity-60 transition-all text-sm"
+      className="w-full py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 active:scale-95 disabled:opacity-60 transition-all text-base"
     >
       {phase === 'busy' ? 'Generating…' : phase === 'done' ? '✅ Shared!' : '🔗 Share result'}
     </button>
@@ -301,7 +301,7 @@ export default function GameClient({ puzzle }: Props) {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
       <header className="bg-white border-b border-gray-100 px-4 py-4 sticky top-0 z-10">
-        <div className="max-w-xl mx-auto flex items-center justify-between">
+        <div className="max-w-2xl mx-auto flex items-center justify-between">
           <div>
             <h1 className="text-xl font-black text-gray-900 tracking-tight leading-tight">Sports Brain</h1>
             <p className="text-sm font-semibold text-green-700 leading-tight">Premier League Edition</p>
@@ -316,7 +316,7 @@ export default function GameClient({ puzzle }: Props) {
       </header>
 
       {/* Main content */}
-      <main className="flex-1 px-4 py-6 max-w-xl mx-auto w-full">
+      <main className="flex-1 px-4 py-6 max-w-2xl mx-auto w-full">
         {!progress.completed && (
           <p className="text-sm text-gray-400 text-center mb-5">
             One word answers. Two guesses per question. Correct answers earn points. Reveal the letter count for a clue, but it&apos;ll cost you one point.
@@ -356,7 +356,7 @@ export default function GameClient({ puzzle }: Props) {
               <p className="text-base font-semibold text-orange-500">🔥 {streak}-day streak</p>
             )}
 
-            <div className="w-full max-w-xs">
+            <div className="w-full max-w-sm mx-auto">
               <ShareButton
                 score={totalScore}
                 max={puzzle.questions.length * 2}
