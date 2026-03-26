@@ -8,14 +8,14 @@ export const PUZZLES: DailyPuzzle[] = [
         clue: 'Holds the all-time Premier League scoring record with 260 goals',
         answer: 'SHEARER',
         category: 'player',
-        difficulty: 2,
+        difficulty: 1,
         isProperNoun: true,
       },
       {
         clue: 'The only manager to complete a 38-game Premier League season without a single defeat',
         answer: 'WENGER',
         category: 'manager',
-        difficulty: 2,
+        difficulty: 1,
         isProperNoun: true,
       },
       {
@@ -182,11 +182,11 @@ export const PUZZLES: DailyPuzzle[] = [
         clue: "Guided Blackburn to their only Premier League title",
         answer: 'DALGLISH',
         category: 'manager',
-        difficulty: 4,
+        difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: 'Purchased by Man City from Monaco in 2017',
+        clue: 'Won five Premier League titles with Manchester City after joining from Monaco in 2017',
         answer: 'BERNARDO',
         category: 'player',
         difficulty: 5,
@@ -332,7 +332,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Arsenal forward who refused to fly',
+        clue: 'Arsenal player who refused to fly',
         answer: 'BERGKAMP',
         category: 'player',
         difficulty: 3,
@@ -452,7 +452,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Struck a stunning free-kick past Seaman in the 1991 FA Cup semi-final",
+        clue: "Struck a free-kick past Seaman in the 1991 FA Cup semi-final",
         answer: 'GASCOIGNE',
         category: 'player',
         difficulty: 4,
@@ -492,7 +492,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: 'Twice took Newcastle to second place in the PL',
+        clue: 'Guided Newcastle to back-to-back Champions League campaigns between 2002 and 2004',
         answer: 'ROBSON',
         category: 'manager',
         difficulty: 3,
@@ -572,7 +572,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: 'Joined Chelsea from Real Madrid in 2021, winning the PL title',
+        clue: 'Won the Champions League with Chelsea in 2021 after joining from Real Madrid',
         answer: 'KOVACIC',
         category: 'player',
         difficulty: 3,
@@ -746,7 +746,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored 25 PL goals in 2002/03, his only full Man Utd season',
+        clue: 'Scored 25 Premier League goals for Manchester United in 2002/03',
         answer: 'NISTELROOY',
         category: 'player',
         difficulty: 4,
@@ -826,7 +826,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Scored twice in Liverpool's stunning 4-0 comeback vs Barcelona in the 2019 CL semi-final",
+        clue: "Scored twice in Liverpool's 4-0 second leg vs Barcelona in the 2019 CL semi-final",
         answer: 'ORIGI',
         category: 'player',
         difficulty: 4,
@@ -845,7 +845,7 @@ export const PUZZLES: DailyPuzzle[] = [
     date: '2026-04-15',
     questions: [
       {
-        clue: 'Scored the very first goal in Premier League history, against Manchester United in August 1992',
+        clue: 'Scored the first goal in Premier League history, against Manchester United in August 1992',
         answer: 'DEANE',
         category: 'player',
         difficulty: 4,
@@ -892,14 +892,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: 'Joined Arsenal from Real Madrid in 2013, winning PL Player of the Season in 2015/16',
+        clue: 'Set a Premier League season record for assists in 2015/16, two years after joining from Real Madrid',
         answer: 'OZIL',
         category: 'player',
         difficulty: 2,
         isProperNoun: true,
       },
       {
-        clue: 'Holds the all-time Premier League appearance record with 653 games across eight clubs',
+        clue: 'Holds the all-time Premier League appearance record with 653 games',
         answer: 'BARRY',
         category: 'player',
         difficulty: 3,
@@ -972,7 +972,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: "Won the PL with Chelsea in 2014/15 and 2016/17",
+        clue: "Won two Premier League titles with Chelsea before joining Real Madrid in 2019",
         answer: 'HAZARD',
         category: 'player',
         difficulty: 2,
@@ -1073,7 +1073,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Won the PFA Young Player of the Year in 2020/21, the season City won the league",
+        clue: "Won the PFA Young Player of the Year in 2020/21",
         answer: 'FODEN',
         category: 'player',
         difficulty: 5,
@@ -1146,7 +1146,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Scored the famous 'ghost goal' for Liverpool against Chelsea in the 2005 CL semi-final",
+        clue: "Scored the 'ghost goal' for Liverpool against Chelsea in the 2005 CL semi-final",
         answer: 'GARCIA',
         category: 'player',
         difficulty: 4,
@@ -1172,7 +1172,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: "Scored an audacious scorpion-kick volley for Arsenal against Crystal Palace in January 2017",
+        clue: "Scored a scorpion-kick volley for Arsenal against Crystal Palace in January 2017",
         answer: 'GIROUD',
         category: 'player',
         difficulty: 2,
@@ -1212,7 +1212,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: "Backheel flick goal against Norwich in 2019 became one of the Premier League's most celebrated strikes",
+        clue: "Scored a no-look backheel for Liverpool against Norwich in 2019",
         answer: 'FIRMINO',
         category: 'player',
         difficulty: 2,
@@ -1233,7 +1233,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Made over 500 Premier League appearances across Fulham, Chelsea and Leicester",
+        clue: "Made over 500 Premier League appearances for clubs including Middlesbrough, Fulham and Chelsea",
         answer: 'SCHWARZER',
         category: 'player',
         difficulty: 5,
@@ -1313,7 +1313,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Scored for Leeds United during their memorable 2000/01 Champions League semi-final season",
+        clue: "Scored for Leeds United during their 2000/01 Champions League semi-final run",
         answer: 'KEWELL',
         category: 'player',
         difficulty: 5,
@@ -1586,7 +1586,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "'Why Always Me?' shirt reveal became iconic after scoring in Man City's famous 6-1 win at Old Trafford in 2011",
+        clue: "Revealed a 'Why Always Me?' undershirt after scoring in Man City's 6-1 win at Old Trafford in 2011",
         answer: 'BALOTELLI',
         category: 'player',
         difficulty: 4,
@@ -1626,7 +1626,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Scored 5 Premier League goals for Leicester City in their miraculous 2015/16 title-winning season",
+        clue: "Scored 5 Premier League goals for Leicester City in their 2015/16 title-winning season",
         answer: 'HUTH',
         category: 'player',
         difficulty: 4,
@@ -1652,7 +1652,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Scored 13 Premier League goals for Wolves in their impressive return to the top flight in 2018/19",
+        clue: "Scored 13 Premier League goals for Wolves on their return to the top flight in 2018/19",
         answer: 'JIMENEZ',
         category: 'player',
         difficulty: 2,
@@ -1692,7 +1692,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Scored 15 Premier League goals for Arsenal in 2022/23 as they mounted a title challenge",
+        clue: "Scored 15 Premier League goals for Arsenal in 2022/23",
         answer: 'MARTINELLI',
         category: 'player',
         difficulty: 2,
@@ -1706,10 +1706,10 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Thrilled Premier League fans at Coventry City in the late 1990s before joining Leeds United",
+        clue: "Starred for Coventry City in the late 1990s before joining Leeds United",
         answer: 'HUCKERBY',
         category: 'player',
-        difficulty: 4,
+        difficulty: 5,
         isProperNoun: true,
       },
       {
@@ -1732,7 +1732,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Arsenal's record signing who arrived from Lille in 2019 for £72m but struggled to consistently deliver in the Premier League",
+        clue: "Arsenal's record signing, arriving from Lille in 2019 for £72m",
         answer: 'PEPE',
         category: 'player',
         difficulty: 2,
