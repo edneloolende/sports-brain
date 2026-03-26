@@ -77,7 +77,11 @@ export default function QuestionPanel({
     <div className="w-full max-w-xl mx-auto flex flex-col gap-4">
       {/* Clue card */}
       <div className="rounded-2xl p-6 border border-green-100" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)' }}>
-        <p className="text-2xl font-normal text-gray-950 leading-snug" style={{ fontFamily: 'var(--font-lora), Georgia, serif' }}>Q{questionIndex + 1}. {question.clue}.</p>
+        <p className="text-2xl font-normal text-gray-950 leading-snug" style={{ fontFamily: 'var(--font-lora), Georgia, serif' }}>
+          <span className="font-semibold">Q{questionIndex + 1}</span>
+          <span className="text-gray-400 mx-2">—</span>
+          {question.clue}.
+        </p>
       </div>
 
       {/* Guess results */}

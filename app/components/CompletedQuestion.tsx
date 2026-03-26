@@ -18,8 +18,11 @@ export default function CompletedQuestion({ question, state, index }: Props) {
       {/* Header row */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">
-          <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Q{index + 1}</span>
-          <p className="text-sm font-medium text-gray-800 leading-snug mt-0.5 line-clamp-2">{question.clue}</p>
+          <p className="text-sm font-medium text-gray-800 leading-snug line-clamp-2">
+            <span className="font-semibold text-gray-500">Q{index + 1}</span>
+            <span className="text-gray-400 mx-1.5">—</span>
+            {question.clue}
+          </p>
         </div>
         <div className="shrink-0 text-right">
           {state.status === 'won' ? (
