@@ -176,26 +176,6 @@ function ShareButton({
 
 // ─── Countdown ────────────────────────────────────────────────────────────────
 
-function getNextPuzzleCountdown(date: string): string {
-  const puzzleDate = new Date(date + 'T00:00:00Z')
-  puzzleDate.setUTCDate(puzzleDate.getUTCDate() + 1)
-  const now  = new Date()
-  const diff = puzzleDate.getTime() - now.getTime()
-  if (diff <= 0) return 'Now'
-  const h = Math.floor(diff / 3600000)
-  const m = Math.floor((diff % 3600000) / 60000)
-  return `${h}h ${m}m`
-}
-
-function Countdown({ date }: { date: string }) {
-  const [time, setTime] = useState(() => getNextPuzzleCountdown(date))
-  useEffect(() => {
-    const interval = setInterval(() => setTime(getNextPuzzleCountdown(date)), 60000)
-    return () => clearInterval(interval)
-  }, [date])
-  return <p className="text-lg font-black text-gray-700">{time}</p>
-}
-
 // ─── Main game component ──────────────────────────────────────────────────────
 
 interface Props {
@@ -367,10 +347,6 @@ export default function GameClient({ puzzle }: Props) {
               />
             </div>
 
-            <div className="text-center mt-2">
-              <p className="text-xs text-gray-400">Next puzzle in</p>
-              <Countdown date={puzzle.date} />
-            </div>
           </div>
         )}
 
