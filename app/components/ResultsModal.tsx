@@ -12,8 +12,10 @@ interface Props {
   onClose: () => void
 }
 
+const SITE_URL = 'plquiz.app'
+
 export default function ResultsModal({ progress, questions, date, streak, onClose }: Props) {
-  const [copied, setCopied] = useState(false)
+  const [shareState, setShareState] = useState<'idle' | 'copied' | 'shared'>('idle')
 
   const totalScore = progress.questions.reduce(
     (sum, q) => sum + calcQuestionScore(q),
@@ -21,42 +23,75 @@ export default function ResultsModal({ progress, questions, date, streak, onClos
   )
   const maxScore = questions.length * 2
 
-  // Prevent body scroll
+  // Prevent body scroll while modal is open
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
   }, [])
 
   function buildShareText(): string {
+    // Header
     const lines: string[] = [
-      `PL Daily ${date} · ${totalScore}/${maxScore} ⭐`,
+      `⚽ PL Daily — ${date}`,
+      `${totalScore}/${maxScore} ${scoreStars(totalScore, maxScore)}`,
+      '',
     ]
-    progress.questions.forEach((q, i) => {
-      const score = calcQuestionScore(q)
+
+    // One emoji per question on a single row
+    const questionEmojis = progress.questions.map((q) => {
+      if (q.status !== 'won') return '❌'
       const hint = q.hintUsed ? '💡' : ''
-      let outcome = ''
-      if (q.status === 'won') {
-        outcome = q.guesses.length === 1 ? '🟩' : '🟨🟩'
-      } else {
-        outcome = '❌'
-      }
-      lines.push(`Q${i + 1} ${hint}${outcome} ${score}pt`)
+      const result = q.guesses.length === 1 ? '🟩' : '🟨🟩'
+      return `${hint}${result}`
     })
+    lines.push(questionEmojis.join('  '))
+    lines.push('')
+
     if (streak > 1) lines.push(`🔥 ${streak}-day streak`)
+    lines.push(SITE_URL)
+
     return lines.join('\n')
   }
 
-  function handleShare() {
-    const text = buildShareText()
-    navigator.clipboard?.writeText(text).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    })
+  function scoreStars(score: number, max: number): string {
+    const filled = Math.round((score / max) * 5)
+    return '⭐'.repeat(filled) + '☆'.repeat(5 - filled)
   }
+
+  async function handleShare() {
+    const text = buildShareText()
+
+    // Use native share sheet on mobile if available
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({ text })
+        setShareState('shared')
+        setTimeout(() => setShareState('idle'), 2500)
+        return
+      } catch {
+        // User cancelled or share failed — fall through to clipboard
+      }
+    }
+
+    // Fallback: copy to clipboard
+    try {
+      await navigator.clipboard.writeText(text)
+      setShareState('copied')
+      setTimeout(() => setShareState('idle'), 2500)
+    } catch {
+      // Clipboard blocked (rare) — do nothing
+    }
+  }
+
+  const shareLabel =
+    shareState === 'copied' ? '✅ Copied!' :
+    shareState === 'shared' ? '✅ Shared!' :
+    '🔗 Share result'
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 flex flex-col gap-5">
+
         {/* Header */}
         <div className="text-center">
           <h2 className="text-xl font-bold text-gray-900">PL Daily</h2>
@@ -65,8 +100,11 @@ export default function ResultsModal({ progress, questions, date, streak, onClos
 
         {/* Score */}
         <div className="text-center py-3 bg-gray-50 rounded-xl">
-          <p className="text-4xl font-black text-gray-900">{totalScore}<span className="text-xl font-normal text-gray-400">/{maxScore}</span></p>
-          <p className="text-sm text-gray-500 mt-0.5">points</p>
+          <p className="text-4xl font-black text-gray-900">
+            {totalScore}
+            <span className="text-xl font-normal text-gray-400">/{maxScore}</span>
+          </p>
+          <p className="text-sm text-gray-400 mt-0.5">{scoreStars(totalScore, maxScore)}</p>
         </div>
 
         {/* Per-question breakdown */}
@@ -97,27 +135,19 @@ export default function ResultsModal({ progress, questions, date, streak, onClos
         </div>
 
         {/* Streak */}
-        {streak > 0 && (
-          <div className="text-center text-sm font-medium text-orange-600">
+        {streak > 1 && (
+          <div className="text-center text-sm font-semibold text-orange-600">
             🔥 {streak}-day streak
           </div>
         )}
 
-        {/* Actions */}
-        <div className="flex gap-3">
-          <button
-            onClick={handleShare}
-            className="flex-1 py-2.5 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors text-sm"
-          >
-            {copied ? '✅ Copied!' : '📋 Share'}
-          </button>
-          <a
-            href="/leaderboard"
-            className="flex-1 py-2.5 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-700 transition-colors text-sm text-center"
-          >
-            🏆 Leaderboard
-          </a>
-        </div>
+        {/* Share — full width */}
+        <button
+          onClick={handleShare}
+          className="w-full py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 active:scale-95 transition-all text-sm"
+        >
+          {shareLabel}
+        </button>
 
         <button
           onClick={onClose}
