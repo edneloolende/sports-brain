@@ -27,14 +27,6 @@ const CATEGORY_LABEL: Record<Question['category'], string> = {
   jargon:  '📖 Jargon',
 }
 
-const DIFFICULTY_LABEL: Record<number, string> = {
-  1: '★☆☆☆☆',
-  2: '★★☆☆☆',
-  3: '★★★☆☆',
-  4: '★★★★☆',
-  5: '★★★★★',
-}
-
 // Auto-advance delays
 const WIN_DELAY  = 600   // ms after correct answer
 const LOSE_DELAY = 1200  // ms after running out of guesses (enough to read the answer)
@@ -83,9 +75,6 @@ export default function QuestionPanel({
     <div className="w-full max-w-xl mx-auto flex flex-col gap-4">
       {/* Clue card */}
       <div className="rounded-2xl p-6 border border-green-100" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)' }}>
-        <div className="mb-3">
-          <span className="text-sm text-gray-400">Difficulty rating — {question.difficulty}</span>
-        </div>
         <p className="text-2xl font-normal text-gray-950 leading-snug" style={{ fontFamily: 'var(--font-lora), Georgia, serif' }}>Q{questionIndex + 1}. {question.clue}.</p>
       </div>
 
