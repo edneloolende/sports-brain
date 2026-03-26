@@ -108,12 +108,6 @@ function generateShareImage(
       ctx.fillText(`🔥 ${streak}-day streak`, PAD, footerY)
     }
 
-    const urlText = 'plquiz.app'
-    ctx.fillStyle = '#9ca3af'
-    ctx.font = '13px system-ui, sans-serif'
-    const urlW = ctx.measureText(urlText).width
-    ctx.fillText(urlText, W - PAD - urlW, footerY)
-
     canvas.toBlob(blob => {
       if (blob) resolve(blob)
       else reject(new Error('Canvas toBlob failed'))
