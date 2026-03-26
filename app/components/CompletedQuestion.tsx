@@ -37,12 +37,26 @@ export default function CompletedQuestion({ question, state, index }: Props) {
         </div>
       </div>
 
-      {/* Guess tiles */}
-      <div className="flex flex-col gap-1.5">
-        {state.guesses.map((g, i) => (
-          <GuessResult key={i} guess={g} answer={question.answer} />
-        ))}
-      </div>
+      {/* Tiles */}
+      {state.status === 'lost' ? (
+        /* Correct answer in red — more useful than showing the wrong guess */
+        <div className="flex gap-1.5 flex-wrap">
+          {question.answer.toUpperCase().split('').map((letter, i) => (
+            <div
+              key={i}
+              className="w-8 h-8 flex items-center justify-center rounded text-sm font-bold text-white bg-red-500"
+            >
+              {letter}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col gap-1.5">
+          {state.guesses.map((g, i) => (
+            <GuessResult key={i} guess={g} answer={question.answer} />
+          ))}
+        </div>
+      )}
 
       {state.hintUsed && <span className="text-xs text-gray-400">💡 hint used</span>}
     </div>
