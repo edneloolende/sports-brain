@@ -39,8 +39,8 @@ export default function CompletedQuestion({ question, state, index }: Props) {
 
       {/* Tiles */}
       {state.status === 'lost' ? (
-        /* Correct answer in red — more useful than showing the wrong guess */
-        <div className="flex gap-1.5 flex-wrap">
+        /* Correct answer in red, centred */
+        <div className="flex gap-1.5 flex-wrap justify-center">
           {question.answer.toUpperCase().split('').map((letter, i) => (
             <div
               key={i}
@@ -51,11 +51,11 @@ export default function CompletedQuestion({ question, state, index }: Props) {
           ))}
         </div>
       ) : (
-        <div className="flex flex-col gap-1.5">
-          {state.guesses.map((g, i) => (
-            <GuessResult key={i} guess={g} answer={question.answer} />
-          ))}
-        </div>
+        /* Only show the winning guess — skip any incorrect first attempt */
+        <GuessResult
+          guess={state.guesses[state.guesses.length - 1]}
+          answer={question.answer}
+        />
       )}
 
       {state.hintUsed && <span className="text-xs text-gray-400">💡 hint used</span>}
