@@ -246,7 +246,7 @@ function RemindButton({ currentDate }: { currentDate: string }) {
       onClick={handleRemind}
       className="flex-1 py-3 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-gray-300 hover:bg-gray-50 active:scale-95 transition-all text-sm"
     >
-      {done ? '📅 Added to calendar!' : '🔔 Remind me tomorrow'}
+      {done ? '📅 Added to calendar!' : "📅 Get tomorrow's quiz"}
     </button>
   )
 }
