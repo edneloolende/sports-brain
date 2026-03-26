@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import QuestionPanel from '@/app/components/QuestionPanel'
 import CompletedQuestion from '@/app/components/CompletedQuestion'
 import ProgressBar from '@/app/components/ProgressBar'
@@ -9,6 +9,93 @@ import { calcQuestionScore } from '@/app/lib/gameLogic'
 import { loadProgress, saveProgress, getPlayer } from '@/app/lib/storage'
 
 const MAX_GUESSES = 2
+
+// ─── Reaction GIF collections ────────────────────────────────────────────────
+
+const REACTION_GIFS = {
+  sad: [
+    'https://media.giphy.com/media/WEWD48R2iD7h0M4CAB/giphy.gif',
+    'https://media.giphy.com/media/31dFkd4JqFTV8NPDac/giphy.gif',
+    'https://media.giphy.com/media/pgzxnMDuL47DWL9cOT/giphy.gif',
+    'https://media.giphy.com/media/jZnOF0UoupsvKT0gKl/giphy.gif',
+    'https://media.giphy.com/media/kJgJ5yAHmwvoF4tHOP/giphy.gif',
+    'https://media.giphy.com/media/lt3MSXKrYbC1xLdbWK/giphy.gif',
+    'https://media.giphy.com/media/JuWFEGk9S1Ijc31G4m/giphy.gif',
+    'https://media.giphy.com/media/Nuk8ZhBtEsS6kMBNCb/giphy.gif',
+    'https://media.giphy.com/media/w0fMRH5k4Lle5bEDmm/giphy.gif',
+    'https://media.giphy.com/media/gnsun0tUuGPC7zFxvb/giphy.gif',
+    'https://media.giphy.com/media/PSgHSGT9TNDaGabr93/giphy.gif',
+    'https://media.giphy.com/media/l41YcOkS6GDDcSHe0/giphy.gif',
+    'https://media.giphy.com/media/EdvpJAFMMkPiqlk8qs/giphy.gif',
+    'https://media.giphy.com/media/sHdYAD7phzWwukq7he/giphy.gif',
+    'https://media.giphy.com/media/MrMmyed3mt69FQWMPg/giphy.gif',
+    'https://media.giphy.com/media/lRVdcJd1GxF1sgBfDM/giphy.gif',
+    'https://media.giphy.com/media/UoS6dnqoou9fJjXOQM/giphy.gif',
+    'https://media.giphy.com/media/Kff0fPT41Scs2W0hCv/giphy.gif',
+    'https://media.giphy.com/media/STw0vIAWLPtvWmKvFz/giphy.gif',
+    'https://media.giphy.com/media/rJiX9OThdA1YCXKJHT/giphy.gif',
+    'https://media.giphy.com/media/1sM6QUhlRbsROjLtAA/giphy.gif',
+    'https://media.giphy.com/media/7zSMm7b8veuZdutAFx/giphy.gif',
+    'https://media.giphy.com/media/XV5fNGqepMPBzo4e2g/giphy.gif',
+    'https://media.giphy.com/media/9uIRSOBMEkOXeYxmj8/giphy.gif',
+    'https://media.giphy.com/media/gkFPLRwoljl8iAUhdF/giphy.gif',
+  ],
+  meh: [
+    'https://media.giphy.com/media/kxUhZ0TY46X1Dk48ru/giphy.gif',
+    'https://media.giphy.com/media/OUmYyDhj7XP1dwgiKF/giphy.gif',
+    'https://media.giphy.com/media/HOlAmhvTznJzddhmda/giphy.gif',
+    'https://media.giphy.com/media/ZYW42FuMuOHYhZvMhV/giphy.gif',
+    'https://media.giphy.com/media/bLkHHJkDdrwJxfIQJ0/giphy.gif',
+    'https://media.giphy.com/media/KEluHQ24vy6ctcsMCh/giphy.gif',
+    'https://media.giphy.com/media/jtWTIBuukkc38Eeorj/giphy.gif',
+    'https://media.giphy.com/media/QxYmNVZxpCIJOC3IKD/giphy.gif',
+    'https://media.giphy.com/media/LAVbxWBYetxKTxsLjD/giphy.gif',
+    'https://media.giphy.com/media/3sa2mriMk9SkMLCnyL/giphy.gif',
+    'https://media.giphy.com/media/HSqJKKUvbzLtRsdROo/giphy.gif',
+    'https://media.giphy.com/media/mWFYprULhLdb3pVtGU/giphy.gif',
+    'https://media.giphy.com/media/lRrf5vv50RN0fakVfe/giphy.gif',
+    'https://media.giphy.com/media/Q3VzQlPOvK4ewyIIgn/giphy.gif',
+    'https://media.giphy.com/media/0FEIAhbCvnL5jRpXZe/giphy.gif',
+    'https://media.giphy.com/media/OeKTyWUYygAkw6O3Pr/giphy.gif',
+    'https://media.giphy.com/media/qmU61BkHHwSTRuiGZW/giphy.gif',
+    'https://media.giphy.com/media/jnJmYcETDM0EC1vV14/giphy.gif',
+    'https://media.giphy.com/media/pYD9tNSVusX28WGyD5/giphy.gif',
+    'https://media.giphy.com/media/0vrVOkEwRFdbyDKqZN/giphy.gif',
+    'https://media.giphy.com/media/VaqgTXeyXf1nBoqYZ7/giphy.gif',
+    'https://media.giphy.com/media/3o7WIxwxpkLt8uHTfW/giphy.gif',
+  ],
+  celebrate: [
+    'https://media.giphy.com/media/TjAcxImn74uoDYVxFl/giphy.gif',
+    'https://media.giphy.com/media/bJrwFC7SAk6EkeojAF/giphy.gif',
+    'https://media.giphy.com/media/WoCkBJcDiaN0IZYvV0/giphy.gif',
+    'https://media.giphy.com/media/RMHmOe6wyezrLQtVD5/giphy.gif',
+    'https://media.giphy.com/media/5BKj2Rgz2U9vJ8QzYN/giphy.gif',
+    'https://media.giphy.com/media/kQg7fQMvVD5Ha/giphy.gif',
+    'https://media.giphy.com/media/SOJBmp8r0wHwUkpYxW/giphy.gif',
+    'https://media.giphy.com/media/yjDgQD6gIw0UHQzZQz/giphy.gif',
+    'https://media.giphy.com/media/e12fJTytzGTbEHkJ2l/giphy.gif',
+    'https://media.giphy.com/media/SSWDmOtwTQ3X5nNBRN/giphy.gif',
+    'https://media.giphy.com/media/maYHFjRpJxR3RXObug/giphy.gif',
+    'https://media.giphy.com/media/1fbR6mVzwHoTXXcew2/giphy.gif',
+    'https://media.giphy.com/media/3o7bu2D938PkrKrcYw/giphy.gif',
+    'https://media.giphy.com/media/Ql28EA1PSFUwxcq9U5/giphy.gif',
+    'https://media.giphy.com/media/AYr5jQPHtJ5oRezDv8/giphy.gif',
+    'https://media.giphy.com/media/qj2ZdhPhkpM7YZS137/giphy.gif',
+    'https://media.giphy.com/media/9UHMJaqyUjOv646OsT/giphy.gif',
+    'https://media.giphy.com/media/yvAco8XNqJafSfLmBP/giphy.gif',
+    'https://media.giphy.com/media/1AIgscEMDAprsbQSQV/giphy.gif',
+    'https://media.giphy.com/media/Kd5XaUvCn9XkFwHL3P/giphy.gif',
+    'https://media.giphy.com/media/dt0Z71lHe9WXjauXDL/giphy.gif',
+    'https://media.giphy.com/media/NqiE7mIiXNAhYVUaZD/giphy.gif',
+    'https://media.giphy.com/media/40KfwvNwBjJZuj2OYP/giphy.gif',
+    'https://media.giphy.com/media/cMqnAnGOP9BmWvG7tn/giphy.gif',
+    'https://media.giphy.com/media/3JUJtJpwgLRxejQvAb/giphy.gif',
+  ],
+}
+
+function pickRandom<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)]
+}
 
 // ─── Date helpers ────────────────────────────────────────────────────────────
 
@@ -263,6 +350,13 @@ export default function GameClient({ puzzle }: Props) {
   )
   const [streak, setStreak] = useState(0)
 
+  // Pick a random GIF once per session (stable across re-renders)
+  const reactionGif = useMemo(() => {
+    const max = puzzle.questions.length * 2
+    // We don't know totalScore yet at mount, so we derive it lazily below
+    return { sad: pickRandom(REACTION_GIFS.sad), meh: pickRandom(REACTION_GIFS.meh), celebrate: pickRandom(REACTION_GIFS.celebrate) }
+  }, [puzzle.questions.length])
+
   useEffect(() => {
     saveProgress(progress)
   }, [progress])
@@ -414,30 +508,25 @@ export default function GameClient({ puzzle }: Props) {
             {/* Score reaction GIF */}
             {(() => {
               const max = puzzle.questions.length * 2
-              let gif: { url: string; caption: string }
+              let gifUrl: string
+              let caption: string
               if (totalScore <= Math.round(max * 0.3)) {
-                gif = {
-                  url: 'https://media.giphy.com/media/gkFPLRwoljl8iAUhdF/giphy.gif',
-                  caption: 'Better luck tomorrow 😬',
-                }
+                gifUrl = reactionGif.sad
+                caption = 'Better luck tomorrow 😬'
               } else if (totalScore <= Math.round(max * 0.7)) {
-                gif = {
-                  url: 'https://media.giphy.com/media/3o7WIxwxpkLt8uHTfW/giphy.gif',
-                  caption: 'Not bad, not great 🤷',
-                }
+                gifUrl = reactionGif.meh
+                caption = 'Not bad, not great 🤷'
               } else {
-                gif = {
-                  url: 'https://media.giphy.com/media/3JUJtJpwgLRxejQvAb/giphy.gif',
-                  caption: 'Get in! 🔥',
-                }
+                gifUrl = reactionGif.celebrate
+                caption = 'Get in! 🔥'
               }
               return (
                 <div className="flex flex-col items-center gap-2 w-full max-w-sm">
-                  <p className="text-sm font-semibold text-gray-500">{gif.caption}</p>
+                  <p className="text-sm font-semibold text-gray-500">{caption}</p>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={gif.url}
-                    alt={gif.caption}
+                    src={gifUrl}
+                    alt={caption}
                     className="w-full rounded-2xl object-cover"
                     style={{ maxHeight: '220px' }}
                   />
