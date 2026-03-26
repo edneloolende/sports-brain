@@ -186,7 +186,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won five Premier League titles with Manchester City after joining from Monaco in 2017',
+        clue: 'Won six Premier League titles with Manchester City after joining from Monaco in 2017',
         answer: 'BERNARDO',
         category: 'player',
         difficulty: 5,
@@ -492,14 +492,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: 'Guided Newcastle to back-to-back Champions League campaigns between 2002 and 2004',
+        clue: 'Guided Newcastle to 4th and then 3rd in consecutive Premier League seasons, earning European football in both',
         answer: 'ROBSON',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: 'Holds the all-time record for most PL assists by a foreign player',
+        clue: 'Left Arsenal for Barcelona in 2011 after eight years, then won the Premier League twice with Chelsea',
         answer: 'FABREGAS',
         category: 'player',
         difficulty: 4,
@@ -819,7 +819,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Guided Bournemouth from League Two to the Premier League in four years',
+        clue: 'Guided Bournemouth through three promotions from League Two to the Premier League',
         answer: 'HOWE',
         category: 'manager',
         difficulty: 3,
@@ -1273,7 +1273,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Guided Stoke City through a decade of Premier League football from 2008",
+        clue: "Guided Stoke City into the Premier League in 2008 and kept them in the top flight for five seasons",
         answer: 'PULIS',
         category: 'manager',
         difficulty: 5,
@@ -1299,14 +1299,14 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Guided Sheffield United from League One to the Premier League in successive promotions",
+        clue: "Guided Sheffield United from League One to the Premier League, winning two promotions in three seasons",
         answer: 'WILDER',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: "Joined Tottenham from Leicester in 2023 and scored 10 Premier League goals in his debut season",
+        clue: "Joined Tottenham from Leicester in 2023 and won the Premier League Player of the Month award in his debut August",
         answer: 'MADDISON',
         category: 'player',
         difficulty: 4,
@@ -1339,7 +1339,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Guided Southampton to European qualification in 2015/16 before leaving for Barcelona",
+        clue: "Guided Southampton to 6th place and European qualification in 2015/16 before leaving for Everton",
         answer: 'KOEMAN',
         category: 'manager',
         difficulty: 3,
@@ -1379,7 +1379,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Captained Tottenham for over a decade, leading them to the 2019 Champions League final",
+        clue: "Captained Tottenham for nine years, leading them to the 2019 Champions League final",
         answer: 'LLORIS',
         category: 'player',
         difficulty: 3,
@@ -1459,21 +1459,21 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Guided Brighton from a relegation battle to 6th place and European football within three seasons",
+        clue: "Guided Brighton from a relegation battle to a record 9th-place points tally in 2021/22, before leaving for Chelsea",
         answer: 'POTTER',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: "Scored 15 Premier League goals for Arsenal in 2010/11 before controversially joining Manchester City",
+        clue: "Scored 10 Premier League goals for Arsenal in 2010/11 before controversially joining Manchester City",
         answer: 'NASRI',
         category: 'player',
         difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: "Scored over 20 Premier League goals for Blackburn Rovers in 2007/08",
+        clue: "Scored 15 Premier League goals in 15 appearances for Everton in 2007/08 before a serious knee injury",
         answer: 'YAKUBU',
         category: 'player',
         difficulty: 5,
@@ -1725,7 +1725,7 @@ export const PUZZLES: DailyPuzzle[] = [
     date: '2026-05-07',
     questions: [
       {
-        clue: "Liverpool's Merseyside rivals, based at Goodison Park",
+        clue: "Liverpool's Merseyside rivals",
         answer: 'EVERTON',
         category: 'club',
         difficulty: 1,
@@ -1753,7 +1753,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Scored 17 Premier League goals for Chelsea between 2012 and 2017 before moving to China",
+        clue: "Won the Premier League twice with Chelsea before leaving for a record Chinese Super League fee in 2017",
         answer: 'OSCAR',
         category: 'player',
         difficulty: 5,
