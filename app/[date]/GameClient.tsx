@@ -55,35 +55,33 @@ function generateShareImage(
     ctx.fillStyle = GREEN
     ctx.fillRect(0, 0, W, 5)
 
-    // ── App label ───────────────────────────────────────────────────────────
-    ctx.fillStyle = '#6b7280'
-    ctx.font = '13px system-ui, -apple-system, sans-serif'
-    ctx.fillText('Sports Brain · Premier League', PAD, 36)
-
-    // ── "PL Daily" ──────────────────────────────────────────────────────────
+    // ── Header — mirrors the in-app header exactly ──────────────────────────
     ctx.fillStyle = '#111827'
-    ctx.font = 'bold 30px system-ui, -apple-system, sans-serif'
-    ctx.fillText('PL Daily', PAD, 72)
+    ctx.font = 'bold 22px system-ui, -apple-system, sans-serif'
+    ctx.fillText('Sports Brain', PAD, 38)
 
-    // ── Date ────────────────────────────────────────────────────────────────
-    ctx.fillStyle = '#374151'
-    ctx.font = '15px system-ui, -apple-system, sans-serif'
-    ctx.fillText(formatDate(date), PAD, 93)
+    ctx.fillStyle = '#15803d'  // green-700, matches app
+    ctx.font = '600 14px system-ui, -apple-system, sans-serif'
+    ctx.fillText('Premier League Edition', PAD, 57)
 
-    // ── Score (right-aligned) ───────────────────────────────────────────────
+    ctx.fillStyle = '#6b7280'
+    ctx.font = '14px system-ui, -apple-system, sans-serif'
+    ctx.fillText(formatDate(date), PAD, 76)
+
+    // ── Score (right-aligned, matches header height) ────────────────────────
     ctx.fillStyle = '#111827'
     ctx.font = 'bold 30px system-ui, -apple-system, sans-serif'
     const scoreText = `${score}/${maxScore}`
     const scoreW = ctx.measureText(scoreText).width
-    ctx.fillText(scoreText, W - PAD - scoreW, 72)
+    ctx.fillText(scoreText, W - PAD - scoreW, 57)
 
     ctx.fillStyle = '#9ca3af'
     ctx.font = '13px system-ui, sans-serif'
     const ptsW = ctx.measureText('points').width
-    ctx.fillText('points', W - PAD - ptsW, 93)
+    ctx.fillText('points', W - PAD - ptsW, 76)
 
     // ── Bars ────────────────────────────────────────────────────────────────
-    const BAR_TOP = 118
+    const BAR_TOP = 104
     const BAR_H   = 30
     const BAR_GAP = 10
     const MAX_BAR_W = W - PAD * 2
