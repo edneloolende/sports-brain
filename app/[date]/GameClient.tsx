@@ -182,7 +182,7 @@ function ShareButton({
     <button
       onClick={handleShare}
       disabled={phase === 'busy'}
-      className="flex-1 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 active:scale-95 disabled:opacity-60 transition-all text-sm"
+      className="w-full py-3.5 bg-slate-800 text-white font-semibold rounded-xl hover:bg-slate-900 active:scale-95 disabled:opacity-60 transition-all text-sm"
     >
       {phase === 'busy' ? 'Generating…' : phase === 'done' ? '✅ Shared!' : '🔗 Share result'}
     </button>
@@ -244,7 +244,7 @@ function RemindButton({ currentDate }: { currentDate: string }) {
   return (
     <button
       onClick={handleRemind}
-      className="flex-1 py-3 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-gray-300 hover:bg-gray-50 active:scale-95 transition-all text-sm"
+      className="w-full py-3.5 bg-white border-2 border-slate-200 text-slate-600 font-semibold rounded-xl hover:border-slate-300 hover:bg-slate-50 active:scale-95 transition-all text-sm"
     >
       {done ? '📅 Added to calendar!' : "📅 Get tomorrow's quiz"}
     </button>
@@ -446,7 +446,7 @@ export default function GameClient({ puzzle }: Props) {
             })()}
 
             {/* CTAs */}
-            <div className="flex gap-3 w-full max-w-sm mx-auto">
+            <div className="flex flex-col gap-3 w-full max-w-xs mx-auto">
               <ShareButton
                 score={totalScore}
                 max={puzzle.questions.length * 2}
