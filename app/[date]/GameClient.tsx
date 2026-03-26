@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Link from 'next/link'
 import QuestionPanel from '@/app/components/QuestionPanel'
 import CompletedQuestion from '@/app/components/CompletedQuestion'
 import ProgressBar from '@/app/components/ProgressBar'
@@ -9,6 +10,29 @@ import { calcQuestionScore } from '@/app/lib/gameLogic'
 import { loadProgress, saveProgress, getPlayer } from '@/app/lib/storage'
 
 const MAX_GUESSES = 2
+
+function ShareButton({ score, max, date, streak }: { score: number; max: number; date: string; streak: number }) {
+  const [copied, setCopied] = useState(false)
+
+  function handleShare() {
+    const lines = [`Sports Brain — PL Edition`, `${date} · ${score}/${max} ⭐`]
+    if (streak > 1) lines.push(`🔥 ${streak}-day streak`)
+    lines.push('https://sports-brain-delta.vercel.app')
+    navigator.clipboard?.writeText(lines.join('\n')).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+
+  return (
+    <button
+      onClick={handleShare}
+      className="flex-1 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors text-sm"
+    >
+      {copied ? '✅ Copied!' : '📋 Share'}
+    </button>
+  )
+}
 
 function formatDate(dateStr: string): string {
   const [year, month, day] = dateStr.split('-').map(Number)
@@ -162,14 +186,35 @@ export default function GameClient({ puzzle }: Props) {
           </div>
         )}
 
-        {/* Final score — shown after completion */}
+        {/* Final score + CTAs — shown after completion */}
         {progress.completed && (
-          <div className="text-center mt-2 mb-4">
-            <p className="font-black text-gray-900" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
-              {totalScore}
-              <span className="font-normal text-gray-400" style={{ fontSize: '1.25rem' }}>/{puzzle.questions.length * 2}</span>
-            </p>
-            <p className="text-sm text-gray-500 mt-1">points</p>
+          <div className="flex flex-col items-center gap-4 mt-2 mb-6">
+            {/* Score */}
+            <div className="text-center">
+              <p className="font-black text-gray-900" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
+                {totalScore}
+                <span className="font-normal text-gray-400" style={{ fontSize: '1.25rem' }}>/{puzzle.questions.length * 2}</span>
+              </p>
+              <p className="text-sm text-gray-500 mt-1">points</p>
+            </div>
+
+            {/* Streak */}
+            {streak > 0 && (
+              <p className="text-base font-semibold text-orange-500">
+                🔥 {streak}-day streak
+              </p>
+            )}
+
+            {/* Share + Leaderboard */}
+            <div className="flex gap-3 w-full max-w-xs">
+              <ShareButton score={totalScore} max={puzzle.questions.length * 2} date={puzzle.date} streak={streak} />
+              <Link
+                href="/leaderboard"
+                className="flex-1 py-3 text-center bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-700 transition-colors text-sm"
+              >
+                🏆 Leaderboard
+              </Link>
+            </div>
           </div>
         )}
 
