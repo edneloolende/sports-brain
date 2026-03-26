@@ -313,7 +313,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won a record 13 PL titles, all with Man Utd',
+        clue: 'Player who won a record 13 PL titles',
         answer: 'GIGGS',
         category: 'player',
         difficulty: 2,
@@ -379,7 +379,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won six Premier League titles at Manchester United',
+        clue: 'Defender who won six Premier League titles at Manchester United',
         answer: 'FERDINAND',
         category: 'player',
         difficulty: 3,
@@ -412,7 +412,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the Golden Boot with two different clubs',
+        clue: 'Won the Golden Boot with two different clubs in the late 90s and early 2000s',
         answer: 'HASSELBAINK',
         category: 'player',
         difficulty: 4,
@@ -448,7 +448,7 @@ export const PUZZLES: DailyPuzzle[] = [
         clue: "Shearer's SAS strike partner at Blackburn",
         answer: 'SUTTON',
         category: 'player',
-        difficulty: 3,
+        difficulty: 4,
         isProperNoun: true,
       },
       {
@@ -466,7 +466,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: "Football Writers' Player of the Year in Arsenal's Double season",
+        clue: "Football Writers' Player of the Year in Arsenal's 2001/02 Double season",
         answer: 'PIRES',
         category: 'player',
         difficulty: 3,
@@ -535,7 +535,7 @@ export const PUZZLES: DailyPuzzle[] = [
         clue: "Scored Liverpool's third in the 2005 Champions League final comeback",
         answer: 'ALONSO',
         category: 'player',
-        difficulty: 4,
+        difficulty: 5,
         isProperNoun: true,
       },
       {
@@ -568,11 +568,11 @@ export const PUZZLES: DailyPuzzle[] = [
         clue: "Hull City's nickname",
         answer: 'TIGERS',
         category: 'club',
-        difficulty: 1,
+        difficulty: 2,
         isProperNoun: false,
       },
       {
-        clue: 'Joined Chelsea from Real Madrid, winning the PL title',
+        clue: 'Joined Chelsea from Real Madrid in 2021, winning the PL title',
         answer: 'KOVACIC',
         category: 'player',
         difficulty: 3,
@@ -636,7 +636,7 @@ export const PUZZLES: DailyPuzzle[] = [
         clue: 'Headed the winner in the 2013 FA Cup final vs Man City',
         answer: 'WATSON',
         category: 'player',
-        difficulty: 4,
+        difficulty: 5,
         isProperNoun: true,
       },
     ],
@@ -666,7 +666,7 @@ export const PUZZLES: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored PL goals for four different clubs',
+        clue: 'Scored PL goals for four different clubs, including Coventry City and Aston Villa',
         answer: 'DUBLIN',
         category: 'player',
         difficulty: 4,
