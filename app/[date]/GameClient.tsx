@@ -1,62 +1,218 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import Link from 'next/link'
 import QuestionPanel from '@/app/components/QuestionPanel'
 import CompletedQuestion from '@/app/components/CompletedQuestion'
 import ProgressBar from '@/app/components/ProgressBar'
-import type { DailyPuzzle, GameProgress, QuestionState, ScoreSubmission } from '@/app/lib/types'
-import { calcQuestionScore } from '@/app/lib/gameLogic'
+import type { DailyPuzzle, GameProgress, Question, QuestionState, ScoreSubmission } from '@/app/lib/types'
+import { calcQuestionScore, evaluateGuess } from '@/app/lib/gameLogic'
 import { loadProgress, saveProgress, getPlayer } from '@/app/lib/storage'
 
 const MAX_GUESSES = 2
 
-function buildEmojiGrid(questions: GameProgress['questions']): string {
-  return questions.map((q) => {
-    if (q.status === 'lost') return '⬛⬛'
-    if (q.guesses.length === 1 && !q.hintUsed) return '🟩🟩'
-    if (q.guesses.length === 1 && q.hintUsed)  return '🟨🟩'
-    return '🟨🟩'
-  }).join('\n')
+// ─── Date helpers ────────────────────────────────────────────────────────────
+
+function formatDate(dateStr: string): string {
+  const [year, month, day] = dateStr.split('-').map(Number)
+  return new Date(year, month - 1, day).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
 }
 
-function ShareButton({ score, max, date, streak, questions }: {
-  score: number; max: number; date: string; streak: number
-  questions: GameProgress['questions']
-}) {
-  const [copied, setCopied] = useState(false)
+// ─── Share image generator ───────────────────────────────────────────────────
 
-  function handleShare() {
-    const grid = buildEmojiGrid(questions)
-    const lines = [
-      `⚽ Sports Brain — PL Edition`,
-      formatDate(date),
-      `${score}/${max} points`,
-      '',
-      grid,
-    ]
-    if (streak > 1) lines.push(``, `🔥 ${streak}-day streak`)
-    lines.push('', 'sports-brain-delta.vercel.app')
-    navigator.clipboard?.writeText(lines.join('\n')).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+const GREEN  = '#16a34a'
+const YELLOW = '#eab308'
+const ABSENT = '#e5e7eb'
+const RED    = '#dc2626'
+
+function generateShareImage(
+  date: string,
+  score: number,
+  maxScore: number,
+  questions: Question[],
+  questionStates: GameProgress['questions'],
+  streak: number,
+): Promise<Blob> {
+  return new Promise((resolve, reject) => {
+    const W = 600
+    const H = 380
+    const dpr = typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1
+    const canvas = document.createElement('canvas')
+    canvas.width  = W * dpr
+    canvas.height = H * dpr
+    const ctx = canvas.getContext('2d')!
+    ctx.scale(dpr, dpr)
+
+    const PAD = 32
+    const R   = 7   // bar border radius
+
+    // ── Background ──────────────────────────────────────────────────────────
+    ctx.fillStyle = '#ffffff'
+    ctx.fillRect(0, 0, W, H)
+
+    // ── Green top stripe ────────────────────────────────────────────────────
+    ctx.fillStyle = GREEN
+    ctx.fillRect(0, 0, W, 5)
+
+    // ── App label ───────────────────────────────────────────────────────────
+    ctx.fillStyle = '#6b7280'
+    ctx.font = '13px system-ui, -apple-system, sans-serif'
+    ctx.fillText('Sports Brain · Premier League', PAD, 36)
+
+    // ── "PL Daily" ──────────────────────────────────────────────────────────
+    ctx.fillStyle = '#111827'
+    ctx.font = 'bold 30px system-ui, -apple-system, sans-serif'
+    ctx.fillText('PL Daily', PAD, 72)
+
+    // ── Date ────────────────────────────────────────────────────────────────
+    ctx.fillStyle = '#374151'
+    ctx.font = '15px system-ui, -apple-system, sans-serif'
+    ctx.fillText(formatDate(date), PAD, 93)
+
+    // ── Score (right-aligned) ───────────────────────────────────────────────
+    ctx.fillStyle = '#111827'
+    ctx.font = 'bold 30px system-ui, -apple-system, sans-serif'
+    const scoreText = `${score}/${maxScore}`
+    const scoreW = ctx.measureText(scoreText).width
+    ctx.fillText(scoreText, W - PAD - scoreW, 72)
+
+    ctx.fillStyle = '#9ca3af'
+    ctx.font = '13px system-ui, sans-serif'
+    const ptsW = ctx.measureText('points').width
+    ctx.fillText('points', W - PAD - ptsW, 93)
+
+    // ── Bars ────────────────────────────────────────────────────────────────
+    const BAR_TOP = 118
+    const BAR_H   = 30
+    const BAR_GAP = 10
+    const MAX_BAR_W = W - PAD * 2
+    const maxLen = Math.max(...questions.map(q => q.answer.length))
+
+    questions.forEach((question, i) => {
+      const qState = questionStates[i]
+      const y      = BAR_TOP + i * (BAR_H + BAR_GAP)
+      const barW   = Math.round((question.answer.length / maxLen) * MAX_BAR_W)
+
+      if (qState.status !== 'won') {
+        // ── Solid red bar ────────────────────────────────────────────────
+        ctx.beginPath()
+        ctx.roundRect(PAD, y, barW, BAR_H, R)
+        ctx.fillStyle = RED
+        ctx.fill()
+      } else {
+        // ── Coloured segments for the winning guess ──────────────────────
+        const winGuess = qState.guesses[qState.guesses.length - 1]
+        const states   = evaluateGuess(winGuess, question.answer)
+        const segW     = barW / states.length
+
+        states.forEach((s, j) => {
+          const x     = PAD + j * segW
+          const color = s === 'correct' ? GREEN : s === 'present' ? YELLOW : ABSENT
+          ctx.fillStyle = color
+
+          const isFirst = j === 0
+          const isLast  = j === states.length - 1
+
+          ctx.beginPath()
+          if (isFirst && isLast) {
+            ctx.roundRect(x, y, segW, BAR_H, R)
+          } else if (isFirst) {
+            // Round left end only — extend 1px right to close sub-pixel gap
+            ctx.roundRect(x, y, segW + 1, BAR_H, [R, 0, 0, R])
+          } else if (isLast) {
+            // Round right end only — extend 1px left
+            ctx.roundRect(x - 1, y, segW + 1, BAR_H, [0, R, R, 0])
+          } else {
+            // Interior — extend slightly each side to eliminate sub-pixel gaps
+            ctx.rect(x - 0.5, y, segW + 1, BAR_H)
+          }
+          ctx.fill()
+        })
+      }
     })
+
+    // ── Footer ──────────────────────────────────────────────────────────────
+    const footerY = BAR_TOP + 5 * (BAR_H + BAR_GAP) + 22
+
+    if (streak > 1) {
+      ctx.fillStyle = '#ea580c'
+      ctx.font = 'bold 14px system-ui, sans-serif'
+      ctx.fillText(`🔥 ${streak}-day streak`, PAD, footerY)
+    }
+
+    const urlText = 'plquiz.app'
+    ctx.fillStyle = '#9ca3af'
+    ctx.font = '13px system-ui, sans-serif'
+    const urlW = ctx.measureText(urlText).width
+    ctx.fillText(urlText, W - PAD - urlW, footerY)
+
+    canvas.toBlob(blob => {
+      if (blob) resolve(blob)
+      else reject(new Error('Canvas toBlob failed'))
+    }, 'image/png')
+  })
+}
+
+// ─── Share button ─────────────────────────────────────────────────────────────
+
+function ShareButton({
+  score, max, date, streak, questions, questionStates,
+}: {
+  score: number
+  max: number
+  date: string
+  streak: number
+  questions: Question[]
+  questionStates: GameProgress['questions']
+}) {
+  const [phase, setPhase] = useState<'idle' | 'busy' | 'done'>('idle')
+
+  async function handleShare() {
+    setPhase('busy')
+    try {
+      const blob = await generateShareImage(date, score, max, questions, questionStates, streak)
+      const file = new File([blob], `pl-daily-${date}.png`, { type: 'image/png' })
+
+      if (typeof navigator !== 'undefined' && navigator.canShare?.({ files: [file] })) {
+        await navigator.share({ files: [file] })
+      } else {
+        // Fallback: trigger download
+        const url = URL.createObjectURL(blob)
+        const a   = document.createElement('a')
+        a.href     = url
+        a.download = `pl-daily-${date}.png`
+        a.click()
+        URL.revokeObjectURL(url)
+      }
+      setPhase('done')
+    } catch {
+      // User cancelled share or something went wrong — reset silently
+      setPhase('idle')
+      return
+    }
+    setTimeout(() => setPhase('idle'), 3000)
   }
 
   return (
     <button
       onClick={handleShare}
-      className="flex-1 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors text-sm"
+      disabled={phase === 'busy'}
+      className="flex-1 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 active:scale-95 disabled:opacity-60 transition-all text-sm"
     >
-      {copied ? '✅ Copied!' : '📋 Share'}
+      {phase === 'busy' ? 'Generating…' : phase === 'done' ? '✅ Shared!' : '🔗 Share result'}
     </button>
   )
 }
 
+// ─── Countdown ────────────────────────────────────────────────────────────────
+
 function getNextPuzzleCountdown(date: string): string {
   const puzzleDate = new Date(date + 'T00:00:00Z')
   puzzleDate.setUTCDate(puzzleDate.getUTCDate() + 1)
-  const now = new Date()
+  const now  = new Date()
   const diff = puzzleDate.getTime() - now.getTime()
   if (diff <= 0) return 'Now'
   const h = Math.floor(diff / 3600000)
@@ -73,14 +229,7 @@ function Countdown({ date }: { date: string }) {
   return <p className="text-lg font-black text-gray-700">{time}</p>
 }
 
-function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split('-').map(Number)
-  return new Date(year, month - 1, day).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
-}
+// ─── Main game component ──────────────────────────────────────────────────────
 
 interface Props {
   puzzle: DailyPuzzle
@@ -92,12 +241,10 @@ export default function GameClient({ puzzle }: Props) {
   )
   const [streak, setStreak] = useState(0)
 
-  // Persist to localStorage on every change
   useEffect(() => {
     saveProgress(progress)
   }, [progress])
 
-  // Submit score to server when game completes
   const submitScore = useCallback(async (finalProgress: GameProgress) => {
     const player = getPlayer()
     if (!player.id) return
@@ -138,10 +285,10 @@ export default function GameClient({ puzzle }: Props) {
   }
 
   function handleGuessSubmit(guess: string) {
-    const idx = progress.currentQuestion
+    const idx      = progress.currentQuestion
     const question = puzzle.questions[idx]
-    const current = progress.questions[idx]
-    const isCorrect = guess.toUpperCase() === question.answer.toUpperCase()
+    const current  = progress.questions[idx]
+    const isCorrect  = guess.toUpperCase() === question.answer.toUpperCase()
     const newGuesses = [...current.guesses, guess.toUpperCase()]
     const isExhausted = newGuesses.length >= MAX_GUESSES
     const newStatus: QuestionState['status'] = isCorrect ? 'won' : isExhausted ? 'lost' : 'playing'
@@ -160,14 +307,10 @@ export default function GameClient({ puzzle }: Props) {
 
   function handleNext() {
     const nextIdx = progress.currentQuestion + 1
-    const isLast = nextIdx >= puzzle.questions.length
+    const isLast  = nextIdx >= puzzle.questions.length
 
     if (isLast) {
-      // Game complete
-      const finalProgress: GameProgress = {
-        ...progress,
-        completed: true,
-      }
+      const finalProgress: GameProgress = { ...progress, completed: true }
       setProgress(finalProgress)
       saveProgress(finalProgress)
       submitScore(finalProgress)
@@ -176,14 +319,10 @@ export default function GameClient({ puzzle }: Props) {
     }
   }
 
-  const currentQ = progress.currentQuestion
-  const currentState = progress.questions[currentQ]
+  const currentQ        = progress.currentQuestion
+  const currentState    = progress.questions[currentQ]
   const currentQuestion = puzzle.questions[currentQ]
-
-  const totalScore = progress.questions.reduce(
-    (sum, q) => sum + calcQuestionScore(q),
-    0
-  )
+  const totalScore      = progress.questions.reduce((sum, q) => sum + calcQuestionScore(q), 0)
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -205,63 +344,56 @@ export default function GameClient({ puzzle }: Props) {
 
       {/* Main content */}
       <main className="flex-1 px-4 py-6 max-w-xl mx-auto w-full">
-        {/* How to play */}
         {!progress.completed && (
           <p className="text-sm text-gray-400 text-center mb-5">
-            One word answers. Two guesses per question. Correct answers earn points. Reveal the letter count for a clue, but it'll cost you one point.
+            One word answers. Two guesses per question. Correct answers earn points. Reveal the letter count for a clue, but it&apos;ll cost you one point.
           </p>
         )}
-        {/* Completed questions history */}
+
+        {/* Completed questions */}
         {(currentQ > 0 || progress.completed) && (
           <div className="flex flex-col gap-3 mb-6">
-            {puzzle.questions.slice(0, progress.completed ? puzzle.questions.length : currentQ).map((q, i) => (
-              <CompletedQuestion
-                key={i}
-                question={q}
-                state={progress.questions[i]}
-                index={i}
-              />
-            ))}
+            {puzzle.questions
+              .slice(0, progress.completed ? puzzle.questions.length : currentQ)
+              .map((q, i) => (
+                <CompletedQuestion
+                  key={i}
+                  question={q}
+                  state={progress.questions[i]}
+                  index={i}
+                />
+              ))}
           </div>
         )}
 
-        {/* Final score + CTAs — shown after completion */}
+        {/* End screen */}
         {progress.completed && (
           <div className="flex flex-col items-center gap-4 mt-2 mb-6">
-            {/* Score */}
             <div className="text-center">
               <p className="font-black text-gray-900" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
                 {totalScore}
-                <span className="font-normal text-gray-400" style={{ fontSize: '1.25rem' }}>/{puzzle.questions.length * 2}</span>
+                <span className="font-normal text-gray-400" style={{ fontSize: '1.25rem' }}>
+                  /{puzzle.questions.length * 2}
+                </span>
               </p>
               <p className="text-sm text-gray-500 mt-1">points</p>
             </div>
 
-            {/* Streak */}
             {streak > 0 && (
-              <p className="text-base font-semibold text-orange-500">
-                🔥 {streak}-day streak
-              </p>
+              <p className="text-base font-semibold text-orange-500">🔥 {streak}-day streak</p>
             )}
 
-            {/* Share + Leaderboard */}
-            <div className="flex gap-3 w-full max-w-xs">
+            <div className="w-full max-w-xs">
               <ShareButton
                 score={totalScore}
                 max={puzzle.questions.length * 2}
                 date={puzzle.date}
                 streak={streak}
-                questions={progress.questions}
+                questions={puzzle.questions}
+                questionStates={progress.questions}
               />
-              <Link
-                href="/leaderboard"
-                className="flex-1 py-3 text-center bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-700 transition-colors text-sm"
-              >
-                🏆 Leaderboard
-              </Link>
             </div>
 
-            {/* Come back tomorrow */}
             <div className="text-center mt-2">
               <p className="text-xs text-gray-400">Next puzzle in</p>
               <Countdown date={puzzle.date} />
@@ -284,7 +416,6 @@ export default function GameClient({ puzzle }: Props) {
           />
         )}
       </main>
-
     </div>
   )
 }

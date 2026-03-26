@@ -14,6 +14,15 @@ interface Props {
 
 const SITE_URL = 'plquiz.app'
 
+function formatDate(dateStr: string): string {
+  const [year, month, day] = dateStr.split('-').map(Number)
+  return new Date(year, month - 1, day).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+}
+
 export default function ResultsModal({ progress, questions, date, streak, onClose }: Props) {
   const [shareState, setShareState] = useState<'idle' | 'copied' | 'shared'>('idle')
 
@@ -54,7 +63,7 @@ export default function ResultsModal({ progress, questions, date, streak, onClos
 
   function buildShareText(): string {
     const lines: string[] = [
-      `⚽ PL Daily — ${date}`,
+      `⚽ PL Daily — ${formatDate(date)}`,
       `${totalScore}/${maxScore}`,
       '',
     ]
@@ -108,7 +117,7 @@ export default function ResultsModal({ progress, questions, date, streak, onClos
         {/* Header */}
         <div className="text-center">
           <h2 className="text-xl font-bold text-gray-900">PL Daily</h2>
-          <p className="text-sm text-gray-500">{date}</p>
+          <p className="text-sm text-gray-500">{formatDate(date)}</p>
         </div>
 
         {/* Score */}
