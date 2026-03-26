@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import QuestionPanel from '@/app/components/QuestionPanel'
 import CompletedQuestion from '@/app/components/CompletedQuestion'
 import ProgressBar from '@/app/components/ProgressBar'
@@ -180,6 +180,25 @@ export default function GameClient({ puzzle }: Props) {
   )
   const [streak, setStreak] = useState(0)
 
+  // Collapse animation — instant for returning users, animated for fresh completions
+  const initiallyCompleted = useRef(progress.completed)
+  const [cardsCollapsed, setCardsCollapsed]   = useState(progress.completed)
+  const [showEndScreen,  setShowEndScreen]    = useState(progress.completed)
+
+  useEffect(() => {
+    if (progress.completed && !initiallyCompleted.current) {
+      const n = puzzle.questions.length
+      // Cards start collapsing 600ms after the last answer is shown
+      const collapseStart    = 600
+      // Last card finishes: collapseStart + (n-1)*80ms stagger + 320ms animation
+      const allDone          = collapseStart + (n - 1) * 80 + 320
+      const t1 = setTimeout(() => setCardsCollapsed(true),  collapseStart)
+      const t2 = setTimeout(() => setShowEndScreen(true),   allDone + 150)
+      return () => { clearTimeout(t1); clearTimeout(t2) }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [progress.completed])
+
   useEffect(() => {
     saveProgress(progress)
   }, [progress])
@@ -297,7 +316,15 @@ export default function GameClient({ puzzle }: Props) {
 
         {/* Completed questions */}
         {(currentQ > 0 || progress.completed) && (
-          <div className="flex flex-col gap-3 mb-6">
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: cardsCollapsed ? '6px' : '12px',
+              transition: 'gap 320ms ease',
+              marginBottom: '24px',
+            }}
+          >
             {puzzle.questions
               .slice(0, progress.completed ? puzzle.questions.length : currentQ)
               .map((q, i) => (
@@ -306,14 +333,18 @@ export default function GameClient({ puzzle }: Props) {
                   question={q}
                   state={progress.questions[i]}
                   index={i}
+                  collapsed={cardsCollapsed}
+                  collapseDelay={i * 80}
                 />
               ))}
           </div>
         )}
 
         {/* End screen */}
-        {progress.completed && (
-          <div className="flex flex-col items-center gap-4 mt-2 mb-6">
+        {showEndScreen && (
+          <div
+            className={`flex flex-col items-center gap-4 mt-2 mb-6 ${!initiallyCompleted.current ? 'animate-fade-slide-up' : ''}`}
+          >
             <div className="text-center">
               <p className="font-black text-gray-900" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
                 {totalScore}
