@@ -182,7 +182,7 @@ function ShareButton({
     <button
       onClick={handleShare}
       disabled={phase === 'busy'}
-      className="w-full py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 active:scale-95 disabled:opacity-60 transition-all text-base"
+      className="flex-1 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 active:scale-95 disabled:opacity-60 transition-all text-sm"
     >
       {phase === 'busy' ? 'Generating…' : phase === 'done' ? '✅ Shared!' : '🔗 Share result'}
     </button>
@@ -244,7 +244,7 @@ function RemindButton({ currentDate }: { currentDate: string }) {
   return (
     <button
       onClick={handleRemind}
-      className="w-full py-4 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-gray-300 hover:bg-gray-50 active:scale-95 transition-all text-base"
+      className="flex-1 py-3 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-gray-300 hover:bg-gray-50 active:scale-95 transition-all text-sm"
     >
       {done ? '📅 Added to calendar!' : '🔔 Remind me tomorrow'}
     </button>
@@ -411,18 +411,6 @@ export default function GameClient({ puzzle }: Props) {
               <p className="text-base font-semibold text-orange-500">🔥 {streak}-day streak</p>
             )}
 
-            <div className="w-full max-w-sm mx-auto flex flex-col gap-3">
-              <ShareButton
-                score={totalScore}
-                max={puzzle.questions.length * 2}
-                date={puzzle.date}
-                streak={streak}
-                questions={puzzle.questions}
-                questionStates={progress.questions}
-              />
-              <RemindButton currentDate={puzzle.date} />
-            </div>
-
             {/* Score reaction GIF */}
             {(() => {
               const max = puzzle.questions.length * 2
@@ -451,11 +439,24 @@ export default function GameClient({ puzzle }: Props) {
                     src={gif.url}
                     alt={gif.caption}
                     className="w-full rounded-2xl object-cover"
-                    style={{ maxHeight: '240px' }}
+                    style={{ maxHeight: '220px' }}
                   />
                 </div>
               )
             })()}
+
+            {/* CTAs */}
+            <div className="flex gap-3 w-full max-w-sm mx-auto">
+              <ShareButton
+                score={totalScore}
+                max={puzzle.questions.length * 2}
+                date={puzzle.date}
+                streak={streak}
+                questions={puzzle.questions}
+                questionStates={progress.questions}
+              />
+              <RemindButton currentDate={puzzle.date} />
+            </div>
 
           </div>
         )}
