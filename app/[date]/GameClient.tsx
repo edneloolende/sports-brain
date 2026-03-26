@@ -5,7 +5,7 @@ import QuestionPanel from '@/app/components/QuestionPanel'
 import CompletedQuestion from '@/app/components/CompletedQuestion'
 import ProgressBar from '@/app/components/ProgressBar'
 import type { DailyPuzzle, GameProgress, Question, QuestionState, ScoreSubmission } from '@/app/lib/types'
-import { calcQuestionScore, evaluateGuess } from '@/app/lib/gameLogic'
+import { calcQuestionScore } from '@/app/lib/gameLogic'
 import { loadProgress, saveProgress, getPlayer } from '@/app/lib/storage'
 
 const MAX_GUESSES = 2
@@ -23,10 +23,8 @@ function formatDate(dateStr: string): string {
 
 // ─── Share image generator ───────────────────────────────────────────────────
 
-const GREEN  = '#16a34a'
-const YELLOW = '#eab308'
-const ABSENT = '#e5e7eb'
-const RED    = '#dc2626'
+const GREEN = '#16a34a'
+const RED   = '#dc2626'
 
 function generateShareImage(
   date: string,
@@ -96,42 +94,11 @@ function generateShareImage(
       const y      = BAR_TOP + i * (BAR_H + BAR_GAP)
       const barW   = Math.round((question.answer.length / maxLen) * MAX_BAR_W)
 
-      if (qState.status !== 'won') {
-        // ── Solid red bar ────────────────────────────────────────────────
-        ctx.beginPath()
-        ctx.roundRect(PAD, y, barW, BAR_H, R)
-        ctx.fillStyle = RED
-        ctx.fill()
-      } else {
-        // ── Coloured segments for the winning guess ──────────────────────
-        const winGuess = qState.guesses[qState.guesses.length - 1]
-        const states   = evaluateGuess(winGuess, question.answer)
-        const segW     = barW / states.length
-
-        states.forEach((s, j) => {
-          const x     = PAD + j * segW
-          const color = s === 'correct' ? GREEN : s === 'present' ? YELLOW : ABSENT
-          ctx.fillStyle = color
-
-          const isFirst = j === 0
-          const isLast  = j === states.length - 1
-
-          ctx.beginPath()
-          if (isFirst && isLast) {
-            ctx.roundRect(x, y, segW, BAR_H, R)
-          } else if (isFirst) {
-            // Round left end only — extend 1px right to close sub-pixel gap
-            ctx.roundRect(x, y, segW + 1, BAR_H, [R, 0, 0, R])
-          } else if (isLast) {
-            // Round right end only — extend 1px left
-            ctx.roundRect(x - 1, y, segW + 1, BAR_H, [0, R, R, 0])
-          } else {
-            // Interior — extend slightly each side to eliminate sub-pixel gaps
-            ctx.rect(x - 0.5, y, segW + 1, BAR_H)
-          }
-          ctx.fill()
-        })
-      }
+      // Solid green = correct, solid red = wrong — no segments
+      ctx.fillStyle = qState.status === 'won' ? GREEN : RED
+      ctx.beginPath()
+      ctx.roundRect(PAD, y, barW, BAR_H, R)
+      ctx.fill()
     })
 
     // ── Footer ──────────────────────────────────────────────────────────────
