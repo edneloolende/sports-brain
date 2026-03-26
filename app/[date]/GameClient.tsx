@@ -11,13 +11,32 @@ import { loadProgress, saveProgress, getPlayer } from '@/app/lib/storage'
 
 const MAX_GUESSES = 2
 
-function ShareButton({ score, max, date, streak }: { score: number; max: number; date: string; streak: number }) {
+function buildEmojiGrid(questions: GameProgress['questions']): string {
+  return questions.map((q) => {
+    if (q.status === 'lost') return '⬛⬛'
+    if (q.guesses.length === 1 && !q.hintUsed) return '🟩🟩'
+    if (q.guesses.length === 1 && q.hintUsed)  return '🟨🟩'
+    return '🟨🟩'
+  }).join('\n')
+}
+
+function ShareButton({ score, max, date, streak, questions }: {
+  score: number; max: number; date: string; streak: number
+  questions: GameProgress['questions']
+}) {
   const [copied, setCopied] = useState(false)
 
   function handleShare() {
-    const lines = [`Sports Brain — PL Edition`, `${date} · ${score}/${max} ⭐`]
-    if (streak > 1) lines.push(`🔥 ${streak}-day streak`)
-    lines.push('https://sports-brain-delta.vercel.app')
+    const grid = buildEmojiGrid(questions)
+    const lines = [
+      `⚽ Sports Brain — PL Edition`,
+      formatDate(date),
+      `${score}/${max} points`,
+      '',
+      grid,
+    ]
+    if (streak > 1) lines.push(``, `🔥 ${streak}-day streak`)
+    lines.push('', 'sports-brain-delta.vercel.app')
     navigator.clipboard?.writeText(lines.join('\n')).then(() => {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
@@ -32,6 +51,26 @@ function ShareButton({ score, max, date, streak }: { score: number; max: number;
       {copied ? '✅ Copied!' : '📋 Share'}
     </button>
   )
+}
+
+function getNextPuzzleCountdown(date: string): string {
+  const puzzleDate = new Date(date + 'T00:00:00Z')
+  puzzleDate.setUTCDate(puzzleDate.getUTCDate() + 1)
+  const now = new Date()
+  const diff = puzzleDate.getTime() - now.getTime()
+  if (diff <= 0) return 'Now'
+  const h = Math.floor(diff / 3600000)
+  const m = Math.floor((diff % 3600000) / 60000)
+  return `${h}h ${m}m`
+}
+
+function Countdown({ date }: { date: string }) {
+  const [time, setTime] = useState(() => getNextPuzzleCountdown(date))
+  useEffect(() => {
+    const interval = setInterval(() => setTime(getNextPuzzleCountdown(date)), 60000)
+    return () => clearInterval(interval)
+  }, [date])
+  return <p className="text-lg font-black text-gray-700">{time}</p>
 }
 
 function formatDate(dateStr: string): string {
@@ -207,13 +246,25 @@ export default function GameClient({ puzzle }: Props) {
 
             {/* Share + Leaderboard */}
             <div className="flex gap-3 w-full max-w-xs">
-              <ShareButton score={totalScore} max={puzzle.questions.length * 2} date={puzzle.date} streak={streak} />
+              <ShareButton
+                score={totalScore}
+                max={puzzle.questions.length * 2}
+                date={puzzle.date}
+                streak={streak}
+                questions={progress.questions}
+              />
               <Link
                 href="/leaderboard"
                 className="flex-1 py-3 text-center bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-700 transition-colors text-sm"
               >
                 🏆 Leaderboard
               </Link>
+            </div>
+
+            {/* Come back tomorrow */}
+            <div className="text-center mt-2">
+              <p className="text-xs text-gray-400">Next puzzle in</p>
+              <Countdown date={puzzle.date} />
             </div>
           </div>
         )}
