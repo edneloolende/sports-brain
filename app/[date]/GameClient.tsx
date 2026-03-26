@@ -362,6 +362,40 @@ export default function GameClient({ puzzle }: Props) {
               />
             </div>
 
+            {/* Score reaction GIF */}
+            {(() => {
+              const max = puzzle.questions.length * 2
+              let gif: { url: string; caption: string }
+              if (totalScore <= Math.round(max * 0.3)) {
+                gif = {
+                  url: 'https://media.giphy.com/media/gkFPLRwoljl8iAUhdF/giphy.gif',
+                  caption: 'Better luck tomorrow 😬',
+                }
+              } else if (totalScore <= Math.round(max * 0.7)) {
+                gif = {
+                  url: 'https://media.giphy.com/media/3o7WIxwxpkLt8uHTfW/giphy.gif',
+                  caption: 'Not bad, not great 🤷',
+                }
+              } else {
+                gif = {
+                  url: 'https://media.giphy.com/media/3JUJtJpwgLRxejQvAb/giphy.gif',
+                  caption: 'Get in! 🔥',
+                }
+              }
+              return (
+                <div className="flex flex-col items-center gap-2 w-full max-w-sm">
+                  <p className="text-sm font-semibold text-gray-500">{gif.caption}</p>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={gif.url}
+                    alt={gif.caption}
+                    className="w-full rounded-2xl object-cover"
+                    style={{ maxHeight: '240px' }}
+                  />
+                </div>
+              )
+            })()}
+
           </div>
         )}
 
