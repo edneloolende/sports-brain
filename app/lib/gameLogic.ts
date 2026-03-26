@@ -8,19 +8,28 @@ const ALL_ANSWERS = new Set(
 )
 
 /**
- * Evaluate a guess against the answer using Wordle rules:
- * 1. Mark exact matches (correct) first
- * 2. Of remaining letters, mark present if in remaining answer pool
- * 3. All others: absent
+ * Evaluate a guess against the answer using Wordle rules.
+ * Always returns ANSWER.LENGTH states so the UI always shows the correct
+ * number of letter slots regardless of how long the guess was.
+ *
+ * - Positions within guess AND answer: correct / present / absent
+ * - Positions in answer beyond the guess (short guess): 'empty'
+ * - Guess letters beyond the answer length are ignored (clipped)
  */
 export function evaluateGuess(guess: string, answer: string): LetterState[] {
   const g = guess.toUpperCase().split('')
   const a = answer.toUpperCase().split('')
-  const result: LetterState[] = new Array(g.length).fill('absent')
+  const compareLen = Math.min(g.length, a.length)
+
+  // Result is always answer-length; unfilled slots start as 'empty'
+  const result: LetterState[] = new Array(a.length).fill('empty')
   const answerPool = [...a]
 
+  // Initialise evaluated positions to 'absent' before marking
+  for (let i = 0; i < compareLen; i++) result[i] = 'absent'
+
   // Pass 1: exact matches
-  for (let i = 0; i < g.length; i++) {
+  for (let i = 0; i < compareLen; i++) {
     if (g[i] === a[i]) {
       result[i] = 'correct'
       answerPool[i] = '' // consume this letter
@@ -28,7 +37,7 @@ export function evaluateGuess(guess: string, answer: string): LetterState[] {
   }
 
   // Pass 2: present (wrong position)
-  for (let i = 0; i < g.length; i++) {
+  for (let i = 0; i < compareLen; i++) {
     if (result[i] === 'correct') continue
     const idx = answerPool.indexOf(g[i])
     if (idx !== -1) {
@@ -58,7 +67,11 @@ export function getKeyboardStates(
 
   for (const guess of guesses) {
     const evaluation = evaluateGuess(guess, answer)
-    guess.toUpperCase().split('').forEach((letter, i) => {
+    const letters = guess.toUpperCase().split('')
+    // Only colour keys for positions that were actually evaluated (up to answer length).
+    // Excess guess letters beyond answer length are clipped and have no state.
+    const processLen = Math.min(letters.length, answer.length)
+    letters.slice(0, processLen).forEach((letter, i) => {
       const current = states[letter]
       const next = evaluation[i]
       if (!current || priority[next] > priority[current]) {
