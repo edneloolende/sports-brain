@@ -1,11 +1,13 @@
 import type { LeaderboardEntry, ScoreSubmission } from './types'
 
-// Vercel KV is only available server-side. This module is imported only in API routes.
-// We lazy-import to avoid bundling on the client.
+// Upstash Redis — server-side only, imported only in API routes.
 
 async function getKV() {
-  const { kv } = await import('@vercel/kv')
-  return kv
+  const { Redis } = await import('@upstash/redis')
+  return new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL!,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+  })
 }
 
 // ─── Score Submission ─────────────────────────────────────────────────────────
@@ -65,14 +67,12 @@ export async function getPlayerStats(playerId: string) {
 export async function getLeaderboard(limit = 20): Promise<LeaderboardEntry[]> {
   const kv = await getKV()
 
-  // Get top N player IDs by total score (descending)
   const results = await kv.zrange('leaderboard:alltime', 0, limit - 1, {
     rev: true,
     withScores: true,
   })
 
   const entries: LeaderboardEntry[] = []
-  // results alternates: [member, score, member, score, ...]
   for (let i = 0; i < results.length; i += 2) {
     const playerId = results[i] as string
     const totalScore = results[i + 1] as number
