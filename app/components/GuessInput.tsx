@@ -130,7 +130,7 @@ export default function GuessInput({
         />
         {/* Visual slots */}
         <div
-          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[3.25rem] px-3 py-2 border-2 rounded-lg bg-white cursor-text items-center transition-all overflow-hidden ${focused ? 'border-green-300 shadow-[0_0_0_1px_rgba(34,197,94,0.06)]' : 'border-gray-300'}`}
+          className={`flex-1 flex flex-wrap ${slotGap(value.length)} min-h-[3.25rem] px-3 py-2 border-2 rounded-lg bg-white cursor-text items-center transition-all ${focused ? 'border-green-300 shadow-[0_0_0_1px_rgba(34,197,94,0.06)]' : 'border-gray-300'}`}
           onClick={() => inputRef.current?.focus()}
         >
           {value.length === 0 && !focused && (
