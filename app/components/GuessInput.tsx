@@ -39,10 +39,19 @@ export default function GuessInput({
   const [value, setValue] = useState('')
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!disabled) inputRef.current?.focus()
   }, [disabled])
+
+  // When keyboard opens on mobile, scroll the input into view above it
+  function handleFocus() {
+    setFocused(true)
+    setTimeout(() => {
+      containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }, 320)
+  }
 
   function handleSubmit() {
     const trimmed = value.trim()
@@ -56,7 +65,7 @@ export default function GuessInput({
   }
 
   return (
-    <div className="w-full flex flex-col gap-2">
+    <div ref={containerRef} className="w-full flex flex-col gap-2">
       {/* Hint + Skip row */}
       <div className="flex items-center justify-between">
         {hintUsed ? (
@@ -99,7 +108,7 @@ export default function GuessInput({
           disabled={disabled}
           maxLength={30}
           className="sr-only"
-          onFocus={() => setFocused(true)}
+          onFocus={handleFocus}
           onBlur={() => setFocused(false)}
           autoComplete="off"
           autoCorrect="off"

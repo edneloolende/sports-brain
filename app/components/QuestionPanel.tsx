@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import GuessResult from './GuessResult'
 import GuessInput from './GuessInput'
 import type { Question, QuestionState } from '@/app/lib/types'
@@ -45,9 +45,16 @@ export default function QuestionPanel({
 }: Props) {
   const [shake, setShake] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string | undefined>()
-  // no countdown state needed
+  const panelRef = useRef<HTMLDivElement>(null)
 
   const isPlaying = state.status === 'playing'
+
+  // Scroll panel into view when question advances
+  useEffect(() => {
+    setTimeout(() => {
+      panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 50)
+  }, [questionIndex])
   const maxGuesses = 2
   const score = calcQuestionScore(state)
 
@@ -74,7 +81,7 @@ export default function QuestionPanel({
   }, [onGuessSubmit])
 
   return (
-    <div className="w-full max-w-xl mx-auto flex flex-col gap-4">
+    <div ref={panelRef} className="w-full max-w-xl mx-auto flex flex-col gap-4">
       {/* Clue card */}
       <div className="rounded-2xl p-6 border border-green-100" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)' }}>
         <p className="text-2xl font-normal text-gray-950 leading-snug" style={{ fontFamily: 'var(--font-lora), Georgia, serif' }}>
