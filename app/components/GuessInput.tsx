@@ -14,15 +14,21 @@ interface Props {
   errorMsg?: string
 }
 
-function slotSize(len: number): string {
-  if (len >= 11) return 'w-6 h-6 text-xs'
-  if (len >= 8)  return 'w-7 h-7 text-xs'
-  return 'w-8 h-8 text-sm'
+// Dynamically shrink slots so all letters fit on one row.
+// availableWidth ≈ typical mobile slot area after submit button + padding.
+function slotStyle(len: number): React.CSSProperties {
+  const available = 230  // px — conservative estimate for mobile
+  const gap = len >= 10 ? 2 : len >= 7 ? 3 : 6
+  const cursorWidth = 10
+  const raw = (available - (len - 1) * gap - cursorWidth) / len
+  const size = Math.min(36, Math.max(16, Math.floor(raw)))
+  const fontSize = Math.max(8, size - 12)
+  return { width: size, height: size, fontSize, flexShrink: 0 }
 }
 
 function slotGap(len: number): string {
-  if (len >= 11) return 'gap-1'
-  if (len >= 8)  return 'gap-1'
+  if (len >= 10) return 'gap-0.5'
+  if (len >= 7)  return 'gap-[3px]'
   return 'gap-1.5'
 }
 
@@ -130,7 +136,7 @@ export default function GuessInput({
         />
         {/* Visual slots */}
         <div
-          className={`flex-1 flex flex-wrap ${slotGap(value.length)} min-h-[3.25rem] px-3 py-2 border-2 rounded-lg bg-white cursor-text items-center transition-all ${focused ? 'border-green-300 shadow-[0_0_0_1px_rgba(34,197,94,0.06)]' : 'border-gray-300'}`}
+          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[3.25rem] px-3 py-2 border-2 rounded-lg bg-white cursor-text items-center transition-all overflow-hidden ${focused ? 'border-green-300 shadow-[0_0_0_1px_rgba(34,197,94,0.06)]' : 'border-gray-300'}`}
           onClick={() => inputRef.current?.focus()}
         >
           {value.length === 0 && !focused && (
@@ -142,7 +148,8 @@ export default function GuessInput({
           {value.toUpperCase().split('').map((letter, i) => (
             <div
               key={i}
-              className={`${slotSize(value.length)} flex items-center justify-center border border-gray-300 rounded text-gray-900 font-bold bg-gray-50 shrink-0`}
+              className="flex items-center justify-center border border-gray-300 rounded text-gray-900 font-bold bg-gray-50"
+              style={slotStyle(value.length)}
             >
               {letter}
             </div>
