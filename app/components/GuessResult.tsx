@@ -10,7 +10,7 @@ interface Props {
 }
 
 const tileStyle: Record<LetterState, string> = {
-  correct: 'border-b-2 border-green-500 text-white bg-transparent',
+  correct: 'border-2 border-green-500 text-white bg-transparent',
   present: 'border-2 bg-yellow-400 border-yellow-400 text-gray-900',
   absent:  'border-2 bg-gray-700 border-gray-700 text-white',
   empty:   'border-2 bg-transparent border-white/25 text-transparent',
