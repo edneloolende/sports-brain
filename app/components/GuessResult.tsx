@@ -10,10 +10,10 @@ interface Props {
 }
 
 const tileStyle: Record<LetterState, string> = {
-  correct: 'bg-green-600 border-green-600 text-white',
-  present: 'bg-yellow-400 border-yellow-400 text-gray-900',
-  absent:  'bg-gray-700 border-gray-700 text-white',
-  empty:   'bg-transparent border-white/25 text-transparent',
+  correct: 'border-b-2 border-green-500 text-white bg-transparent',
+  present: 'border-2 bg-yellow-400 border-yellow-400 text-gray-900',
+  absent:  'border-2 bg-gray-700 border-gray-700 text-white',
+  empty:   'border-2 bg-transparent border-white/25 text-transparent',
 }
 
 export default function GuessResult({ guess, answer }: Props) {
@@ -29,7 +29,7 @@ export default function GuessResult({ guess, answer }: Props) {
       {states.map((state, i) => (
         <div
           key={i}
-          className={`w-10 h-10 flex items-center justify-center text-sm font-bold uppercase rounded border-2 ${tileStyle[state]}`}
+          className={`w-10 h-10 flex items-center justify-center text-sm font-bold uppercase rounded ${tileStyle[state]}`}
         >
           {i < letters.length ? letters[i] : ''}
         </div>
