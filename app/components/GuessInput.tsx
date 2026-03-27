@@ -49,7 +49,20 @@ export default function GuessInput({
   function handleFocus() {
     setFocused(true)
     setTimeout(() => {
-      containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      const el = containerRef.current
+      if (!el) return
+      const vv = window.visualViewport
+      if (vv) {
+        // Calculate how far the bottom of the input is below the visible area
+        const rect = el.getBoundingClientRect()
+        const visibleBottom = vv.offsetTop + vv.height
+        const gap = 24 // breathing room above the keyboard
+        if (rect.bottom > visibleBottom - gap) {
+          window.scrollBy({ top: rect.bottom - visibleBottom + gap, behavior: 'smooth' })
+        }
+      } else {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
     }, 320)
   }
 
