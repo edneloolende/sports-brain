@@ -83,10 +83,10 @@ export default function QuestionPanel({
   return (
     <div ref={panelRef} className="w-full max-w-xl mx-auto flex flex-col gap-4">
       {/* Clue card */}
-      <div className="rounded-2xl p-6 border border-green-100" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)' }}>
-        <p className="text-2xl font-normal text-gray-950 leading-snug" style={{ fontFamily: 'var(--font-lora), Georgia, serif' }}>
+      <div className="rounded-2xl p-6 border border-white/[0.07] bg-[#131927]">
+        <p className="text-2xl font-normal text-white leading-snug" style={{ fontFamily: 'var(--font-lora), Georgia, serif' }}>
           <span className="font-semibold">Q{questionIndex + 1}</span>
-          <span className="text-gray-400 mx-2">—</span>
+          <span className="text-white/30 mx-2">—</span>
           {question.clue}.
         </p>
       </div>
@@ -102,9 +102,9 @@ export default function QuestionPanel({
 
       {/* Outcome banners — shown until auto-advance */}
       {state.status === 'lost' && (
-        <div className="text-center py-3 px-4 bg-red-50 border-2 border-red-300 rounded-xl">
-          <p className="text-base font-semibold text-red-700">The answer was</p>
-          <p className="text-4xl font-black text-red-950 tracking-widest mt-1">{question.answer}</p>
+        <div className="text-center py-3 px-4 bg-red-950/40 border border-red-500/30 rounded-xl">
+          <p className="text-base font-semibold text-red-300">The answer was</p>
+          <p className="text-4xl font-black text-white tracking-widest mt-1">{question.answer}</p>
         </div>
       )}
 
@@ -122,15 +122,15 @@ export default function QuestionPanel({
             shake={shake}
             errorMsg={errorMsg}
           />
-          <p className="text-center text-base font-medium text-gray-600">
+          <p className="text-center text-base font-medium text-white/50">
             {maxGuesses - state.guesses.length} guess{maxGuesses - state.guesses.length === 1 ? '' : 'es'} remaining
           </p>
           <div className="text-center mt-2">
-            <p className="font-black text-gray-900" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
+            <p className="font-black text-white" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
               {totalScore}
-              <span className="font-normal text-gray-400" style={{ fontSize: '1.25rem' }}>/{maxScore}</span>
+              <span className="font-normal text-white/40" style={{ fontSize: '1.25rem' }}>/{maxScore}</span>
             </p>
-            <p className="text-sm text-gray-500 -mt-1">points</p>
+            <p className="text-sm text-white/40 -mt-1">points</p>
           </div>
         </>
       )}

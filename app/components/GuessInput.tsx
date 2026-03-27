@@ -88,13 +88,13 @@ export default function GuessInput({
       {/* Hint + Skip row */}
       <div className="flex items-center justify-between">
         {hintUsed ? (
-          <span className="text-sm text-blue-600 font-medium">💡 {hintText}</span>
+          <span className="text-sm text-white/60 font-medium">💡 {hintText}</span>
         ) : (
           <div className="flex items-center gap-1.5">
             <button
               onClick={onHint}
               disabled={disabled}
-              className="text-xs font-semibold text-gray-500 hover:text-blue-500 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-colors" style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
+              className="text-xs font-semibold text-white/50 hover:text-white/80 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-colors" style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
             >
               ▸ Reveal letter count
             </button>
@@ -109,7 +109,7 @@ export default function GuessInput({
         <button
           onClick={onSkip}
           disabled={disabled}
-          className="text-xs font-semibold text-gray-500 hover:text-gray-800 px-2 py-1 rounded hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+          className="text-xs font-semibold text-white/50 hover:text-white/80 px-2 py-1 rounded hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
         >
           Skip →
         </button>
@@ -136,26 +136,26 @@ export default function GuessInput({
         />
         {/* Visual slots */}
         <div
-          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[3.25rem] px-3 py-2 border-2 rounded-lg bg-white cursor-text items-center transition-all overflow-hidden ${focused ? 'border-green-300 shadow-[0_0_0_1px_rgba(34,197,94,0.06)]' : 'border-gray-300'}`}
+          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[3.25rem] px-2 py-2 cursor-text items-end transition-all overflow-hidden`}
           onClick={() => inputRef.current?.focus()}
         >
           {value.length === 0 && !focused && (
-            <span className="text-gray-400 text-base font-normal">Type your answer…</span>
+            <span className="text-white/30 text-base font-normal pb-1">Type your answer…</span>
           )}
           {value.length === 0 && focused && (
-            <div className="w-0.5 h-6 bg-green-500 animate-pulse rounded-full" />
+            <div className="w-0.5 h-6 bg-white/60 animate-pulse rounded-full mb-1" />
           )}
           {value.toUpperCase().split('').map((letter, i) => (
             <div
               key={i}
-              className="flex items-center justify-center border border-gray-300 rounded text-gray-900 font-bold bg-gray-50"
+              className="flex items-center justify-center border-b-2 border-white/60 text-white font-bold bg-transparent"
               style={slotStyle(value.length)}
             >
               {letter}
             </div>
           ))}
           {value.length > 0 && (
-            <div className="w-1 h-6 bg-green-500 animate-pulse rounded-full self-center shrink-0" />
+            <div className="w-0.5 h-5 bg-white/60 animate-pulse rounded-full mb-1 shrink-0" />
           )}
         </div>
         <button
@@ -169,7 +169,7 @@ export default function GuessInput({
 
       {/* Error message */}
       {errorMsg && (
-        <p className="text-base text-red-600 font-medium">{errorMsg}</p>
+        <p className="text-base text-red-400 font-medium">{errorMsg}</p>
       )}
     </div>
   )

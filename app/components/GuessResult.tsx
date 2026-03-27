@@ -13,7 +13,7 @@ const tileStyle: Record<LetterState, string> = {
   correct: 'bg-green-600 border-green-600 text-white',
   present: 'bg-yellow-400 border-yellow-400 text-gray-900',
   absent:  'bg-gray-700 border-gray-700 text-white',
-  empty:   'bg-white border-gray-400 text-gray-900',
+  empty:   'bg-transparent border-white/25 text-transparent',
 }
 
 export default function GuessResult({ guess, answer }: Props) {

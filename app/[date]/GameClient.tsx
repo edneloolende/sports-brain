@@ -331,7 +331,7 @@ function RemindButton({ currentDate }: { currentDate: string }) {
   return (
     <button
       onClick={handleRemind}
-      className="w-full py-3.5 bg-white border-2 border-slate-200 text-slate-600 font-semibold rounded-xl hover:border-slate-300 hover:bg-slate-50 active:scale-95 transition-all text-sm"
+      className="w-full py-3.5 bg-white/10 border border-white/20 text-white/70 font-semibold rounded-xl hover:bg-white/15 hover:border-white/30 active:scale-95 transition-all text-sm"
     >
       {done ? '📅 Added to calendar!' : "📅 Get tomorrow's quiz"}
     </button>
@@ -447,14 +447,14 @@ export default function GameClient({ puzzle }: Props) {
   const totalScore      = progress.questions.reduce((sum, q) => sum + calcQuestionScore(q), 0)
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-[#0c1018] flex flex-col">
       {/* Header */}
-      <header className="bg-white border-b border-gray-100 px-4 py-4 sticky top-0 z-10">
+      <header className="bg-[#0c1018] border-b border-white/[0.07] px-4 py-4 sticky top-0 z-10">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-black text-gray-900 tracking-tight leading-tight">Sports Brain</h1>
-            <p className="text-sm font-semibold text-green-700 leading-tight">Premier League Edition</p>
-            <p className="text-sm text-gray-500 mt-0.5">{formatDate(puzzle.date)}</p>
+            <h1 className="text-xl font-black text-white tracking-tight leading-tight">Sports Brain</h1>
+            <p className="text-sm font-semibold text-green-400 leading-tight">Premier League Edition</p>
+            <p className="text-sm text-white/40 mt-0.5">{formatDate(puzzle.date)}</p>
           </div>
           <ProgressBar
             total={puzzle.questions.length}
@@ -467,7 +467,7 @@ export default function GameClient({ puzzle }: Props) {
       {/* Main content */}
       <main className="flex-1 px-4 py-6 max-w-2xl mx-auto w-full">
         {!progress.completed && (
-          <p className="text-sm text-gray-400 text-center mb-5">
+          <p className="text-sm text-white/40 text-center mb-5">
             One word answers. Two guesses per question. Correct answers earn points. Reveal the letter count for a clue, but it&apos;ll cost you one point.
           </p>
         )}
@@ -492,13 +492,13 @@ export default function GameClient({ puzzle }: Props) {
         {progress.completed && (
           <div className="flex flex-col items-center gap-4 mt-2 mb-6">
             <div className="text-center">
-              <p className="font-black text-gray-900" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
+              <p className="font-black text-white" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
                 {totalScore}
-                <span className="font-normal text-gray-400" style={{ fontSize: '1.25rem' }}>
+                <span className="font-normal text-white/40" style={{ fontSize: '1.25rem' }}>
                   /{puzzle.questions.length * 2}
                 </span>
               </p>
-              <p className="text-sm text-gray-500 mt-1">points</p>
+              <p className="text-sm text-white/40 mt-1">points</p>
             </div>
 
             {streak > 0 && (
@@ -522,7 +522,7 @@ export default function GameClient({ puzzle }: Props) {
               }
               return (
                 <div className="flex flex-col items-center gap-2 w-full max-w-sm">
-                  <p className="text-sm font-semibold text-gray-500">{caption}</p>
+                  <p className="text-sm font-semibold text-white/50">{caption}</p>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={gifUrl}
