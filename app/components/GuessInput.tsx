@@ -14,13 +14,13 @@ interface Props {
   errorMsg?: string
 }
 
-// Dynamically shrink slots so all letters fit on one row.
-// availableWidth ≈ typical mobile slot area after submit button + padding.
-function slotStyle(len: number): React.CSSProperties {
-  const available = 230  // px — conservative estimate for mobile
-  const gap = len >= 10 ? 2 : len >= 7 ? 3 : 6
+// Dynamically size slots to fill the actual container width.
+function slotStyle(len: number, containerWidth: number): React.CSSProperties {
+  const padding = 16 // px-2 = 8px each side
   const cursorWidth = 10
-  const raw = (available - (len - 1) * gap - cursorWidth) / len
+  const gap = len >= 10 ? 2 : len >= 7 ? 3 : 6
+  const available = containerWidth - padding - cursorWidth
+  const raw = (available - (len - 1) * gap) / len
   const size = Math.min(36, Math.max(16, Math.floor(raw)))
   const fontSize = Math.max(8, size - 12)
   return { width: size, height: size, fontSize, flexShrink: 0 }
@@ -44,12 +44,25 @@ export default function GuessInput({
 }: Props) {
   const [value, setValue] = useState('')
   const [focused, setFocused] = useState(false)
+  const [slotWidth, setSlotWidth] = useState(300)
   const inputRef = useRef<HTMLInputElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const slotsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!disabled) inputRef.current?.focus()
   }, [disabled])
+
+  // Measure the actual slot container width
+  useEffect(() => {
+    const el = slotsRef.current
+    if (!el) return
+    const ro = new ResizeObserver(([entry]) => {
+      setSlotWidth(entry.contentRect.width)
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
 
   // When keyboard opens on mobile, scroll the input into view above it
   function handleFocus() {
@@ -136,6 +149,7 @@ export default function GuessInput({
         />
         {/* Visual slots */}
         <div
+          ref={slotsRef}
           className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[3.25rem] px-2 py-2 cursor-text items-end transition-all overflow-hidden`}
           onClick={() => inputRef.current?.focus()}
         >
@@ -152,7 +166,7 @@ export default function GuessInput({
               <div
                 key={i}
                 className="flex items-center justify-center border-b-2 border-white/60 text-white font-bold bg-transparent"
-                style={slotStyle(value.replace(/\s/g, '').length)}
+                style={slotStyle(value.replace(/\s/g, '').length, slotWidth)}
               >
                 {letter}
               </div>
