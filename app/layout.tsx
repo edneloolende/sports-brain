@@ -6,8 +6,8 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const bitter = Bitter({ subsets: ['latin'], variable: '--font-lora' })
 
 export const metadata: Metadata = {
-  title: 'Sports Brain — Premier League Edition',
-  description: 'Daily Premier League trivia — 5 questions, 2 guesses each',
+  title: 'Sports Brain — Men\'s Football Edition',
+  description: 'Daily football trivia — 5 questions, 2 guesses each',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

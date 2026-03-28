@@ -159,7 +159,7 @@ function generateShareImage(
 
     ctx.fillStyle = '#15803d'
     ctx.font = '600 14px system-ui, -apple-system, sans-serif'
-    ctx.fillText('Premier League Edition', PAD, 57)
+    ctx.fillText('Men\'s Football Edition', PAD, 57)
 
     ctx.fillStyle = '#6b7280'
     ctx.font = '14px system-ui, -apple-system, sans-serif'
@@ -299,16 +299,16 @@ function RemindButton({ currentDate }: { currentDate: string }) {
     const ics = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
-      'PRODID:-//Sports Brain//PL Daily//EN',
+      'PRODID:-//Sports Brain//Football Daily//EN',
       'CALSCALE:GREGORIAN',
       'METHOD:PUBLISH',
       'BEGIN:VEVENT',
       `DTSTART:${dtStart}`,
       `DTEND:${dtEnd}`,
       'RRULE:FREQ=DAILY',
-      'SUMMARY:⚽ Sports Brain — Daily PL Quiz',
+      'SUMMARY:⚽ Sports Brain — Daily Football Quiz',
       `URL:${origin}`,
-      `DESCRIPTION:Your daily Premier League quiz is ready!\\n\\n👉 ${nextUrl}`,
+      `DESCRIPTION:Your daily football quiz is ready!\\n\\n👉 ${nextUrl}`,
       'BEGIN:VALARM',
       'ACTION:DISPLAY',
       'DESCRIPTION:⚽ Time for your Sports Brain quiz!',
@@ -453,7 +453,7 @@ export default function GameClient({ puzzle }: Props) {
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <div>
             <h1 className="text-xl font-black text-white tracking-tight leading-tight">Sports Brain</h1>
-            <p className="text-sm font-semibold text-green-400 leading-tight">Premier League Edition</p>
+            <p className="text-sm font-semibold text-green-400 leading-tight">Men&apos;s Football Edition</p>
             <p className="text-sm text-white/40 mt-0.5">{formatDate(puzzle.date)}</p>
           </div>
           <ProgressBar
@@ -468,7 +468,7 @@ export default function GameClient({ puzzle }: Props) {
       <main className="flex-1 px-4 py-6 max-w-2xl mx-auto w-full">
         {!progress.completed && (
           <p className="text-sm text-white/40 text-center mb-5">
-            One word answers. Two guesses per question. Correct answers earn points. Reveal the letter count for a clue, but it&apos;ll cost you one point.
+            One word answers — for multi-word names, type without spaces (e.g. VANBASTEN). Two guesses per question. Reveal the letter count for a clue, but it&apos;ll cost you one point.
           </p>
         )}
 

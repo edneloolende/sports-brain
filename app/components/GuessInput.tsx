@@ -73,9 +73,9 @@ export default function GuessInput({
   }
 
   function handleSubmit() {
-    const trimmed = value.trim()
-    if (!trimmed) return
-    onSubmit(trimmed)
+    const cleaned = value.replace(/\s/g, '').trim()
+    if (!cleaned) return
+    onSubmit(cleaned)
     setValue('')
   }
 
@@ -122,7 +122,7 @@ export default function GuessInput({
           ref={inputRef}
           type="text"
           value={value}
-          onChange={(e) => setValue(e.target.value.replace(/[^a-zA-Z]/g, ''))}
+          onChange={(e) => setValue(e.target.value.replace(/[^a-zA-Z ]/g, ''))}
           onKeyDown={handleKey}
           disabled={disabled}
           maxLength={30}
@@ -146,13 +146,17 @@ export default function GuessInput({
             <div className="w-0.5 h-6 bg-white/60 animate-pulse rounded-full mb-1" />
           )}
           {value.toUpperCase().split('').map((letter, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-center border-b-2 border-white/60 text-white font-bold bg-transparent"
-              style={slotStyle(value.length)}
-            >
-              {letter}
-            </div>
+            letter === ' ' ? (
+              <div key={i} className="w-2 shrink-0" />
+            ) : (
+              <div
+                key={i}
+                className="flex items-center justify-center border-b-2 border-white/60 text-white font-bold bg-transparent"
+                style={slotStyle(value.replace(/\s/g, '').length)}
+              >
+                {letter}
+              </div>
+            )
           ))}
           {value.length > 0 && (
             <div className="w-0.5 h-5 bg-white/60 animate-pulse rounded-full mb-1 shrink-0" />
