@@ -349,65 +349,71 @@ function ShareButton({
   )
 }
 
-// ─── Remind button ────────────────────────────────────────────────────────────
+// ─── Email signup ─────────────────────────────────────────────────────────────
 
-function RemindButton({ currentDate }: { currentDate: string }) {
-  const [done, setDone] = useState(false)
+function EmailSignup() {
+  const [email, setEmail] = useState('')
+  const [phase, setPhase] = useState<'idle' | 'busy' | 'done' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
 
-  function handleRemind() {
-    // Build tomorrow's date string
-    const [y, m, d] = currentDate.split('-').map(Number)
-    const tomorrow = new Date(y, m - 1, d + 1)
-    const pad = (n: number) => String(n).padStart(2, '0')
-    const tomorrowStr = `${tomorrow.getFullYear()}-${pad(tomorrow.getMonth() + 1)}-${pad(tomorrow.getDate())}`
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email.trim()) return
+    setPhase('busy')
+    setErrorMsg('')
 
-    // Recurring daily event at 9am (floating/local time)
-    const dtBase = `${tomorrow.getFullYear()}${pad(tomorrow.getMonth() + 1)}${pad(tomorrow.getDate())}`
-    const dtStart = `${dtBase}T090000`
-    const dtEnd   = `${dtBase}T091500`
+    try {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), timezone }),
+      })
+      const data = await res.json()
+      if (res.ok) {
+        setPhase('done')
+      } else {
+        setErrorMsg(data.error ?? 'Something went wrong')
+        setPhase('error')
+      }
+    } catch {
+      setErrorMsg('Check your connection and try again')
+      setPhase('error')
+    }
+  }
 
-    const origin = typeof window !== 'undefined' ? window.location.origin : ''
-    const nextUrl = `${origin}/${tomorrowStr}`
-
-    const ics = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Sports Brain//Football Daily//EN',
-      'CALSCALE:GREGORIAN',
-      'METHOD:PUBLISH',
-      'BEGIN:VEVENT',
-      `DTSTART:${dtStart}`,
-      `DTEND:${dtEnd}`,
-      'RRULE:FREQ=DAILY',
-      'SUMMARY:⚽ Sports Brain — Daily Football Quiz',
-      `URL:${origin}`,
-      `DESCRIPTION:Your daily football quiz is ready!\\n\\n👉 ${nextUrl}`,
-      'BEGIN:VALARM',
-      'ACTION:DISPLAY',
-      'DESCRIPTION:⚽ Time for your Sports Brain quiz!',
-      'TRIGGER:PT0S',
-      'END:VALARM',
-      'END:VEVENT',
-      'END:VCALENDAR',
-    ].join('\r\n')
-
-    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' })
-    const url  = URL.createObjectURL(blob)
-    const a    = document.createElement('a')
-    a.href     = url
-    a.download = 'sports-brain-daily.ics'
-    a.click()
-    URL.revokeObjectURL(url)
-    setDone(true)
+  if (phase === 'done') {
+    return (
+      <div className="w-full py-3.5 bg-green-900/30 border border-green-700/40 rounded-xl text-center">
+        <p className="text-sm font-semibold text-green-400">✅ You&apos;re in! Reminder at 8am tomorrow.</p>
+      </div>
+    )
   }
 
   return (
-    <button
-      onClick={handleRemind}
-      className="w-full py-3.5 bg-white/10 border border-white/20 text-white/70 font-semibold rounded-xl hover:bg-white/15 hover:border-white/30 active:scale-95 transition-all text-sm"
-    >
-      {done ? '📅 Added to calendar!' : "📅 Get tomorrow's quiz"}
-    </button>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full">
+      <div className="flex gap-2">
+        <input
+          type="email"
+          value={email}
+          onChange={e => { setEmail(e.target.value); setPhase('idle'); setErrorMsg('') }}
+          placeholder="your@email.com"
+          required
+          className="flex-1 px-3 py-3 bg-white/10 border border-white/20 rounded-xl text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-white/40"
+        />
+        <button
+          type="submit"
+          disabled={phase === 'busy'}
+          className="px-4 py-3 bg-green-600 text-white text-sm font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-colors whitespace-nowrap"
+        >
+          {phase === 'busy' ? '…' : '📧 Remind me'}
+        </button>
+      </div>
+      {phase === 'error' && (
+        <p className="text-xs text-red-400 px-1">{errorMsg}</p>
+      )}
+      <p className="text-xs text-white/25 text-center px-1">Daily reminder at 8am. Unsubscribe any time.</p>
+    </form>
   )
 }
 
@@ -648,7 +654,7 @@ export default function GameClient({ puzzle }: Props) {
                 questions={puzzle.questions}
                 questionStates={progress.questions}
               />
-              <RemindButton currentDate={puzzle.date} />
+              <EmailSignup />
             </div>
 
           </div>
