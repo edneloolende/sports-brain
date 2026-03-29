@@ -422,6 +422,7 @@ export default function GameClient({ puzzle }: Props) {
     loadProgress(puzzle.date, puzzle.questions.length)
   )
   const [streak, setStreak] = useState(0)
+  const [scoreStatus, setScoreStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
 
   // Pick a random GIF once per session (stable across re-renders)
   const reactionGif = useMemo(() => {
@@ -451,19 +452,31 @@ export default function GameClient({ puzzle }: Props) {
         guesses: q.guesses.length,
       })),
     }
-    try {
-      const res = await fetch('/api/score', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(submission),
-      })
-      if (res.ok) {
-        const data = await res.json()
-        setStreak(data.streak ?? 0)
+
+    setScoreStatus('saving')
+
+    // Try up to 3 times with a short delay between attempts
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const res = await fetch('/api/score', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submission),
+        })
+        if (res.ok) {
+          const data = await res.json()
+          setStreak(data.streak ?? 0)
+          setScoreStatus('saved')
+          return
+        }
+      } catch {
+        // Network error — wait before retry
       }
-    } catch {
-      // Network error — streak stays 0, game still works
+      if (attempt < 3) await new Promise(r => setTimeout(r, 1500 * attempt))
     }
+
+    // All attempts failed
+    setScoreStatus('error')
   }, [puzzle.date])
 
   function updateQuestion(index: number, updater: (q: QuestionState) => QuestionState) {
@@ -584,6 +597,16 @@ export default function GameClient({ puzzle }: Props) {
 
             {streak > 0 && (
               <p className="text-base font-semibold text-orange-500">🔥 {streak}-day streak</p>
+            )}
+
+            {/* Score save status */}
+            {scoreStatus === 'saving' && (
+              <p className="text-xs text-white/30 animate-pulse">Saving result…</p>
+            )}
+            {scoreStatus === 'error' && (
+              <p className="text-xs text-red-400">
+                Couldn&apos;t save your score — check your connection and try refreshing.
+              </p>
             )}
 
             {/* Score reaction GIF */}

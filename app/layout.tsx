@@ -8,6 +8,12 @@ const bitter = Bitter({ subsets: ['latin'], variable: '--font-lora' })
 export const metadata: Metadata = {
   title: 'Sports Brain — Men\'s Football',
   description: 'Daily football trivia — 5 questions, 2 guesses each',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
