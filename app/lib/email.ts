@@ -36,9 +36,7 @@ export async function sendReminderEmail(
   const unsubscribeUrl = `${origin}/unsubscribe?token=${unsubscribeToken}`
 
   const { error } = await resend.emails.send({
-    // Update `from` to your verified Resend domain before going live.
-    // During development, onboarding@resend.dev works for the account owner only.
-    from: 'Sports Brain <onboarding@resend.dev>',
+    from: 'Sports Brain <quiz@sportygenius.com>',
     to: email,
     subject: "⚽ Today's Sports Brain puzzle is live",
     html: buildEmailHtml(puzzleUrl, puzzleDate, unsubscribeUrl),
