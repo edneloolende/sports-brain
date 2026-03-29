@@ -150,7 +150,7 @@ export default function GuessInput({
         {/* Visual slots */}
         <div
           ref={slotsRef}
-          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[4rem] px-2 py-2 cursor-text items-end transition-all overflow-hidden`}
+          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[4rem] px-2 py-2 cursor-text items-end transition-all overflow-hidden rounded-lg border border-white/20`}
           onClick={() => inputRef.current?.focus()}
         >
           {value.length === 0 && !focused && (
