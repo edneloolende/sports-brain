@@ -567,9 +567,14 @@ export default function GameClient({ puzzle }: Props) {
       {/* Main content */}
       <main className="flex-1 px-4 py-6 max-w-2xl mx-auto w-full">
         {!progress.completed && (
-          <p className="text-sm text-white/40 text-center mb-5">
-            One word answers — for multi-word names, type without spaces (e.g. VANBASTEN). Two guesses per question. Reveal the letter count for a clue, but it&apos;ll cost you one point.
-          </p>
+          <div className="text-sm text-white/40 text-center mb-5 space-y-1">
+            <p className="font-semibold text-white/60">Instructions</p>
+            <ul className="space-y-1">
+              <li>• One word answers. For multi-word names, type without spaces (e.g. VANBASTEN).</li>
+              <li>• Two guesses per question.</li>
+              <li>• Reveal the letter count for a clue, but it&apos;ll cost you one point.</li>
+            </ul>
+          </div>
         )}
 
         {/* Completed questions */}
