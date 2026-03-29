@@ -159,7 +159,7 @@ function generateShareImage(
 
     ctx.fillStyle = '#15803d'
     ctx.font = '600 14px system-ui, -apple-system, sans-serif'
-    ctx.fillText('Men\'s Football Edition', PAD, 57)
+    ctx.fillText('Men\'s Football', PAD, 57)
 
     ctx.fillStyle = '#6b7280'
     ctx.font = '14px system-ui, -apple-system, sans-serif'
@@ -453,7 +453,7 @@ export default function GameClient({ puzzle }: Props) {
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <div>
             <h1 className="text-xl font-black text-white tracking-tight leading-tight">Sports Brain</h1>
-            <p className="text-sm font-semibold text-green-400 leading-tight">Men&apos;s Football Edition</p>
+            <p className="text-sm font-semibold text-green-400 leading-tight">Men&apos;s Football</p>
             <p className="text-sm text-white/40 mt-0.5">{formatDate(puzzle.date)}</p>
           </div>
           <ProgressBar

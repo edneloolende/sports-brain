@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const bitter = Bitter({ subsets: ['latin'], variable: '--font-lora' })
 
 export const metadata: Metadata = {
-  title: 'Sports Brain — Men\'s Football Edition',
+  title: 'Sports Brain — Men\'s Football',
   description: 'Daily football trivia — 5 questions, 2 guesses each',
 }
 
