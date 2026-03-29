@@ -14,15 +14,15 @@ interface Props {
   errorMsg?: string
 }
 
-// Dynamically size slots to fill the actual container width.
+// Dynamically size slots to always fill the actual container width.
 function slotStyle(len: number, containerWidth: number): React.CSSProperties {
   const padding = 16 // px-2 = 8px each side
   const cursorWidth = 10
   const gap = len >= 10 ? 2 : len >= 7 ? 3 : 6
   const available = containerWidth - padding - cursorWidth
   const raw = (available - (len - 1) * gap) / len
-  const size = Math.min(36, Math.max(16, Math.floor(raw)))
-  const fontSize = Math.max(8, size - 12)
+  const size = Math.min(64, Math.max(16, Math.floor(raw)))
+  const fontSize = Math.max(8, Math.min(28, size - 8))
   return { width: size, height: size, fontSize, flexShrink: 0 }
 }
 
@@ -150,7 +150,7 @@ export default function GuessInput({
         {/* Visual slots */}
         <div
           ref={slotsRef}
-          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[3.25rem] px-2 py-2 cursor-text items-end transition-all overflow-hidden`}
+          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[4rem] px-2 py-2 cursor-text items-end transition-all overflow-hidden`}
           onClick={() => inputRef.current?.focus()}
         >
           {value.length === 0 && !focused && (
