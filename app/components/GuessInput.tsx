@@ -64,25 +64,34 @@ export default function GuessInput({
     return () => ro.disconnect()
   }, [])
 
-  // When keyboard opens on mobile, scroll the input into view above it
+  // When keyboard opens on mobile, scroll the input into view above it.
+  // We listen to visualViewport resize (fires when the keyboard appears/hides)
+  // rather than using a fixed timeout, which is unreliable on slow devices.
+  useEffect(() => {
+    const vv = window.visualViewport
+    if (!vv) return
+    function onViewportResize() {
+      const el = containerRef.current
+      if (!el || !focused) return
+      const rect = el.getBoundingClientRect()
+      const visibleBottom = vv!.offsetTop + vv!.height
+      const gap = 24
+      if (rect.bottom > visibleBottom - gap) {
+        window.scrollBy({ top: rect.bottom - visibleBottom + gap, behavior: 'smooth' })
+      }
+    }
+    vv.addEventListener('resize', onViewportResize)
+    return () => vv.removeEventListener('resize', onViewportResize)
+  }, [focused])
+
   function handleFocus() {
     setFocused(true)
-    setTimeout(() => {
-      const el = containerRef.current
-      if (!el) return
-      const vv = window.visualViewport
-      if (vv) {
-        // Calculate how far the bottom of the input is below the visible area
-        const rect = el.getBoundingClientRect()
-        const visibleBottom = vv.offsetTop + vv.height
-        const gap = 24 // breathing room above the keyboard
-        if (rect.bottom > visibleBottom - gap) {
-          window.scrollBy({ top: rect.bottom - visibleBottom + gap, behavior: 'smooth' })
-        }
-      } else {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      }
-    }, 320)
+    // Fallback for browsers without visualViewport support
+    if (!window.visualViewport) {
+      setTimeout(() => {
+        containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }, 320)
+    }
   }
 
   function handleSubmit() {

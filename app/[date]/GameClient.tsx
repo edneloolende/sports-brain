@@ -158,6 +158,29 @@ function formatDate(dateStr: string): string {
   })
 }
 
+// ─── Canvas helpers ───────────────────────────────────────────────────────────
+
+// roundRect polyfill — ctx.roundRect is unavailable in older Safari/WebKit
+function canvasRoundRect(
+  ctx: CanvasRenderingContext2D,
+  x: number, y: number, w: number, h: number, r: number,
+) {
+  if (typeof ctx.roundRect === 'function') {
+    ctx.roundRect(x, y, w, h, r)
+  } else {
+    ctx.moveTo(x + r, y)
+    ctx.lineTo(x + w - r, y)
+    ctx.arcTo(x + w, y, x + w, y + r, r)
+    ctx.lineTo(x + w, y + h - r)
+    ctx.arcTo(x + w, y + h, x + w - r, y + h, r)
+    ctx.lineTo(x + r, y + h)
+    ctx.arcTo(x, y + h, x, y + h - r, r)
+    ctx.lineTo(x, y + r)
+    ctx.arcTo(x, y, x + r, y, r)
+    ctx.closePath()
+  }
+}
+
 // ─── Share image generator ───────────────────────────────────────────────────
 
 const GREEN = '#16a34a'
@@ -255,7 +278,7 @@ function generateShareImage(
       const barW = Math.round((question.answer.length / maxLen) * MAX_BAR_W)
       ctx.fillStyle = qState.status === 'won' ? GREEN : RED
       ctx.beginPath()
-      ctx.roundRect(BAR_X, midY - BAR_H / 2, barW, BAR_H, R)
+      canvasRoundRect(ctx, BAR_X, midY - BAR_H / 2, barW, BAR_H, R)
       ctx.fill()
     })
 

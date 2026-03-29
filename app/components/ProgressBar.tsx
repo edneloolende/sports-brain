@@ -19,7 +19,12 @@ export default function ProgressBar({ total, current, statuses }: Props) {
         else if (isActive)            cls += 'bg-yellow-400 ring-2 ring-yellow-300'
         else                          cls += 'bg-white/20'
 
-        return <div key={i} className={cls} />
+        const label =
+          status === 'won' ? `Q${i + 1} correct` :
+          status === 'lost' ? `Q${i + 1} incorrect` :
+          isActive ? `Q${i + 1} current` : `Q${i + 1} upcoming`
+
+        return <div key={i} className={cls} role="img" aria-label={label} />
       })}
       <span className="text-xs text-white/40 ml-1">
         Q{current + 1} of {total}

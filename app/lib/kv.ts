@@ -16,13 +16,10 @@ export async function submitScore(submission: ScoreSubmission): Promise<void> {
   const kv = await getKV()
   const { playerId, date, score } = submission
 
-  // Idempotency: don't process the same game twice
+  // Idempotency: atomic SET NX — only one request wins the race
   const gameKey = `game:${date}:${playerId}`
-  const alreadySubmitted = await kv.get(gameKey)
-  if (alreadySubmitted) return
-
-  // Save this game's result
-  await kv.set(gameKey, JSON.stringify(submission))
+  const claimed = await kv.set(gameKey, JSON.stringify(submission), { nx: true })
+  if (!claimed) return // already submitted (or concurrent duplicate)
 
   // Update player stats
   const totalScore = ((await kv.get<number>(`player:${playerId}:total_score`)) ?? 0) + score
