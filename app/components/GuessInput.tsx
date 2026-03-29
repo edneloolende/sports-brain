@@ -49,9 +49,9 @@ export default function GuessInput({
   const containerRef = useRef<HTMLDivElement>(null)
   const slotsRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    if (!disabled) inputRef.current?.focus()
-  }, [disabled])
+  // Don't auto-focus on mount — on mobile this immediately opens the keyboard,
+  // which triggers a viewport resize and scrolls past the instructions.
+  // Users tap the input to start typing instead.
 
   // Measure the actual slot container width
   useEffect(() => {
