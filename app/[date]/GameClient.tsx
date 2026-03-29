@@ -97,6 +97,56 @@ function pickRandom<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)]
 }
 
+// ─── Score reaction lines ─────────────────────────────────────────────────────
+
+const REACTION_LINES = {
+  low: [
+    "Sacked in the morning. Sacked in the morning. You're getting sacked in the morning.",
+    "Relegated on goal difference. Somehow that's worse.",
+    "Derby County called. They want their scorecard back.",
+    "You played like a team managed by their director of football.",
+    "Maradona's lawyer has filed a complaint on behalf of football.",
+    "Even VAR couldn't find anything to save you here.",
+    "That's a pre-season friendly performance. In January.",
+    "The tifosi are throwing their scarves. Not in celebration.",
+    "You've been offered a contract. By the bottom club. In the fourth division.",
+    "El Clásico has seen better individual performances than this.",
+    "The committee has voted. You're not getting the bronze statue outside the stadium.",
+    "You told them you knew football. Football has seen the results.",
+    "This is giving 'friendly against a lower league side, lost on penalties.'",
+  ],
+  mid: [
+    "Solid. Professional. Utterly forgettable. Like a 0-0 at Stoke.",
+    "A backs-against-the-wall performance. The gaffer's not happy but he's not sacking you either.",
+    "You'll do. Probably. Maybe. Ask us again after the international break.",
+    "The analytics team says you're statistically average. They mean it as a compliment.",
+    "Respectable. Like finishing third in your group and still going through.",
+    "You're the kind of player who wins Man of the Match in a 1-1 draw.",
+    "Not bad. Not great. A wonderfully unremarkable display.",
+    "You've qualified for the Europa League. Congratulations. Sorry.",
+    "The scout in the stands has closed his notebook. Hasn't left though.",
+    "A workmanlike performance. No highlights reel. No shame either.",
+    "You're in the squad. Probably starting. Definitely being subbed off on 65.",
+    "A performance so balanced it could referee its own game.",
+    "This is a result that gets polite applause in the press conference.",
+  ],
+  high: [
+    "Outrageous. Someone call the tribunal — this result wasn't in the budget.",
+    "That's not football knowledge, that's a criminal record.",
+    "Mbappé's agent is on the phone. They want you in their squad.",
+    "The federation has opened an inquiry. This level of knowledge is suspicious.",
+    "Your contract has a release clause. Every top club is circling.",
+    "Inter, Barça, and Bayern have all submitted bids. You're choosing the project.",
+    "Pep wants a word. Something about 'the system.'",
+    "The stadium announcer just read your name. The crowd went delirious.",
+    "You didn't just win — you made it look easy. That's the most dangerous thing.",
+    "The opposition manager has resigned. Citing 'insurmountable quality.'",
+    "This result has been sent to FIFA as evidence that some people know too much.",
+    "The press are calling it a masterclass. They're not wrong.",
+    "Somewhere, a commentator just said your name in hushed, reverential tones.",
+  ],
+}
+
 // ─── Date helpers ────────────────────────────────────────────────────────────
 
 function formatDate(dateStr: string): string {
@@ -446,6 +496,14 @@ export default function GameClient({ puzzle }: Props) {
   const currentQuestion = puzzle.questions[currentQ]
   const totalScore      = progress.questions.reduce((sum, q) => sum + calcQuestionScore(q), 0)
 
+  const reactionLine = useMemo(() => {
+    if (!progress.completed) return ''
+    const max = puzzle.questions.length * 2
+    if (totalScore <= Math.round(max * 0.3)) return pickRandom(REACTION_LINES.low)
+    if (totalScore <= Math.round(max * 0.7)) return pickRandom(REACTION_LINES.mid)
+    return pickRandom(REACTION_LINES.high)
+  }, [progress.completed, totalScore, puzzle.questions.length])
+
   return (
     <div className="min-h-screen bg-[#0c1018] flex flex-col">
       {/* Header */}
@@ -512,13 +570,13 @@ export default function GameClient({ puzzle }: Props) {
               let caption: string
               if (totalScore <= Math.round(max * 0.3)) {
                 gifUrl = reactionGif.sad
-                caption = 'Better luck tomorrow 😬'
+                caption = reactionLine
               } else if (totalScore <= Math.round(max * 0.7)) {
                 gifUrl = reactionGif.meh
-                caption = 'Not bad, not great 🤷'
+                caption = reactionLine
               } else {
                 gifUrl = reactionGif.celebrate
-                caption = 'Get in! 🔥'
+                caption = reactionLine
               }
               return (
                 <div className="flex flex-col items-center gap-2 w-full max-w-sm">
