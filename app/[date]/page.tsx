@@ -52,7 +52,7 @@ export default async function PuzzlePage({ params }: Props) {
 export async function generateMetadata({ params }: Props) {
   const { date } = await params
   return {
-    title: `Sports Brain · ${date}`,
+    title: `Sporty Genius · ${date}`,
     description: 'Daily football trivia — 5 questions, 2 guesses each',
   }
 }

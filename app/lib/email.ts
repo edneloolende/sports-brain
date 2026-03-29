@@ -36,9 +36,9 @@ export async function sendReminderEmail(
   const unsubscribeUrl = `${origin}/unsubscribe?token=${unsubscribeToken}`
 
   const { error } = await resend.emails.send({
-    from: 'Sports Brain <quiz@sportygenius.com>',
+    from: 'Sporty Genius <quiz@sportygenius.com>',
     to: email,
-    subject: "⚽ Today's Sports Brain puzzle is live",
+    subject: "⚽ Today's Sporty Genius puzzle is live",
     html: buildEmailHtml(puzzleUrl, puzzleDate, unsubscribeUrl),
   })
 
@@ -60,7 +60,7 @@ function buildEmailHtml(puzzleUrl: string, date: string, unsubscribeUrl: string)
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Today's Sports Brain puzzle is live</title>
+  <title>Today's Sporty Genius puzzle is live</title>
 </head>
 <body style="margin:0;padding:0;background:#0c1018;font-family:system-ui,-apple-system,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#0c1018;padding:40px 16px;">
@@ -74,7 +74,7 @@ function buildEmailHtml(puzzleUrl: string, date: string, unsubscribeUrl: string)
           <!-- Header -->
           <tr>
             <td style="padding:32px 32px 0 32px;">
-              <p style="margin:0;font-size:22px;font-weight:900;color:#ffffff;letter-spacing:-0.5px;">Sports Brain</p>
+              <p style="margin:0;font-size:22px;font-weight:900;color:#ffffff;letter-spacing:-0.5px;">Sporty Genius</p>
               <p style="margin:4px 0 0;font-size:13px;font-weight:600;color:#4ade80;">Men's Football</p>
             </td>
           </tr>
@@ -98,7 +98,7 @@ function buildEmailHtml(puzzleUrl: string, date: string, unsubscribeUrl: string)
             <td style="padding:28px 32px 32px 32px;">
               <hr style="border:none;border-top:1px solid rgba(255,255,255,0.07);margin:0 0 20px;">
               <p style="margin:0;font-size:11px;color:rgba(255,255,255,0.2);line-height:1.6;">
-                You signed up for daily puzzle reminders from Sports Brain.<br>
+                You signed up for daily puzzle reminders from Sporty Genius.<br>
                 <a href="${unsubscribeUrl}" style="color:rgba(255,255,255,0.35);text-decoration:underline;">
                   Unsubscribe in one click
                 </a>

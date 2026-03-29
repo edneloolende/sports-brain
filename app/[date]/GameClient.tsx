@@ -228,7 +228,7 @@ function generateShareImage(
     // ── Header ──────────────────────────────────────────────────────────────
     ctx.fillStyle = '#111827'
     ctx.font = 'bold 22px system-ui, -apple-system, sans-serif'
-    ctx.fillText('Sports Brain', PAD, 38)
+    ctx.fillText('Sporty Genius', PAD, 38)
 
     ctx.fillStyle = '#15803d'
     ctx.font = '600 14px system-ui, -apple-system, sans-serif'
@@ -552,7 +552,7 @@ export default function GameClient({ puzzle }: Props) {
       <header className="bg-[#0c1018] border-b border-white/[0.07] px-4 py-4 sticky top-0 z-10">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-black text-white tracking-tight leading-tight">Sports Brain</h1>
+            <h1 className="text-xl font-black text-white tracking-tight leading-tight">Sporty Genius</h1>
             <p className="text-sm font-semibold text-green-400 leading-tight">Men&apos;s Football</p>
             <p className="text-sm text-white/40 mt-0.5">{formatDate(puzzle.date)}</p>
           </div>
