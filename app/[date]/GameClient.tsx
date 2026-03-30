@@ -429,7 +429,7 @@ export default function GameClient({ puzzle }: Props) {
     loadProgress(puzzle.date, puzzle.questions.length)
   )
   const [streak, setStreak] = useState(0)
-  const [displayName, setDisplayName] = useState('')
+  const [displayName, setDisplayName] = useState(() => generateName())
   const [nameSaved, setNameSaved] = useState(false)
   const [nameLoading, setNameLoading] = useState(false)
   const [scoreStatus, setScoreStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
