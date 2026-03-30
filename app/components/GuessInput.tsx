@@ -12,6 +12,7 @@ interface Props {
   disabled: boolean
   shake?: boolean
   errorMsg?: string
+  autoFocus?: boolean
 }
 
 // Dynamically size slots to always fill the actual container width.
@@ -41,6 +42,7 @@ export default function GuessInput({
   disabled,
   shake,
   errorMsg,
+  autoFocus = false,
 }: Props) {
   const [value, setValue] = useState('')
   const [focused, setFocused] = useState(false)
@@ -49,29 +51,14 @@ export default function GuessInput({
   const containerRef = useRef<HTMLDivElement>(null)
   const slotsRef = useRef<HTMLDivElement>(null)
 
-  const isMounted = useRef(false)
-
-  // Re-focus the input when the user advances to a new question (disabled goes
-  // false after a new question loads), but skip focus on initial mount so the
-  // mobile keyboard doesn't open on page load.
+  // Focus on mount for questions after the first one.
+  // Question 0 skips focus so the mobile keyboard doesn't open on page load.
   useEffect(() => {
-    if (!isMounted.current) {
-      // Skip focus on initial mount to avoid opening mobile keyboard on page load
-      isMounted.current = true
-      return
-    }
-    // On question change (disabled goes false after a new question loads), focus the input
-    if (!disabled) {
+    if (autoFocus) {
       inputRef.current?.focus()
     }
-  }, [disabled])
-
-  // Clear the value when a new question starts (disabled transitions to false)
-  useEffect(() => {
-    if (isMounted.current && !disabled) {
-      setValue('')
-    }
-  }, [disabled])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // Measure the actual slot container width
   useEffect(() => {

@@ -119,6 +119,7 @@ export default function QuestionPanel({
             hintUsed={state.hintUsed}
             hintText={state.hintUsed ? `${question.answer.length} letters` : undefined}
             disabled={false}
+            autoFocus={questionIndex > 0}
             shake={shake}
             errorMsg={errorMsg}
           />
