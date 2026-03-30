@@ -49,9 +49,29 @@ export default function GuessInput({
   const containerRef = useRef<HTMLDivElement>(null)
   const slotsRef = useRef<HTMLDivElement>(null)
 
-  // Don't auto-focus on mount — on mobile this immediately opens the keyboard,
-  // which triggers a viewport resize and scrolls past the instructions.
-  // Users tap the input to start typing instead.
+  const isMounted = useRef(false)
+
+  // Re-focus the input when the user advances to a new question (disabled goes
+  // false after a new question loads), but skip focus on initial mount so the
+  // mobile keyboard doesn't open on page load.
+  useEffect(() => {
+    if (!isMounted.current) {
+      // Skip focus on initial mount to avoid opening mobile keyboard on page load
+      isMounted.current = true
+      return
+    }
+    // On question change (disabled goes false after a new question loads), focus the input
+    if (!disabled) {
+      inputRef.current?.focus()
+    }
+  }, [disabled])
+
+  // Clear the value when a new question starts (disabled transitions to false)
+  useEffect(() => {
+    if (isMounted.current && !disabled) {
+      setValue('')
+    }
+  }, [disabled])
 
   // Measure the actual slot container width
   useEffect(() => {

@@ -413,7 +413,6 @@ function EmailSignup() {
       {phase === 'error' && (
         <p className="text-xs text-red-400 px-1">{errorMsg}</p>
       )}
-      <p className="text-xs text-white/25 text-center px-1">Daily reminder at 8am. Unsubscribe any time.</p>
     </form>
   )
 }
@@ -433,6 +432,8 @@ export default function GameClient({ puzzle }: Props) {
   const [nameSaved, setNameSaved] = useState(false)
   const [nameLoading, setNameLoading] = useState(false)
   const [scoreStatus, setScoreStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
+  const [quizCopied, setQuizCopied] = useState(false)
+  const [showLeaderboard, setShowLeaderboard] = useState(false)
 
   // Pick a random GIF once per session (stable across re-renders)
   const reactionGif = useMemo(() => {
@@ -656,7 +657,7 @@ export default function GameClient({ puzzle }: Props) {
               }
               return (
                 <div className="flex flex-col items-center gap-2 w-full max-w-sm">
-                  <p className="text-sm font-semibold text-white/50">{caption}</p>
+                  <p className="text-sm font-semibold text-white/50 text-center">{caption}</p>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={gifUrl}
@@ -668,55 +669,67 @@ export default function GameClient({ puzzle }: Props) {
               )
             })()}
 
-            {/* Display name */}
-            <div className="w-full max-w-sm">
-              <p className="text-xs text-white/40 text-center mb-2">
-                Your leaderboard name — e.g. {EXAMPLE_NAMES.join(', ')}
-              </p>
-              {nameSaved ? (
-                <div className="flex items-center justify-center gap-2 py-3 px-4 bg-green-600/20 border border-green-600/40 rounded-xl">
-                  <span className="text-green-400 text-sm font-semibold">✓ {displayName}</span>
-                </div>
-              ) : (
-                <div className="flex gap-2">
-                  <div className="flex-1 flex items-center px-3 py-2.5 bg-white/5 border border-white/20 rounded-xl">
-                    <span className="text-white font-semibold text-sm truncate">{displayName}</span>
-                  </div>
-                  <button
-                    onClick={() => setDisplayName(generateName())}
-                    className="px-3 py-2.5 text-white/50 hover:text-white/80 bg-white/5 border border-white/20 rounded-xl transition-colors text-sm"
-                    title="Re-roll name"
-                  >
-                    🎲
-                  </button>
-                  <button
-                    onClick={saveName}
-                    disabled={nameLoading}
-                    className="px-4 py-2.5 bg-green-600 text-white text-sm font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-colors whitespace-nowrap"
-                  >
-                    {nameLoading ? '…' : 'Save'}
-                  </button>
-                </div>
-              )}
-            </div>
-
             {/* CTAs */}
             <div className="flex flex-col gap-3 w-full max-w-xs mx-auto">
-              <ShareButton
-                score={totalScore}
-                max={puzzle.questions.length * 2}
-                date={puzzle.date}
-                streak={streak}
-                questions={puzzle.questions}
-                questionStates={progress.questions}
-              />
+              <p className="text-sm text-white/50 text-center">Get tomorrow&apos;s quiz in your inbox. Unsubscribe anytime.</p>
               <EmailSignup />
-              <a
-                href="/leaderboard"
-                className="text-center text-sm text-white/40 hover:text-white/70 transition-colors py-1"
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(window.location.origin + '/' + puzzle.date)
+                  setQuizCopied(true)
+                  setTimeout(() => setQuizCopied(false), 2000)
+                }}
+                className="w-full py-3 bg-white/10 border border-white/10 text-white text-sm font-semibold rounded-xl hover:bg-white/15 transition-colors"
               >
-                🏆 View leaderboard
-              </a>
+                {quizCopied ? '✓ Link copied!' : '🔗 Share Quiz'}
+              </button>
+              {showLeaderboard && (
+                <div className="w-full max-w-sm">
+                  <p className="text-xs text-white/40 text-center mb-2">
+                    Your leaderboard name — e.g. {EXAMPLE_NAMES.join(', ')}
+                  </p>
+                  {nameSaved ? (
+                    <div className="flex items-center justify-center gap-2 py-3 px-4 bg-green-600/20 border border-green-600/40 rounded-xl">
+                      <span className="text-green-400 text-sm font-semibold">✓ {displayName}</span>
+                    </div>
+                  ) : (
+                    <div className="flex gap-2">
+                      <div className="flex-1 flex items-center px-3 py-2.5 bg-white/5 border border-white/20 rounded-xl">
+                        <span className="text-white font-semibold text-sm truncate">{displayName}</span>
+                      </div>
+                      <button
+                        onClick={() => setDisplayName(generateName())}
+                        className="px-3 py-2.5 text-white/50 hover:text-white/80 bg-white/5 border border-white/20 rounded-xl transition-colors text-sm"
+                        title="Re-roll name"
+                      >
+                        🎲
+                      </button>
+                      <button
+                        onClick={saveName}
+                        disabled={nameLoading}
+                        className="px-4 py-2.5 bg-green-600 text-white text-sm font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-colors whitespace-nowrap"
+                      >
+                        {nameLoading ? '…' : 'Save'}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+              {!showLeaderboard ? (
+                <button
+                  onClick={() => setShowLeaderboard(true)}
+                  className="text-center text-sm text-white/40 hover:text-white/70 transition-colors py-1 w-full"
+                >
+                  🏆 View leaderboard
+                </button>
+              ) : (
+                <a
+                  href="/leaderboard"
+                  className="text-center text-sm text-white/40 hover:text-white/70 transition-colors py-1"
+                >
+                  Go to leaderboard →
+                </a>
+              )}
             </div>
 
           </div>
