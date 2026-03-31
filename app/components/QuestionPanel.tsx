@@ -83,7 +83,10 @@ export default function QuestionPanel({
   return (
     <div ref={panelRef} className="w-full max-w-xl mx-auto flex flex-col gap-4">
       {/* Clue card */}
-      <div className="rounded-2xl p-6 border border-white/[0.07] bg-[#131927]">
+      <div className="rounded-2xl p-6 border border-white/[0.07] bg-[#111111]">
+        <div className="mb-3">
+          <span className="inline-flex items-center bg-[#7B1034] text-white text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded">{CATEGORY_LABEL[question.category]}</span>
+        </div>
         <p className="text-2xl font-normal text-white leading-snug" style={{ fontFamily: 'var(--font-lora), Georgia, serif' }}>
           <span className="font-semibold">Q{questionIndex + 1}</span>
           <span className="text-white/30 mx-2">—</span>

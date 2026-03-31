@@ -123,7 +123,7 @@ export default function GuessInput({
             <button
               onClick={onHint}
               disabled={disabled}
-              className="text-xs font-semibold text-white/50 hover:text-white/80 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-colors" style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
+              className="text-xs font-semibold text-[#F5A623]/50 hover:text-[#F5A623]/80 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-colors" style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
             >
               ▸ Reveal letter count
             </button>
@@ -138,7 +138,7 @@ export default function GuessInput({
         <button
           onClick={onSkip}
           disabled={disabled}
-          className="text-xs font-semibold text-white/50 hover:text-white/80 px-2 py-1 rounded hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+          className="text-xs font-semibold text-[#F5A623]/50 hover:text-[#F5A623]/80 px-2 py-1 rounded hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
         >
           Skip →
         </button>
@@ -166,14 +166,14 @@ export default function GuessInput({
         {/* Visual slots */}
         <div
           ref={slotsRef}
-          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[4rem] px-2 py-2 cursor-text items-end transition-all overflow-hidden rounded-lg border border-white/20`}
+          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[4rem] px-2 py-2 cursor-text items-end transition-all overflow-hidden rounded-lg border border-[#F5A623]/25`}
           onClick={() => inputRef.current?.focus()}
         >
           {value.length === 0 && !focused && (
             <span className="text-white/30 text-base font-normal pb-1">Type your answer…</span>
           )}
           {value.length === 0 && focused && (
-            <div className="w-0.5 h-6 bg-white/60 animate-pulse rounded-full mb-1" />
+            <div className="w-0.5 h-6 bg-[#F5A623] animate-pulse rounded-full mb-1" />
           )}
           {value.toUpperCase().split('').map((letter, i) => (
             letter === ' ' ? (
@@ -181,7 +181,7 @@ export default function GuessInput({
             ) : (
               <div
                 key={i}
-                className="flex items-center justify-center border-b-2 border-white/60 text-white font-bold bg-transparent"
+                className="flex items-center justify-center border-b-2 border-[#F5A623] text-[#F5A623] font-bold bg-transparent"
                 style={slotStyle(value.replace(/\s/g, '').length, slotWidth)}
               >
                 {letter}
@@ -189,13 +189,14 @@ export default function GuessInput({
             )
           ))}
           {value.length > 0 && (
-            <div className="w-0.5 h-5 bg-white/60 animate-pulse rounded-full mb-1 shrink-0" />
+            <div className="w-0.5 h-5 bg-[#F5A623] animate-pulse rounded-full mb-1 shrink-0" />
           )}
         </div>
         <button
           onClick={handleSubmit}
           disabled={disabled || !value.trim()}
-          className="px-5 bg-green-600 text-lg text-white font-semibold rounded-lg hover:bg-green-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          className="px-5 bg-[#F5A623] text-lg text-[#0A0A0A] font-bold rounded-lg hover:bg-[#d4911a] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          style={{ fontFamily: 'var(--font-bebas)' }}
         >
           Submit
         </button>

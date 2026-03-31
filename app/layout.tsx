@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter, Bitter } from 'next/font/google'
+import { Inter, Bitter, Bebas_Neue } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const bitter = Bitter({ subsets: ['latin'], variable: '--font-lora' })
+const bebasNeue = Bebas_Neue({ weight: '400', subsets: ['latin'], variable: '--font-bebas' })
 
 export const metadata: Metadata = {
   title: 'Sporty Genius — Men\'s Football',
@@ -18,8 +19,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${bitter.variable} h-full bg-[#0c1018]`}>
-      <body className="min-h-full antialiased font-[var(--font-inter)] flex flex-col bg-[#0c1018]">
+    <html lang="en" className={`${inter.variable} ${bitter.variable} ${bebasNeue.variable} h-full bg-[#0A0A0A]`}>
+      <body className="min-h-full antialiased font-[var(--font-inter)] flex flex-col bg-[#0A0A0A]">
         <div className="flex-1">{children}</div>
         <footer className="text-center py-4 text-xs text-white/25">
           Made by{' '}
