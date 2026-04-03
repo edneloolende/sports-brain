@@ -46,11 +46,17 @@ export default function QuestionPanel({
   const [shake, setShake] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string | undefined>()
   const panelRef = useRef<HTMLDivElement>(null)
+  const hasMounted = useRef(false)
 
   const isPlaying = state.status === 'playing'
 
-  // Scroll panel into view when question advances
+  // Scroll panel into view when question advances — but NOT on initial mount,
+  // which would push the Instructions heading off screen.
   useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true
+      return
+    }
     setTimeout(() => {
       panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 50)
