@@ -43,7 +43,7 @@ export default function CompletedQuestion({ question, state, index }: Props) {
           {question.answer.toUpperCase().split('').map((letter, i) => (
             <div
               key={i}
-              className="w-8 h-8 flex items-center justify-center rounded text-sm font-bold text-white border-2 border-red-500"
+              className="w-7 h-12 flex items-center justify-center rounded text-sm font-bold text-white border-2 border-red-500"
             >
               {letter}
             </div>

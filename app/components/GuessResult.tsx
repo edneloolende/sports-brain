@@ -29,7 +29,7 @@ export default function GuessResult({ guess, answer }: Props) {
       {states.map((state, i) => (
         <div
           key={i}
-          className={`w-10 h-10 flex items-center justify-center text-sm font-bold uppercase rounded ${tileStyle[state]}`}
+          className={`w-7 h-12 flex items-center justify-center text-sm font-bold uppercase rounded ${tileStyle[state]}`}
         >
           {i < letters.length ? letters[i] : ''}
         </div>
