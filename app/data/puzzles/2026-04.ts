@@ -146,7 +146,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the 2006 World Cup final with Italy against France on penalties',
+        clue: 'Won the 2006 World Cup Golden Glove, keeping five clean sheets across the tournament',
         answer: 'BUFFON',
         category: 'player',
         difficulty: 3,
@@ -172,8 +172,8 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Argentine club with most Copa Libertadores titles, known as Los Millonarios',
-        answer: 'RIVERPLATE',
+        clue: 'Dutch club who won three consecutive European Cups from 1971 to 1973 playing Total Football',
+        answer: 'AJAX',
         category: 'club',
         difficulty: 3,
         isProperNoun: true,
@@ -219,7 +219,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Left Arsenal for Barcelona in 2011 after eight years, then won the Premier League twice with Chelsea',
+        clue: 'Joined Chelsea from Barcelona and won the Premier League twice',
         answer: 'FABREGAS',
         category: 'player',
         difficulty: 4,
@@ -229,7 +229,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         clue: 'Won the 2010 World Cup with Spain as their captain and goalkeeper',
         answer: 'CASILLAS',
         category: 'player',
-        difficulty: 2,
+        difficulty: 3,
         isProperNoun: true,
       },
       {
@@ -313,7 +313,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Only player to win the Champions League with three different clubs: Ajax, Real Madrid and AC Milan',
+        clue: 'Dutch midfielder who won the Champions League, Serie A and Coppa Italia with Inter Milan in 2009/10 — finishing runner-up for the Ballon d\'Or that year',
         answer: 'SNEIJDER',
         category: 'player',
         difficulty: 3,
@@ -382,7 +382,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         clue: "Guided Leicester to their miraculous 5000-1 title win",
         answer: 'RANIERI',
         category: 'manager',
-        difficulty: 3,
+        difficulty: 2,
         isProperNoun: true,
       },
       {
@@ -473,10 +473,10 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Argentine club nicknamed Los Xeneizes, rivals of River Plate and six-time Copa Libertadores winners',
-        answer: 'BOCAJUNIORS',
+        clue: 'Italian club nicknamed the Rossoneri who have won more European Cups than any other Italian side',
+        answer: 'MILAN',
         category: 'club',
-        difficulty: 3,
+        difficulty: 2,
         isProperNoun: true,
       },
     ],

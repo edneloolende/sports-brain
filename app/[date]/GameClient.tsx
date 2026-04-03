@@ -442,6 +442,11 @@ export default function GameClient({ puzzle }: Props) {
     return { sad: pickRandom(REACTION_GIFS.sad), meh: pickRandom(REACTION_GIFS.meh), celebrate: pickRandom(REACTION_GIFS.celebrate) }
   }, [puzzle.questions.length])
 
+  // Ensure the page always starts at the top on load/refresh
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   useEffect(() => {
     saveProgress(progress)
   }, [progress])
