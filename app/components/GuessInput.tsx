@@ -16,24 +16,24 @@ interface Props {
 }
 
 // Dynamically size slots to always fill the actual container width.
+const TILE_HEIGHT = 48
+
 function slotStyle(len: number, containerWidth: number): React.CSSProperties {
   const padding = 16 // px-2 = 8px each side
   const cursorWidth = 10
   const gap = len >= 10 ? 2 : len >= 7 ? 3 : 6
   const available = containerWidth - padding - cursorWidth
   const raw = (available - (len - 1) * gap) / len
-  const size = Math.min(64, Math.max(16, Math.floor(raw)))
-  const fontSize = Math.max(8, Math.min(28, size - 8))
+  const width = Math.min(Math.round(TILE_HEIGHT / 1.7), Math.max(16, Math.floor(raw)))
+  const fontSize = Math.max(8, Math.min(28, width - 4))
   return {
-    width: size,
-    height: Math.round(size * 1.7),
+    width,
+    height: TILE_HEIGHT,
     fontSize,
     flexShrink: 0,
-    position: 'relative',
     background: 'rgba(255,255,255,0.05)',
     border: '1px solid rgba(255,255,255,0.15)',
     borderRadius: '3px',
-    overflow: 'hidden',
   }
 }
 
@@ -176,7 +176,7 @@ export default function GuessInput({
         {/* Visual slots */}
         <div
           ref={slotsRef}
-          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[5rem] px-2 py-2 cursor-text items-center transition-all overflow-hidden rounded-lg border border-white/20`}
+          className={`flex-1 flex flex-nowrap ${slotGap(value.length)} min-h-[4rem] px-2 py-2 cursor-text items-center transition-all overflow-hidden rounded-lg border border-white/20`}
           onClick={() => inputRef.current?.focus()}
         >
           {value.length === 0 && !focused && (
@@ -195,7 +195,6 @@ export default function GuessInput({
                 style={slotStyle(value.replace(/\s/g, '').length, slotWidth)}
               >
                 {letter}
-                <div style={{ position: 'absolute', left: 0, top: '50%', width: '100%', height: '1px', background: 'rgba(0,0,0,0.45)' }} />
               </div>
             )
           ))}
