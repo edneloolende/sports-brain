@@ -20,8 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${bitter.variable} bg-[#0c1018]`}>
       <body className="min-h-dvh antialiased font-[var(--font-inter)] flex flex-col bg-[#0c1018]">
-        <div className="flex-1">{children}</div>
-        <footer className="text-center py-4 text-xs text-white/25">
+        <div className="flex-1 pb-10">{children}</div>
+        <footer className="fixed bottom-0 left-0 right-0 text-center py-3 text-xs text-white/25 bg-[#0c1018]">
           Made by ROO ⚽
         </footer>
       </body>
