@@ -385,8 +385,8 @@ function EmailSignup() {
 
   if (phase === 'done') {
     return (
-      <div className="w-full py-3.5 bg-[#F5A623]/10 border border-[#F5A623]/30 rounded-xl text-center">
-        <p className="text-sm font-semibold text-[#F5A623]">✅ You&apos;re in! Reminder at 8am tomorrow.</p>
+      <div className="w-full py-3.5 bg-green-900/30 border border-green-700/40 rounded-xl text-center">
+        <p className="text-sm font-semibold text-green-400">✅ You&apos;re in! Reminder at 8am tomorrow.</p>
       </div>
     )
   }
@@ -405,7 +405,7 @@ function EmailSignup() {
         <button
           type="submit"
           disabled={phase === 'busy'}
-          className="px-4 py-3 bg-[#F5A623] text-[#0A0A0A] text-sm font-semibold rounded-xl hover:bg-[#d4911a] disabled:opacity-50 transition-colors whitespace-nowrap"
+          className="px-4 py-3 bg-green-600 text-white text-sm font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-colors whitespace-nowrap"
         >
           {phase === 'busy' ? '…' : '📧 Remind me'}
         </button>
@@ -567,15 +567,13 @@ export default function GameClient({ puzzle }: Props) {
   }
 
     return (
-    <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
-      {/* Two-tone stripe */}
-      <div style={{background:'linear-gradient(90deg, #F5A623 55%, #7B1034 55%)', height:'7px'}} />
+    <div className="min-h-screen bg-[#0c1018] flex flex-col">
       {/* Header */}
-      <header className="bg-[#0A0A0A] border-b border-white/[0.07] px-4 py-4 sticky top-0 z-10">
+      <header className="bg-[#0c1018] border-b border-white/[0.07] px-4 py-4 sticky top-0 z-10">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-black text-white tracking-tight leading-tight" style={{fontFamily:"var(--font-bebas)"}}>Sporty Genius</h1>
-            <p className="text-sm font-semibold text-[#F5A623] leading-tight">Men&apos;s Football</p>
+            <h1 className="text-xl font-black text-white tracking-tight leading-tight">Sporty Genius</h1>
+            <p className="text-sm font-semibold text-green-400 leading-tight">Men&apos;s Football</p>
             <p className="text-sm text-white/40 mt-0.5">{formatDate(puzzle.date)}</p>
           </div>
           <ProgressBar
@@ -619,7 +617,7 @@ export default function GameClient({ puzzle }: Props) {
         {progress.completed && (
           <div className="flex flex-col items-center gap-4 mt-2 mb-6">
             <div className="text-center">
-              <p className="font-black text-white" style={{ fontSize: '3rem', lineHeight: 1.1, fontFamily: 'var(--font-bebas)' }}>
+              <p className="font-black text-white" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
                 {totalScore}
                 <span className="font-normal text-white/40" style={{ fontSize: '1.25rem' }}>
                   /{puzzle.questions.length * 2}
@@ -691,8 +689,8 @@ export default function GameClient({ puzzle }: Props) {
                     Your leaderboard name — e.g. {EXAMPLE_NAMES.join(', ')}
                   </p>
                   {nameSaved ? (
-                    <div className="flex items-center justify-center gap-2 py-3 px-4 bg-[#F5A623]/10 border border-[#F5A623]/30 rounded-xl">
-                      <span className="text-[#F5A623] text-sm font-semibold">✓ {displayName}</span>
+                    <div className="flex items-center justify-center gap-2 py-3 px-4 bg-green-600/20 border border-green-600/40 rounded-xl">
+                      <span className="text-green-400 text-sm font-semibold">✓ {displayName}</span>
                     </div>
                   ) : (
                     <div className="flex gap-2">
@@ -709,7 +707,7 @@ export default function GameClient({ puzzle }: Props) {
                       <button
                         onClick={saveName}
                         disabled={nameLoading}
-                        className="px-4 py-2.5 bg-[#F5A623] text-[#0A0A0A] text-sm font-semibold rounded-xl hover:bg-[#d4911a] disabled:opacity-50 transition-colors whitespace-nowrap"
+                        className="px-4 py-2.5 bg-green-600 text-white text-sm font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-colors whitespace-nowrap"
                       >
                         {nameLoading ? '…' : 'Save'}
                       </button>

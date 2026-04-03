@@ -14,7 +14,7 @@ export default function CompletedQuestion({ question, state, index }: Props) {
   const score = calcQuestionScore(state)
 
   return (
-    <div className="w-full bg-[#111111] rounded-2xl border border-white/[0.07] p-4 flex flex-col gap-3">
+    <div className="w-full bg-[#131927] rounded-2xl border border-white/[0.07] p-4 flex flex-col gap-3">
       {/* Header row */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">
@@ -26,11 +26,11 @@ export default function CompletedQuestion({ question, state, index }: Props) {
         </div>
         <div className="shrink-0 text-right">
           {state.status === 'won' ? (
-            <span className="text-xs font-bold text-[#F5A623] bg-[#F5A623]/10 px-2 py-0.5 rounded-full">
+            <span className="text-xs font-bold text-green-400 bg-green-900/40 px-2 py-0.5 rounded-full">
               +{score}pt
             </span>
           ) : (
-            <span className="text-xs font-bold text-[#7B1034] bg-[#7B1034]/20 px-2 py-0.5 rounded-full">
+            <span className="text-xs font-bold text-red-400 bg-red-900/40 px-2 py-0.5 rounded-full">
               0pt
             </span>
           )}
@@ -43,7 +43,7 @@ export default function CompletedQuestion({ question, state, index }: Props) {
           {question.answer.toUpperCase().split('').map((letter, i) => (
             <div
               key={i}
-              className="w-8 h-8 flex items-center justify-center rounded text-sm font-bold text-[#7B1034] border-2 border-[#7B1034]"
+              className="w-8 h-8 flex items-center justify-center rounded text-sm font-bold text-white border-2 border-red-500"
             >
               {letter}
             </div>

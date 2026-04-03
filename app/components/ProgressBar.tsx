@@ -14,9 +14,9 @@ export default function ProgressBar({ total, current, statuses }: Props) {
         const isActive = i === current
 
         let cls = 'w-8 h-2 rounded-full transition-all '
-        if (status === 'won')         cls += 'bg-[#F5A623]'
-        else if (status === 'lost')   cls += 'bg-[#7B1034]'
-        else if (isActive)            cls += 'bg-[#F5A623]/70 ring-1 ring-[#F5A623]/50'
+        if (status === 'won')         cls += 'bg-green-500'
+        else if (status === 'lost')   cls += 'bg-red-400'
+        else if (isActive)            cls += 'bg-yellow-400 ring-2 ring-yellow-300'
         else                          cls += 'bg-white/20'
 
         const label =
