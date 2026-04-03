@@ -22,16 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-dvh antialiased font-[var(--font-inter)] flex flex-col bg-[#0c1018]">
         <div className="flex-1">{children}</div>
         <footer className="text-center py-4 text-xs text-white/25">
-          Made by{' '}
-          <a
-            href="https://www.linkedin.com/in/olende/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2 text-white/40 hover:text-white/60 transition-colors"
-          >
-            Roy Opata Olende
-          </a>{' '}
-          ⚽
+          Made by R O O ⚽
         </footer>
       </body>
     </html>
