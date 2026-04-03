@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-dvh antialiased font-[var(--font-inter)] flex flex-col bg-[#0c1018]">
         <div className="flex-1">{children}</div>
         <footer className="text-center py-4 text-xs text-white/25">
-          Made by R O O ⚽
+          Made by ROO ⚽
         </footer>
       </body>
     </html>
