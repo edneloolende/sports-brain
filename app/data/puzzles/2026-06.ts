@@ -506,10 +506,10 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Captain and goalkeeper who won three Champions League titles with Real Madrid',
-        answer: 'CASILLAS',
+        clue: 'Won the 1982 World Cup with Italy at the age of 40 — the oldest captain to lift the trophy',
+        answer: 'ZOFF',
         category: 'player',
-        difficulty: 2,
+        difficulty: 3,
         isProperNoun: true,
       },
       {
