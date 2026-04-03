@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${bitter.variable} h-full bg-[#0c1018]`}>
-      <body className="min-h-full antialiased font-[var(--font-inter)] flex flex-col bg-[#0c1018]">
+    <html lang="en" className={`${inter.variable} ${bitter.variable} bg-[#0c1018]`}>
+      <body className="min-h-dvh antialiased font-[var(--font-inter)] flex flex-col bg-[#0c1018]">
         <div className="flex-1">{children}</div>
         <footer className="text-center py-4 text-xs text-white/25">
           Made by{' '}
