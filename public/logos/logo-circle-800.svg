@@ -1,0 +1,7 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="400" cy="400" r="400" fill="#000000"/>
+  <rect x="112" y="240" width="576" height="328" rx="28" fill="rgba(255,255,255,0.05)" stroke="#16a34a" stroke-width="8"/>
+  <text x="288" y="472" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="224" fill="white">S</text>
+  <text x="520" y="472" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="224" fill="#4ade80">G</text>
+  <line x1="400" y1="272" x2="400" y2="536" stroke="rgba(255,255,255,0.12)" stroke-width="4"/>
+</svg>

@@ -571,10 +571,20 @@ export default function GameClient({ puzzle }: Props) {
       {/* Header */}
       <header className="bg-[#0c1018] border-b border-white/[0.07] px-4 py-4 sticky top-0 z-10">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-black text-white tracking-tight leading-tight">Sporty Genius</h1>
-            <p className="text-sm font-semibold text-green-400 leading-tight">Men&apos;s Football</p>
-            <p className="text-sm text-white/40 mt-0.5">{formatDate(puzzle.date)}</p>
+          <div className="flex items-center gap-3">
+            {/* SG Logo */}
+            <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="100" cy="100" r="100" fill="#000000"/>
+              <rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.05)" stroke="#16a34a" strokeWidth="5"/>
+              <text x="72" y="118" textAnchor="middle" fontFamily="Inter, Arial, sans-serif" fontWeight="800" fontSize="56" fill="white">S</text>
+              <text x="130" y="118" textAnchor="middle" fontFamily="Inter, Arial, sans-serif" fontWeight="800" fontSize="56" fill="#4ade80">G</text>
+              <line x1="100" y1="68" x2="100" y2="134" stroke="rgba(255,255,255,0.12)" strokeWidth="2"/>
+            </svg>
+            <div>
+              <h1 className="text-xl font-black text-white tracking-tight leading-tight">Sporty Genius</h1>
+              <p className="text-sm font-semibold text-green-400 leading-tight">Men&apos;s Football</p>
+              <p className="text-sm text-white/40 mt-0.5">{formatDate(puzzle.date)}</p>
+            </div>
           </div>
           <ProgressBar
             total={puzzle.questions.length}
