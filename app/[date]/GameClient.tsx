@@ -684,8 +684,7 @@ export default function GameClient({ puzzle }: Props) {
               <p className="text-sm text-white/50 text-center">Get tomorrow&apos;s quiz in your inbox.</p>
               <p className="text-sm text-white/30 text-center -mt-2">Unsubscribe anytime.</p>
               <EmailSignup />
-              <hr className="border-white/10 w-full" />
-              <button
+<button
                 onClick={() => {
                   navigator.clipboard.writeText(window.location.origin + '/' + puzzle.date)
                   setQuizCopied(true)
