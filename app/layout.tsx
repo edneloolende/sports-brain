@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             href="mailto:behindthearsenal@gmail.com?subject=Sporty Genius feedback"
             className="hover:text-white/50 transition-colors"
           >
-            💬 Feedback
+            💬 Share Feedback
           </a>
         </footer>
       </body>
