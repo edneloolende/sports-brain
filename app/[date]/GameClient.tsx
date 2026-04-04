@@ -701,7 +701,7 @@ export default function GameClient({ puzzle }: Props) {
             {/* CTAs */}
             <div className="flex flex-col gap-3 w-full max-w-xs mx-auto">
               <p className="text-sm text-white/50 text-center">Get tomorrow&apos;s quiz in your inbox.</p>
-              <p className="text-xs text-white/30 text-center -mt-2">Unsubscribe anytime.</p>
+              <p className="text-sm text-white/30 text-center -mt-2">Unsubscribe anytime.</p>
               <EmailSignup />
               <button
                 onClick={() => {
