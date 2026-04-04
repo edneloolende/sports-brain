@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import QuestionPanel from '@/app/components/QuestionPanel'
 import CompletedQuestion from '@/app/components/CompletedQuestion'
 import ProgressBar from '@/app/components/ProgressBar'
@@ -442,10 +442,24 @@ export default function GameClient({ puzzle }: Props) {
     return { sad: pickRandom(REACTION_GIFS.sad), meh: pickRandom(REACTION_GIFS.meh), celebrate: pickRandom(REACTION_GIFS.celebrate) }
   }, [puzzle.questions.length])
 
+  const endScreenRef = useRef<HTMLDivElement>(null)
+
   // Ensure the page always starts at the top on load/refresh
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  // When the quiz completes, scroll the end screen into view so the
+  // score, GIF and CTAs are the focus rather than the completed questions.
+  useEffect(() => {
+    if (!progress.completed) return
+    setTimeout(() => {
+      const el = endScreenRef.current
+      if (!el) return
+      const top = el.getBoundingClientRect().top + window.scrollY - 80
+      window.scrollTo({ top, behavior: 'smooth' })
+    }, 300)
+  }, [progress.completed])
 
   useEffect(() => {
     saveProgress(progress)
@@ -630,7 +644,7 @@ export default function GameClient({ puzzle }: Props) {
 
         {/* End screen */}
         {progress.completed && (
-          <div className="flex flex-col items-center gap-4 mt-2 mb-6">
+          <div ref={endScreenRef} className="flex flex-col items-center gap-4 mt-2 mb-6">
             <div className="text-center">
               <p className="font-black text-white" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
                 {totalScore}
