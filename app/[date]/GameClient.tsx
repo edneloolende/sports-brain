@@ -407,7 +407,7 @@ function EmailSignup() {
           disabled={phase === 'busy'}
           className="px-4 py-3 bg-green-600 text-white text-sm font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-colors whitespace-nowrap"
         >
-          {phase === 'busy' ? '…' : '📧 Get the quiz'}
+          {phase === 'busy' ? '…' : 'Get the quiz'}
         </button>
       </div>
       {phase === 'error' && (
