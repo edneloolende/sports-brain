@@ -709,9 +709,9 @@ export default function GameClient({ puzzle }: Props) {
                   setQuizCopied(true)
                   setTimeout(() => setQuizCopied(false), 2000)
                 }}
-                className="w-full py-3 bg-white/10 border border-white/10 text-white text-sm font-semibold rounded-xl hover:bg-white/15 transition-colors"
+                className="text-sm text-white/30 hover:text-white/60 transition-colors mt-1"
               >
-                {quizCopied ? '✓ Link copied!' : '🔗 Share Quiz'}
+                {quizCopied ? '✓ Link copied!' : 'or share today\'s quiz →'}
               </button>
               {showLeaderboard && (
                 <div className="w-full max-w-sm">
