@@ -28,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="flex-1 pb-10">{children}</div>
         <footer className="fixed bottom-0 left-0 right-0 flex items-center justify-center gap-4 py-3 text-xs text-white/25 bg-[#0c1018]">
           <span>Made by ROO</span>
+          <span>···</span>
           <a
             href="mailto:behindthearsenal@gmail.com?subject=Sporty Genius feedback"
             className="hover:text-white/50 transition-colors"
