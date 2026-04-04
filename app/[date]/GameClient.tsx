@@ -587,7 +587,7 @@ export default function GameClient({ puzzle }: Props) {
             </svg>
             <div>
               <h1 className="text-xl font-black text-white tracking-tight leading-tight">Sporty Genius</h1>
-              <p className="text-sm font-semibold text-green-400 leading-tight">Men&apos;s Football</p>
+              <p className="text-sm font-semibold text-green-400 leading-tight">Men&apos;s Football ⚽</p>
               <p className="text-sm text-white/40 mt-0.5">{formatDate(puzzle.date)}</p>
             </div>
           </div>
