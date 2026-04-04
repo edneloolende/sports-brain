@@ -26,8 +26,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-[100svh] antialiased font-[var(--font-inter)] flex flex-col bg-[#0c1018]">
         <div className="flex-1 pb-10">{children}</div>
-        <footer className="fixed bottom-0 left-0 right-0 text-center py-3 text-xs text-white/25 bg-[#0c1018]">
-          Made by ROO ⚽
+        <footer className="fixed bottom-0 left-0 right-0 flex items-center justify-center gap-4 py-3 text-xs text-white/25 bg-[#0c1018]">
+          <span>Made by ROO ⚽</span>
+          <a
+            href="mailto:behindthearsenal@gmail.com?subject=Sporty Genius feedback"
+            className="hover:text-white/50 transition-colors"
+          >
+            💬 Feedback
+          </a>
         </footer>
       </body>
     </html>
