@@ -681,7 +681,7 @@ export default function GameClient({ puzzle }: Props) {
 
             {/* CTAs */}
             <div className="w-full max-w-xs mx-auto">
-              <hr className="border-white/10 mt-4 mb-6" />
+              <hr className="border-white/10 mt-6 mb-6" />
             </div>
             <div className="flex flex-col gap-3 w-full max-w-xs mx-auto">
               <p className="text-sm text-white/50 text-center">Get tomorrow&apos;s quiz in your inbox.</p>
