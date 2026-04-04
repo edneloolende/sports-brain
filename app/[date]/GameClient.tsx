@@ -7,7 +7,6 @@ import ProgressBar from '@/app/components/ProgressBar'
 import type { DailyPuzzle, GameProgress, Question, QuestionState, ScoreSubmission } from '@/app/lib/types'
 import { calcQuestionScore } from '@/app/lib/gameLogic'
 import { loadProgress, saveProgress, getPlayer } from '@/app/lib/storage'
-import { generateName, EXAMPLE_NAMES } from '@/app/lib/nameGenerator'
 
 const MAX_GUESSES = 2
 
@@ -428,12 +427,8 @@ export default function GameClient({ puzzle }: Props) {
     loadProgress(puzzle.date, puzzle.questions.length)
   )
   const [streak, setStreak] = useState(0)
-  const [displayName, setDisplayName] = useState(() => generateName())
-  const [nameSaved, setNameSaved] = useState(false)
-  const [nameLoading, setNameLoading] = useState(false)
   const [scoreStatus, setScoreStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
   const [quizCopied, setQuizCopied] = useState(false)
-  const [showLeaderboard, setShowLeaderboard] = useState(false)
 
   // Pick a random GIF once per session (stable across re-renders)
   const reactionGif = useMemo(() => {
@@ -570,20 +565,6 @@ export default function GameClient({ puzzle }: Props) {
     return pickRandom(REACTION_LINES.high)
   }, [progress.completed, totalScore, puzzle.questions.length])
 
-  async function saveName() {
-    const player = getPlayer()
-    if (!player.id || !displayName || nameSaved) return
-    setNameLoading(true)
-    try {
-      await fetch('/api/name', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ playerId: player.id, name: displayName }),
-      })
-      setNameSaved(true)
-    } catch {}
-    setNameLoading(false)
-  }
 
     return (
     <div className="min-h-screen bg-[#0c1018] flex flex-col">
@@ -714,53 +695,6 @@ export default function GameClient({ puzzle }: Props) {
               >
                 {quizCopied ? '✓ Link copied!' : 'or share today\'s quiz →'}
               </button>
-              {showLeaderboard && (
-                <div className="w-full max-w-sm">
-                  <p className="text-xs text-white/40 text-center mb-2">
-                    Your leaderboard name — e.g. {EXAMPLE_NAMES.join(', ')}
-                  </p>
-                  {nameSaved ? (
-                    <div className="flex items-center justify-center gap-2 py-3 px-4 bg-green-600/20 border border-green-600/40 rounded-xl">
-                      <span className="text-green-400 text-sm font-semibold">✓ {displayName}</span>
-                    </div>
-                  ) : (
-                    <div className="flex gap-2">
-                      <div className="flex-1 flex items-center px-3 py-2.5 bg-white/5 border border-white/20 rounded-xl">
-                        <span className="text-white font-semibold text-sm truncate">{displayName}</span>
-                      </div>
-                      <button
-                        onClick={() => setDisplayName(generateName())}
-                        className="px-3 py-2.5 text-white/50 hover:text-white/80 bg-white/5 border border-white/20 rounded-xl transition-colors text-sm"
-                        title="Re-roll name"
-                      >
-                        🎲
-                      </button>
-                      <button
-                        onClick={saveName}
-                        disabled={nameLoading}
-                        className="px-4 py-2.5 bg-green-600 text-white text-sm font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-colors whitespace-nowrap"
-                      >
-                        {nameLoading ? '…' : 'Save'}
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
-              {!showLeaderboard ? (
-                <button
-                  onClick={() => setShowLeaderboard(true)}
-                  className="text-center text-sm text-white/40 hover:text-white/70 transition-colors py-1 w-full"
-                >
-                  🏆 View leaderboard
-                </button>
-              ) : (
-                <a
-                  href="/leaderboard"
-                  className="text-center text-sm text-white/40 hover:text-white/70 transition-colors py-1"
-                >
-                  Go to leaderboard →
-                </a>
-              )}
             </div>
 
           </div>
