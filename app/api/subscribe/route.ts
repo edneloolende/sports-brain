@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    return NextResponse.json({ ok: true, alreadySubscribed, welcomeOk, welcomeError })
+    return NextResponse.json({ ok: true, alreadySubscribed, welcomeOk, welcomeError, v: 2 })
   } catch (err) {
     console.error('[subscribe]', err)
     return NextResponse.json({ error: 'Server error' }, { status: 500 })
