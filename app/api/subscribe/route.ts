@@ -22,8 +22,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true, alreadySubscribed })
   } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err)
     console.error('[subscribe]', err)
-    return NextResponse.json({ error: 'Server error', detail: msg }, { status: 500 })
+    return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
 }
