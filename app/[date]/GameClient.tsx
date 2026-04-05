@@ -446,17 +446,15 @@ export default function GameClient({ puzzle }: Props) {
     window.scrollTo(0, 0)
   }, [])
 
-  // When the quiz completes, scroll so the GIF and subscription CTA are
-  // both visible. On mobile we anchor to the CTA section (block: end) so
-  // the GIF sits above it; on wider screens we scroll to the top of the
-  // end screen so the score is visible too.
+  // When the quiz completes, scroll so the score sits just below the
+  // sticky header — completed questions fully off screen.
   useEffect(() => {
     if (!progress.completed) return
     setTimeout(() => {
-      const isMobile = window.innerWidth < 640
-      const el = isMobile ? ctaRef.current : endScreenRef.current
+      const el = endScreenRef.current
       if (!el) return
-      el.scrollIntoView({ behavior: 'smooth', block: isMobile ? 'end' : 'start' })
+      const top = el.getBoundingClientRect().top + window.scrollY - 88
+      window.scrollTo({ top, behavior: 'smooth' })
     }, 300)
   }, [progress.completed])
 
