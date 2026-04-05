@@ -458,7 +458,7 @@ export default function GameClient({ puzzle }: Props) {
     setTimeout(() => {
       const el = endScreenRef.current
       if (!el) return
-      const top = el.getBoundingClientRect().top + window.scrollY - 96
+      const top = el.getBoundingClientRect().top + window.scrollY - 16
       window.scrollTo({ top, behavior: 'smooth' })
     }, 300)
   }, [progress.completed])
