@@ -439,6 +439,7 @@ export default function GameClient({ puzzle }: Props) {
   }, [puzzle.questions.length])
 
   const endScreenRef = useRef<HTMLDivElement>(null)
+  const scoreRef = useRef<HTMLDivElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
 
   // Ensure the page always starts at the top on load/refresh
@@ -456,9 +457,10 @@ export default function GameClient({ puzzle }: Props) {
   useEffect(() => {
     if (!progress.completed) return
     setTimeout(() => {
-      const el = endScreenRef.current
+      const el = scoreRef.current
       if (!el) return
-      const top = el.getBoundingClientRect().top + window.scrollY - 16
+      const headerHeight = document.querySelector('header')?.offsetHeight ?? 64
+      const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 16
       window.scrollTo({ top, behavior: 'smooth' })
     }, 300)
   }, [progress.completed])
@@ -633,7 +635,7 @@ export default function GameClient({ puzzle }: Props) {
         {/* End screen */}
         {progress.completed && (
           <div ref={endScreenRef} className="flex flex-col items-center gap-4 mt-2 mb-6">
-            <div className="text-center">
+            <div ref={scoreRef} className="text-center">
               <p className="font-black text-white" style={{ fontSize: '3rem', lineHeight: 1.1 }}>
                 {totalScore}
                 <span className="font-normal text-white/40" style={{ fontSize: '1.25rem' }}>
