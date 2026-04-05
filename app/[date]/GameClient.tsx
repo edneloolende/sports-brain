@@ -638,10 +638,6 @@ export default function GameClient({ puzzle }: Props) {
               <p className="text-sm text-white/40 mt-1">points</p>
             </div>
 
-            {streak > 0 && (
-              <p className="text-base font-semibold text-orange-500">🔥 {streak}-day streak</p>
-            )}
-
             {/* Score save status */}
             {scoreStatus === 'saving' && (
               <p className="text-xs text-white/30 animate-pulse">Saving result…</p>
@@ -685,6 +681,9 @@ export default function GameClient({ puzzle }: Props) {
               <hr className="border-white/10 mt-6 mb-6" />
             </div>
             <div ref={ctaRef} className="flex flex-col gap-3 w-full max-w-xs mx-auto">
+              {streak > 1 && (
+                <p className="text-base font-semibold text-orange-500 text-center">🔥 {streak}-day streak</p>
+              )}
               <p className="text-sm text-white/50 text-center">Get tomorrow&apos;s quiz in your inbox.</p>
               <p className="text-sm text-white/30 text-center -mt-2">Unsubscribe anytime.</p>
               <EmailSignup />
