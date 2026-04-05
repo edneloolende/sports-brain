@@ -16,14 +16,23 @@ async function getKV() {
   })
 }
 
+function parseSub(raw: unknown): Subscriber | null {
+  if (!raw) return null
+  if (typeof raw === 'object') return raw as Subscriber
+  if (typeof raw === 'string') {
+    try { return JSON.parse(raw) as Subscriber } catch { return null }
+  }
+  return null
+}
+
 export async function addSubscriber(email: string, timezone: string): Promise<{ token: string; alreadySubscribed: boolean }> {
   const kv = await getKV()
 
   // Idempotent — if already subscribed return the existing token
-  const existing = await kv.get<string>(`email:sub:${email}`)
+  const existing = await kv.get(`email:sub:${email}`)
   if (existing) {
-    const sub = JSON.parse(existing) as Subscriber
-    return { token: sub.token, alreadySubscribed: true }
+    const sub = parseSub(existing)
+    if (sub?.token) return { token: sub.token, alreadySubscribed: true }
   }
 
   const token = crypto.randomUUID()
@@ -51,9 +60,8 @@ export async function removeSubscriberByToken(token: string): Promise<boolean> {
 
 export async function getSubscriber(email: string): Promise<Subscriber | null> {
   const kv = await getKV()
-  const data = await kv.get<string>(`email:sub:${email}`)
-  if (!data) return null
-  return JSON.parse(data) as Subscriber
+  const data = await kv.get(`email:sub:${email}`)
+  return parseSub(data)
 }
 
 export async function getAllSubscriberEmails(): Promise<string[]> {
@@ -64,9 +72,9 @@ export async function getAllSubscriberEmails(): Promise<string[]> {
 
 export async function markSent(email: string, date: string): Promise<void> {
   const kv = await getKV()
-  const data = await kv.get<string>(`email:sub:${email}`)
-  if (!data) return
-  const sub = JSON.parse(data) as Subscriber
+  const data = await kv.get(`email:sub:${email}`)
+  const sub = parseSub(data)
+  if (!sub) return
   sub.lastSentDate = date
   await kv.set(`email:sub:${email}`, JSON.stringify(sub))
 }
