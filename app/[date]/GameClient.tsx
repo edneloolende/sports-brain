@@ -386,6 +386,7 @@ function EmailSignup() {
     return (
       <div className="w-full py-3.5 bg-green-900/30 border border-green-700/40 rounded-xl text-center">
         <p className="text-sm font-semibold text-green-400">✅ You&apos;re in! Reminder at 8am tomorrow.</p>
+        <p className="text-xs text-white/30 mt-1">If it doesn&apos;t arrive, check your spam folder.</p>
       </div>
     )
   }
