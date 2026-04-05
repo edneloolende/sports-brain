@@ -20,18 +20,20 @@ export async function GET(req: NextRequest) {
   const today = new Date().toISOString().slice(0, 10)
   const yesterday = new Date(Date.now() - 86_400_000).toISOString().slice(0, 10)
 
-  const [visitsToday, visitsYesterday, allEmails] = await Promise.all([
+  const [visitsToday, visitsYesterday, uniqueToday, uniqueYesterday, allEmails] = await Promise.all([
     kv.get<number>(`visits:${today}`).then((v) => v ?? 0),
     kv.get<number>(`visits:${yesterday}`).then((v) => v ?? 0),
+    kv.scard(`visits:unique:${today}`).then((v) => v ?? 0),
+    kv.scard(`visits:unique:${yesterday}`).then((v) => v ?? 0),
     getAllSubscriberEmails(),
   ])
 
   // Count new subscribers today by checking their subscribedAt date
   let newSubscribersToday = 0
   for (const email of allEmails) {
-    const data = await kv.get<string>(`email:sub:${email}`)
+    const data = await kv.get(`email:sub:${email}`)
     if (data) {
-      const sub = JSON.parse(data)
+      const sub = typeof data === 'string' ? JSON.parse(data) : data as { subscribedAt?: string }
       if (sub.subscribedAt?.startsWith(today)) newSubscribersToday++
     }
   }
@@ -40,6 +42,8 @@ export async function GET(req: NextRequest) {
     date: today,
     visitsToday,
     visitsYesterday,
+    uniqueToday,
+    uniqueYesterday,
     totalSubscribers: allEmails.length,
     newSubscribersToday,
   })

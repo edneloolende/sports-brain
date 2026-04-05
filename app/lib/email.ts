@@ -48,6 +48,8 @@ export async function sendStatsEmail(stats: {
   date: string
   visitsToday: number
   visitsYesterday: number
+  uniqueToday: number
+  uniqueYesterday: number
   totalSubscribers: number
   newSubscribersToday: number
 }): Promise<boolean> {
@@ -199,6 +201,8 @@ function buildStatsHtml(stats: {
   date: string
   visitsToday: number
   visitsYesterday: number
+  uniqueToday: number
+  uniqueYesterday: number
   totalSubscribers: number
   newSubscribersToday: number
 }): string {
@@ -240,8 +244,10 @@ function buildStatsHtml(stats: {
             <td style="padding:20px 32px 0 32px;">
               <p style="margin:0 0 20px;font-size:13px;color:rgba(255,255,255,0.4);">${formattedDate}</p>
               <table width="100%" cellpadding="0" cellspacing="0">
-                ${row('Visits today', stats.visitsToday, true)}
-                ${row('Visits yesterday', stats.visitsYesterday)}
+                ${row('Unique visitors today', stats.uniqueToday, true)}
+                ${row('Total visits today', stats.visitsToday)}
+                ${row('Unique visitors yesterday', stats.uniqueYesterday)}
+                ${row('Total visits yesterday', stats.visitsYesterday)}
                 ${row('New subscribers today', stats.newSubscribersToday)}
                 ${row('Total subscribers', stats.totalSubscribers)}
               </table>

@@ -449,7 +449,12 @@ export default function GameClient({ puzzle }: Props) {
 
   // Track page visit once per session
   useEffect(() => {
-    fetch('/api/track', { method: 'POST' }).catch(() => {})
+    const playerId = getPlayer()?.id
+    fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ playerId: playerId ?? null }),
+    }).catch(() => {})
   }, [])
 
   // When the quiz completes, scroll so the score sits just below the
