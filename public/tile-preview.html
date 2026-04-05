@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tile Options</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0c1018;
+    color: white;
+    font-family: Inter, system-ui, sans-serif;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+  }
+  .section-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+  }
+  .tile-row {
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+  }
+
+  /* CURRENT: Square tiles */
+  .tile-current {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid rgba(255,255,255,0.6);
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    background: transparent;
+  }
+
+  /* OPTION A: Tall Tile 1.4:1 */
+  .tile-a {
+    width: 44px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid rgba(255,255,255,0.6);
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    background: transparent;
+  }
+
+  /* OPTION B: Split-Flap 1.7:1 */
+  .tile-b {
+    width: 40px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+  .tile-b::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: rgba(0,0,0,0.5);
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+</style>
+</head>
+<body>
+
+  <!-- Current -->
+  <div>
+    <div class="section-label">Current</div>
+    <div class="section-title">Square Tiles</div>
+    <div class="section-desc">Equal width and height — 44×44px</div>
+    <div class="tile-row">
+      <div class="tile-current">M</div>
+      <div class="tile-current">B</div>
+      <div class="tile-current">A</div>
+      <div class="tile-current">P</div>
+      <div class="tile-current">P</div>
+      <div class="tile-current">E</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Option A -->
+  <div>
+    <div class="section-label">Option A</div>
+    <div class="section-title">Tall Tile — 1.4:1</div>
+    <div class="section-desc">Subtle rectangle, 44×62px — scoreboard feel</div>
+    <div class="tile-row">
+      <div class="tile-a">M</div>
+      <div class="tile-a">B</div>
+      <div class="tile-a">A</div>
+      <div class="tile-a">P</div>
+      <div class="tile-a">P</div>
+      <div class="tile-a">E</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Option B -->
+  <div>
+    <div class="section-label">Option B</div>
+    <div class="section-title">Split-Flap — 1.7:1</div>
+    <div class="section-desc">Tile panel + seam line, 40×68px — airport departure board</div>
+    <div class="tile-row">
+      <div class="tile-b">M</div>
+      <div class="tile-b">B</div>
+      <div class="tile-b">A</div>
+      <div class="tile-b">P</div>
+      <div class="tile-b">P</div>
+      <div class="tile-b">E</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Long word example -->
+  <div>
+    <div class="section-label">Long word — Option A vs B</div>
+    <div class="section-desc">How a 10-letter answer fits on mobile</div>
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div class="tile-row" style="gap:3px;">
+        <div class="tile-a" style="width:30px;height:42px;font-size:16px;">V</div>
+        <div class="tile-a" style="width:30px;height:42px;font-size:16px;">A</div>
+        <div class="tile-a" style="width:30px;height:42px;font-size:16px;">N</div>
+        <div class="tile-a" style="width:30px;height:42px;font-size:16px;">B</div>
+        <div class="tile-a" style="width:30px;height:42px;font-size:16px;">A</div>
+        <div class="tile-a" style="width:30px;height:42px;font-size:16px;">S</div>
+        <div class="tile-a" style="width:30px;height:42px;font-size:16px;">T</div>
+        <div class="tile-a" style="width:30px;height:42px;font-size:16px;">E</div>
+        <div class="tile-a" style="width:30px;height:42px;font-size:16px;">N</div>
+        <span style="font-size:11px;color:rgba(255,255,255,0.4);margin-left:4px;align-self:flex-end;padding-bottom:4px;">A</span>
+      </div>
+      <div class="tile-row" style="gap:3px;">
+        <div class="tile-b" style="width:28px;height:48px;font-size:16px;">V</div>
+        <div class="tile-b" style="width:28px;height:48px;font-size:16px;">A</div>
+        <div class="tile-b" style="width:28px;height:48px;font-size:16px;">N</div>
+        <div class="tile-b" style="width:28px;height:48px;font-size:16px;">B</div>
+        <div class="tile-b" style="width:28px;height:48px;font-size:16px;">A</div>
+        <div class="tile-b" style="width:28px;height:48px;font-size:16px;">S</div>
+        <div class="tile-b" style="width:28px;height:48px;font-size:16px;">T</div>
+        <div class="tile-b" style="width:28px;height:48px;font-size:16px;">E</div>
+        <div class="tile-b" style="width:28px;height:48px;font-size:16px;">N</div>
+        <span style="font-size:11px;color:rgba(255,255,255,0.4);margin-left:4px;align-self:flex-end;padding-bottom:4px;">B</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

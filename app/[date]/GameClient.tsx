@@ -385,7 +385,7 @@ function EmailSignup() {
   if (phase === 'done') {
     return (
       <div className="w-full py-3.5 bg-green-900/30 border border-green-700/40 rounded-xl text-center">
-        <p className="text-sm font-semibold text-green-400">✅ You&apos;re in! Reminder at 8am tomorrow.</p>
+        <p className="text-sm font-semibold text-green-400">✅ You&apos;re in! Check your inbox.</p>
         <p className="text-xs text-white/30 mt-1">If it doesn&apos;t arrive, check your spam folder.</p>
       </div>
     )
@@ -444,6 +444,11 @@ export default function GameClient({ puzzle }: Props) {
   // Ensure the page always starts at the top on load/refresh
   useEffect(() => {
     window.scrollTo(0, 0)
+  }, [])
+
+  // Track page visit once per session
+  useEffect(() => {
+    fetch('/api/track', { method: 'POST' }).catch(() => {})
   }, [])
 
   // When the quiz completes, scroll so the score sits just below the

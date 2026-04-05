@@ -1,0 +1,67 @@
+<svg width="2560" height="1440" viewBox="0 0 2560 1440" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="2560" height="1440" fill="#000000"/>
+
+  <!-- Subtle background tile grid (split-flap texture) -->
+  <!-- Row 1 -->
+  <rect x="0"    y="180" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="104"  y="180" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="208"  y="180" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="312"  y="180" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="416"  y="180" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="2048" y="180" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="2152" y="180" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="2256" y="180" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="2360" y="180" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="2464" y="180" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <!-- Row 2 -->
+  <rect x="0"    y="320" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="104"  y="320" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="208"  y="320" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="312"  y="320" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="2048" y="320" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="2152" y="320" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="2256" y="320" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="2360" y="320" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <!-- Bottom rows -->
+  <rect x="0"    y="1136" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="104"  y="1136" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="208"  y="1136" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="312"  y="1136" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="416"  y="1136" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="2048" y="1136" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="2152" y="1136" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="2256" y="1136" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="2360" y="1136" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="2464" y="1136" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+  <rect x="0"    y="1276" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="104"  y="1276" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="208"  y="1276" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="2256" y="1276" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="2360" y="1276" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+  <rect x="2464" y="1276" width="88" height="124" rx="6" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.5"/>
+
+  <!-- Safe zone top and bottom accent lines (y=509 and y=931) -->
+  <rect x="0" y="509" width="2560" height="1.5" fill="#16a34a" opacity="0.25"/>
+  <rect x="0" y="931" width="2560" height="1.5" fill="#16a34a" opacity="0.25"/>
+
+  <!-- ── CONTENT — vertically centred between green lines (y=509–931, centre=720) ── -->
+
+  <!-- SG Logo tile: y=594 so tile centre = 720 -->
+  <rect x="520" y="594" width="440" height="252" rx="18" fill="rgba(255,255,255,0.04)" stroke="#16a34a" stroke-width="5"/>
+  <!-- S centred in left half (x=520–740), G in right half (x=740–960) -->
+  <!-- Baseline y=774 puts cap-height centre at ~720 -->
+  <text x="630" y="774" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="148" fill="white">S</text>
+  <text x="850" y="774" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="148" fill="#4ade80">G</text>
+  <line x1="740" y1="610" x2="740" y2="830" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+
+  <!-- Vertical separator between logo and wordmark -->
+  <line x1="1010" y1="580" x2="1010" y2="860" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+
+  <!-- Wordmark: text block vertically centred at y=720 -->
+  <text x="1060" y="710" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="148" fill="white" letter-spacing="-3">Sporty Genius</text>
+  <text x="1063" y="796" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="48" fill="#4ade80" letter-spacing="6">DAILY SPORTS QUIZ</text>
+  <text x="1063" y="852" font-family="Inter, Arial, sans-serif" font-weight="400" font-size="36" fill="rgba(255,255,255,0.35)" letter-spacing="2">sportygenius.com</text>
+
+</svg>

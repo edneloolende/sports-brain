@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo Background Options</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0c1018;
+    color: white;
+    font-family: Inter, system-ui, sans-serif;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px;
+  }
+  .row { display: flex; align-items: flex-end; gap: 28px; flex-wrap: wrap; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .size-label { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; }
+  .circle-crop { border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .divider { height: 1px; background: rgba(255,255,255,0.07); }
+  .bg-label { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- Row: all three at large size -->
+<div>
+  <div class="section-label">200px — profile picture size</div>
+  <div class="row">
+
+    <!-- Black -->
+    <div class="col">
+      <div class="circle-crop" style="width:200px;height:200px;">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="100" fill="#000000"/>
+          <rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.05)" stroke="#16a34a" stroke-width="2"/>
+          <text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text>
+          <text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text>
+          <line x1="100" y1="68" x2="100" y2="134" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="bg-label">Plain black</div>
+      <div class="size-label">#000000</div>
+    </div>
+
+    <!-- Current dark green -->
+    <div class="col">
+      <div class="circle-crop" style="width:200px;height:200px;">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="100" fill="#0f1f0f"/>
+          <rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.05)" stroke="#16a34a" stroke-width="2"/>
+          <text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text>
+          <text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text>
+          <line x1="100" y1="68" x2="100" y2="134" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="bg-label">Current dark green</div>
+      <div class="size-label">#0f1f0f</div>
+    </div>
+
+    <!-- Lighter green -->
+    <div class="col">
+      <div class="circle-crop" style="width:200px;height:200px;">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="100" fill="#0d2d1a"/>
+          <rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.06)" stroke="#22c55e" stroke-width="2"/>
+          <text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text>
+          <text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text>
+          <line x1="100" y1="68" x2="100" y2="134" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="bg-label">Lighter green</div>
+      <div class="size-label">#0d2d1a</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Row: all three at TikTok size -->
+<div>
+  <div class="section-label">98px — TikTok size</div>
+  <div class="row">
+    <div class="col">
+      <div class="circle-crop" style="width:98px;height:98px;">
+        <svg width="98" height="98" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="100" fill="#000000"/>
+          <rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.05)" stroke="#16a34a" stroke-width="2"/>
+          <text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text>
+          <text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text>
+          <line x1="100" y1="68" x2="100" y2="134" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="size-label">Black</div>
+    </div>
+    <div class="col">
+      <div class="circle-crop" style="width:98px;height:98px;">
+        <svg width="98" height="98" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="100" fill="#0f1f0f"/>
+          <rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.05)" stroke="#16a34a" stroke-width="2"/>
+          <text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text>
+          <text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text>
+          <line x1="100" y1="68" x2="100" y2="134" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="size-label">Dark green</div>
+    </div>
+    <div class="col">
+      <div class="circle-crop" style="width:98px;height:98px;">
+        <svg width="98" height="98" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="100" fill="#0d2d1a"/>
+          <rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.06)" stroke="#22c55e" stroke-width="2"/>
+          <text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text>
+          <text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text>
+          <line x1="100" y1="68" x2="100" y2="134" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="size-label">Lighter green</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- On platform backgrounds -->
+<div>
+  <div class="section-label">On YouTube (white) and TikTok (black)</div>
+  <div class="row" style="gap:16px;">
+
+    <!-- YouTube row -->
+    <div style="background:#fff;padding:16px 20px;border-radius:8px;display:flex;flex-direction:column;gap:14px;">
+      <div style="font-size:10px;color:#606060;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">YouTube</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="circle-crop" style="width:48px;height:48px;">
+          <svg width="48" height="48" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="100" fill="#000"/><rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.05)" stroke="#16a34a" stroke-width="2"/><text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text><text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text></svg>
+        </div>
+        <div style="color:#0f0f0f;font-size:13px;font-weight:600;">Black</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="circle-crop" style="width:48px;height:48px;">
+          <svg width="48" height="48" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="100" fill="#0f1f0f"/><rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.05)" stroke="#16a34a" stroke-width="2"/><text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text><text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text></svg>
+        </div>
+        <div style="color:#0f0f0f;font-size:13px;font-weight:600;">Dark green</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="circle-crop" style="width:48px;height:48px;">
+          <svg width="48" height="48" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="100" fill="#0d2d1a"/><rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.06)" stroke="#22c55e" stroke-width="2"/><text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text><text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text></svg>
+        </div>
+        <div style="color:#0f0f0f;font-size:13px;font-weight:600;">Lighter green</div>
+      </div>
+    </div>
+
+    <!-- TikTok col -->
+    <div style="background:#000;padding:16px 20px;border-radius:8px;display:flex;flex-direction:column;gap:14px;">
+      <div style="font-size:10px;color:#606060;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">TikTok</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="circle-crop" style="width:48px;height:48px;">
+          <svg width="48" height="48" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="100" fill="#000"/><rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.05)" stroke="#16a34a" stroke-width="2"/><text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text><text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text></svg>
+        </div>
+        <div style="color:white;font-size:13px;font-weight:600;">Black</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="circle-crop" style="width:48px;height:48px;">
+          <svg width="48" height="48" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="100" fill="#0f1f0f"/><rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.05)" stroke="#16a34a" stroke-width="2"/><text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text><text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text></svg>
+        </div>
+        <div style="color:white;font-size:13px;font-weight:600;">Dark green</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="circle-crop" style="width:48px;height:48px;">
+          <svg width="48" height="48" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="100" fill="#0d2d1a"/><rect x="28" y="60" width="144" height="82" rx="7" fill="rgba(255,255,255,0.06)" stroke="#22c55e" stroke-width="2"/><text x="72" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="white">S</text><text x="130" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="56" fill="#4ade80">G</text></svg>
+        </div>
+        <div style="color:white;font-size:13px;font-weight:600;">Lighter green</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
