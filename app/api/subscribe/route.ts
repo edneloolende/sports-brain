@@ -47,17 +47,15 @@ export async function POST(req: NextRequest) {
     const { token, alreadySubscribed } = await addSubscriber(email.toLowerCase().trim(), tz)
 
     // Send welcome email to new subscribers only
-    let welcomeOk: boolean | null = null
-    let welcomeError: string | null = null
     if (!alreadySubscribed) {
       try {
-        welcomeOk = await sendWelcomeEmail(email.toLowerCase().trim(), token)
+        await sendWelcomeEmail(email.toLowerCase().trim(), token)
       } catch (e) {
-        welcomeError = String(e)
+        console.error('[subscribe] welcome email error:', e)
       }
     }
 
-    return NextResponse.json({ ok: true, alreadySubscribed, welcomeOk, welcomeError, v: 2 })
+    return NextResponse.json({ ok: true, alreadySubscribed })
   } catch (err) {
     console.error('[subscribe]', err)
     return NextResponse.json({ error: 'Server error' }, { status: 500 })

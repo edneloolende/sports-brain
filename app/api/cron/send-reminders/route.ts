@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getAllSubscriberEmails, getSubscriber, markSent } from '@/app/lib/subscribers'
-import { sendReminderEmail, getLocalHourInTimezone, getLocalDateInTimezone } from '@/app/lib/email'
+import { sendReminderEmail, getLocalDateInTimezone } from '@/app/lib/email'
 
-// Runs every hour via Vercel Cron (see vercel.json).
-// Sends to subscribers where the local hour is currently 8 (8am–8:59am).
+// Runs daily at 8am UTC via Vercel Cron (see vercel.json).
+// Sends to all subscribers who haven't received today's puzzle yet.
 
 export async function GET(req: NextRequest) {
   // Protect the endpoint — Vercel sends the CRON_SECRET as a bearer token
@@ -12,6 +12,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
+  const today = new Date().toISOString().slice(0, 10) // YYYY-MM-DD UTC
   const emails = await getAllSubscriberEmails()
   let sent = 0
   let skipped = 0
@@ -22,14 +23,11 @@ export async function GET(req: NextRequest) {
       const sub = await getSubscriber(email)
       if (!sub) continue
 
-      const localHour = getLocalHourInTimezone(sub.timezone)
+      // Skip if already sent today
       const localDate = getLocalDateInTimezone(sub.timezone)
-
-      // Only send during the 8am hour and if we haven't already sent today
-      if (localHour !== 8) { skipped++; continue }
       if (sub.lastSentDate === localDate) { skipped++; continue }
 
-      const ok = await sendReminderEmail(email, sub.token, localDate)
+      const ok = await sendReminderEmail(email, sub.token, today)
       if (ok) {
         await markSent(email, localDate)
         sent++
