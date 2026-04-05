@@ -439,21 +439,24 @@ export default function GameClient({ puzzle }: Props) {
   }, [puzzle.questions.length])
 
   const endScreenRef = useRef<HTMLDivElement>(null)
+  const ctaRef = useRef<HTMLDivElement>(null)
 
   // Ensure the page always starts at the top on load/refresh
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
-  // When the quiz completes, scroll the end screen into view so the
-  // score, GIF and CTAs are the focus rather than the completed questions.
+  // When the quiz completes, scroll so the GIF and subscription CTA are
+  // both visible. On mobile we anchor to the CTA section (block: end) so
+  // the GIF sits above it; on wider screens we scroll to the top of the
+  // end screen so the score is visible too.
   useEffect(() => {
     if (!progress.completed) return
     setTimeout(() => {
-      const el = endScreenRef.current
+      const isMobile = window.innerWidth < 640
+      const el = isMobile ? ctaRef.current : endScreenRef.current
       if (!el) return
-      const top = el.getBoundingClientRect().top + window.scrollY - 80
-      window.scrollTo({ top, behavior: 'smooth' })
+      el.scrollIntoView({ behavior: 'smooth', block: isMobile ? 'end' : 'start' })
     }, 300)
   }, [progress.completed])
 
@@ -673,8 +676,7 @@ export default function GameClient({ puzzle }: Props) {
                   <img
                     src={gifUrl}
                     alt={caption}
-                    className="w-full rounded-2xl object-cover"
-                    style={{ maxHeight: '220px' }}
+                    className="w-full rounded-2xl object-cover max-h-[160px] sm:max-h-[220px]"
                   />
                 </div>
               )
@@ -684,7 +686,7 @@ export default function GameClient({ puzzle }: Props) {
             <div className="w-full max-w-xs mx-auto">
               <hr className="border-white/10 mt-6 mb-6" />
             </div>
-            <div className="flex flex-col gap-3 w-full max-w-xs mx-auto">
+            <div ref={ctaRef} className="flex flex-col gap-3 w-full max-w-xs mx-auto">
               <p className="text-sm text-white/50 text-center">Get tomorrow&apos;s quiz in your inbox.</p>
               <p className="text-sm text-white/30 text-center -mt-2">Unsubscribe anytime.</p>
               <EmailSignup />
