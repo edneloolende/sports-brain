@@ -4,22 +4,29 @@ import { Redis } from '@upstash/redis'
 import { addSubscriber } from '@/app/lib/subscribers'
 import { sendWelcomeEmail } from '@/app/lib/email'
 
-const ratelimit = new Ratelimit({
-  redis: new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL!,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-  }),
-  limiter: Ratelimit.slidingWindow(3, '1 h'),
-  prefix: 'rl:subscribe',
-})
+function getRatelimit() {
+  return new Ratelimit({
+    redis: new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL!,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+    }),
+    limiter: Ratelimit.slidingWindow(3, '1 h'),
+    prefix: 'rl:subscribe',
+  })
+}
 
 export async function POST(req: NextRequest) {
   try {
     // Rate limit by IP — max 3 attempts per IP per hour
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
-    const { success } = await ratelimit.limit(ip)
-    if (!success) {
-      return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 })
+    // Wrapped defensively so a ratelimit failure never blocks a real subscriber
+    try {
+      const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
+      const { success } = await getRatelimit().limit(ip)
+      if (!success) {
+        return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 })
+      }
+    } catch (rlErr) {
+      console.error('[subscribe] ratelimit error (continuing):', rlErr)
     }
 
     const { email, timezone } = await req.json()
