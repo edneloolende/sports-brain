@@ -82,33 +82,39 @@ export default function GuessInput({
   }, [])
 
   // When keyboard opens on mobile, scroll the input into view above it.
-  // We listen to visualViewport resize (fires when the keyboard appears/hides)
-  // rather than using a fixed timeout, which is unreliable on slow devices.
-  useEffect(() => {
+  // We use both approaches:
+  // 1. scrollIntoView immediately on focus (catches the keyboard appearing)
+  // 2. visualViewport resize listener as a follow-up correction
+  function scrollInputIntoView() {
     const vv = window.visualViewport
-    if (!vv) return
-    function onViewportResize() {
-      const el = containerRef.current
-      if (!el || !focused) return
+    const el = containerRef.current
+    if (!el) return
+    if (vv) {
       const rect = el.getBoundingClientRect()
-      const visibleBottom = vv!.offsetTop + vv!.height
+      const visibleBottom = vv.offsetTop + vv.height
       const gap = 24
       if (rect.bottom > visibleBottom - gap) {
         window.scrollBy({ top: rect.bottom - visibleBottom + gap, behavior: 'smooth' })
       }
+    } else {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
-    vv.addEventListener('resize', onViewportResize)
-    return () => vv.removeEventListener('resize', onViewportResize)
-  }, [focused])
+  }
+
+  useEffect(() => {
+    const vv = window.visualViewport
+    if (!vv) return
+    vv.addEventListener('resize', scrollInputIntoView)
+    return () => vv.removeEventListener('resize', scrollInputIntoView)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   function handleFocus() {
     setFocused(true)
-    // Fallback for browsers without visualViewport support
-    if (!window.visualViewport) {
-      setTimeout(() => {
-        containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      }, 320)
-    }
+    // Scroll immediately on focus so the input is visible before
+    // and after the keyboard finishes animating in
+    setTimeout(scrollInputIntoView, 50)
+    setTimeout(scrollInputIntoView, 300)
   }
 
   function handleSubmit() {
