@@ -899,7 +899,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'The only player to score a hat-trick in a World Cup final — for England against West Germany at Wembley in 1966',
+        clue: 'Scored a hat-trick in the 1966 World Cup final as England beat West Germany 4-2 at Wembley — one of his goals famously disputed by the Germans over whether it crossed the line',
         answer: 'HURST',
         category: 'player',
         difficulty: 2,
