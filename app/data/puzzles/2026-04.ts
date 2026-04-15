@@ -113,8 +113,8 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Spanish club known as Los Blancos',
-        answer: 'REALMADRID',
+        clue: 'Spanish club known as Los Blancos, winners of the most Champions League titles',
+        answer: 'REAL',
         category: 'club',
         difficulty: 1,
         isProperNoun: true,
