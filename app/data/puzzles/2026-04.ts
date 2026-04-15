@@ -565,8 +565,8 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-15',
     questions: [
       {
-        clue: 'Italian club who won the treble of Serie A, Coppa Italia and Champions League in 2010',
-        answer: 'INTERMILAN',
+        clue: 'Italian club from Milan who won the treble of Serie A, Coppa Italia and Champions League in 2010',
+        answer: 'INTER',
         category: 'club',
         difficulty: 2,
         isProperNoun: true,
@@ -633,8 +633,8 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'German club with the most Bundesliga titles who also won six consecutive league titles between 2013 and 2019',
-        answer: 'BAYERNMUNICH',
+        clue: 'German club with the most Bundesliga titles, winning six consecutive between 2013 and 2019',
+        answer: 'BAYERN',
         category: 'club',
         difficulty: 1,
         isProperNoun: true,
