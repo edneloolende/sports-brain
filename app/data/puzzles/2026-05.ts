@@ -1092,8 +1092,8 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'PSG\'s home — a 47,000-capacity stadium in the 16th arrondissement of Paris, hosting top-flight football since 1972',
-        answer: 'PARCDESPRINCES',
+        clue: 'England\'s national stadium, rebuilt on its north London site and reopened in 2007 — the venue for FA Cup finals, major internationals and the EFL Championship play-off final',
+        answer: 'WEMBLEY',
         category: 'stadium',
         difficulty: 1,
         isProperNoun: true,

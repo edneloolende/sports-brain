@@ -779,8 +779,8 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored Brazil\'s fourth goal in the 1970 World Cup final against Italy — the sweeping team move widely considered the greatest goal in football history',
-        answer: 'CARLOSALBERTO',
+        clue: 'Italian midfielder whose emotional screaming celebration after scoring in the 1982 World Cup final against West Germany became one of football\'s most iconic images',
+        answer: 'TARDELLI',
         category: 'player',
         difficulty: 3,
         isProperNoun: true,
@@ -899,8 +899,8 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Brazilian left back who scored an apparently impossible swerving free kick against France in 1997 — three-time Champions League winner with Real Madrid',
-        answer: 'ROBERTOCARLOS',
+        clue: 'The only player to score a hat-trick in a World Cup final — for England against West Germany at Wembley in 1966',
+        answer: 'HURST',
         category: 'player',
         difficulty: 2,
         isProperNoun: true,
