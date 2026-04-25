@@ -1033,7 +1033,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Scored for Leeds United during their 2000/01 Champions League semi-final run",
+        clue: "Started the 2005 Champions League final for Liverpool but was forced off injured before half-time — his replacement went on to score in the famous comeback",
         answer: 'KEWELL',
         category: 'player',
         difficulty: 5,
