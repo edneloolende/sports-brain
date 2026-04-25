@@ -1045,7 +1045,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-27',
     questions: [
       {
-        clue: 'Returned from an 8-month ban to inspire Manchester United\'s comeback from 12 points behind Newcastle, winning the 1995/96 Premier League title',
+        clue: 'Received an 8-month ban for leaping into the Crystal Palace crowd in 1995, then returned to win the Premier League title with Manchester United',
         answer: 'CANTONA',
         category: 'player',
         difficulty: 2,
