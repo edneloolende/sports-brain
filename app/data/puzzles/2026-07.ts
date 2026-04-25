@@ -26,7 +26,7 @@ export const PUZZLES_2026_07: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Top scorer for Deportivo La Coruna in their stunning 2003/04 Champions League run — including the quarter-final comeback against AC Milan after losing the first leg 4-1',
+        clue: 'Top scorer for Deportivo La Coruna in their stunning 2003/04 UCL run — including the quarter-final comeback against AC Milan after losing the first leg 4-1',
         answer: 'MAKAAY',
         category: 'player',
         difficulty: 4,

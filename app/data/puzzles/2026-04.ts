@@ -106,14 +106,14 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Missed the 1999 Champions League final through suspension",
+        clue: "Missed the 1999 UCL final through suspension",
         answer: 'KEANE',
         category: 'player',
         difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: 'Spanish club known as Los Blancos, winners of the most Champions League titles',
+        clue: 'Spanish club known as Los Blancos, winners of the most UCL titles',
         answer: 'REAL',
         category: 'club',
         difficulty: 1,
@@ -252,7 +252,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Scored Liverpool's third in the 2005 Champions League final comeback",
+        clue: "Scored Liverpool's third in the 2005 UCL final comeback",
         answer: 'ALONSO',
         category: 'player',
         difficulty: 5,
@@ -292,7 +292,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: 'Won the Champions League with Chelsea in 2021 after joining from Real Madrid',
+        clue: 'Won the UCL with Chelsea in 2021 after joining from Real Madrid',
         answer: 'KOVACIC',
         category: 'player',
         difficulty: 3,
@@ -313,7 +313,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Dutch midfielder who won the Champions League, Serie A and Coppa Italia with Inter Milan in 2009/10 — finishing runner-up for the Ballon d\'Or that year',
+        clue: 'Dutch midfielder who won the UCL, Serie A and Coppa Italia with Inter Milan in 2009/10 — finishing runner-up for the Ballon d\'Or that year',
         answer: 'SNEIJDER',
         category: 'player',
         difficulty: 3,
@@ -339,7 +339,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Guided Spurs to the 2019 Champions League final',
+        clue: 'Guided Spurs to the 2019 UCL final',
         answer: 'POCHETTINO',
         category: 'manager',
         difficulty: 3,
@@ -386,7 +386,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored the winning goal in the 1995 Champions League final for Ajax as an 18-year-old',
+        clue: 'Scored the winning goal in the 1995 UCL final for Ajax as an 18-year-old',
         answer: 'KLUIVERT',
         category: 'player',
         difficulty: 4,
@@ -459,7 +459,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Leeds United's leading scorer during their 2000/01 Champions League run",
+        clue: "Leeds United's leading scorer during their 2000/01 UCL run",
         answer: 'VIDUKA',
         category: 'player',
         difficulty: 3,
@@ -546,14 +546,14 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Spanish club nicknamed Los Colchoneros, reached two Champions League finals under Diego Simeone',
+        clue: 'Spanish club nicknamed Los Colchoneros, reached two UCL finals under Diego Simeone',
         answer: 'ATLETICO',
         category: 'club',
         difficulty: 2,
         isProperNoun: true,
       },
       {
-        clue: 'Scored a bicycle kick in the 2018 Champions League final for Real Madrid against Liverpool',
+        clue: 'Scored a bicycle kick in the 2018 UCL final for Real Madrid against Liverpool',
         answer: 'BALE',
         category: 'player',
         difficulty: 3,
@@ -565,7 +565,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-15',
     questions: [
       {
-        clue: 'Italian club from Milan who won the treble of Serie A, Coppa Italia and Champions League in 2010',
+        clue: 'Italian club from Milan who won the treble of Serie A, Coppa Italia and UCL in 2010',
         answer: 'INTER',
         category: 'club',
         difficulty: 2,
@@ -666,7 +666,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Scored Liverpool's second in the 2005 Champions League final",
+        clue: "Scored Liverpool's second in the 2005 UCL final",
         answer: 'SMICER',
         category: 'player',
         difficulty: 5,
@@ -699,7 +699,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the Champions League with AC Milan in 2003 and 2007, and the World Cup with Italy in 2006 as a combative midfielder',
+        clue: 'Won the UCL with AC Milan in 2003 and 2007, and the World Cup with Italy in 2006 as a combative midfielder',
         answer: 'GATTUSO',
         category: 'player',
         difficulty: 3,
@@ -779,7 +779,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Guided Aston Villa to 4th place and Champions League football in 2023/24",
+        clue: "Guided Aston Villa to 4th place and UCL football in 2023/24",
         answer: 'EMERY',
         category: 'manager',
         difficulty: 3,
@@ -826,14 +826,14 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Finnish midfielder who won the Champions League with Ajax in 1995 and later played for Barcelona and Liverpool',
+        clue: 'Finnish midfielder who won the UCL with Ajax in 1995 and later played for Barcelona and Liverpool',
         answer: 'LITMANEN',
         category: 'player',
         difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: 'Scored an audacious chip in the 1994 Champions League final for AC Milan against Barcelona',
+        clue: 'Scored an audacious chip in the 1994 UCL final for AC Milan against Barcelona',
         answer: 'SAVICEVIC',
         category: 'player',
         difficulty: 5,
@@ -993,7 +993,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored twice in the 2004 Champions League semi-final for Monaco against Chelsea, sending Monaco to the final',
+        clue: 'Scored twice in the 2004 UCL semi-final for Monaco against Chelsea, sending Monaco to the final',
         answer: 'MORIENTES',
         category: 'player',
         difficulty: 4,
@@ -1033,7 +1033,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Started the 2005 Champions League final for Liverpool but was forced off injured before half-time — his replacement went on to score in the famous comeback",
+        clue: "Started the 2005 UCL final for Liverpool but was forced off injured before half-time — his replacement went on to score in the famous comeback",
         answer: 'KEWELL',
         category: 'player',
         difficulty: 5,
@@ -1066,14 +1066,14 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won two Champions League titles with Real Madrid and was instrumental in their victory over Manchester United in 2000',
+        clue: 'Won two UCL titles with Real Madrid and was instrumental in their victory over Manchester United in 2000',
         answer: 'REDONDO',
         category: 'player',
         difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: 'Won three Champions League titles and three La Liga titles with Real Madrid as their captain in the late 1990s',
+        clue: 'Won three UCL titles and three La Liga titles with Real Madrid as their captain in the late 1990s',
         answer: 'HIERRO',
         category: 'player',
         difficulty: 3,
@@ -1085,7 +1085,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-28',
     questions: [
       {
-        clue: 'Scored the opening goal of Liverpool\'s 2005 Champions League final comeback from 3-0 down, then lifted the trophy as captain in Istanbul',
+        clue: 'Scored the opening goal of Liverpool\'s 2005 UCL final comeback from 3-0 down, then lifted the trophy as captain in Istanbul',
         answer: 'GERRARD',
         category: 'player',
         difficulty: 2,
@@ -1099,7 +1099,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Captained Tottenham for nine years, leading them to the 2019 Champions League final",
+        clue: "Captained Tottenham for nine years, leading them to the 2019 UCL final",
         answer: 'LLORIS',
         category: 'player',
         difficulty: 3,
@@ -1113,7 +1113,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the 2014 World Cup with Germany and four Champions League titles with Real Madrid',
+        clue: 'Won the 2014 World Cup with Germany and four UCL titles with Real Madrid',
         answer: 'KROOS',
         category: 'player',
         difficulty: 2,

@@ -19,14 +19,14 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored twice for AC Milan before half-time in the 2005 Champions League final, only for Liverpool to come back from 3-0 down',
+        clue: 'Scored twice for AC Milan before half-time in the 2005 UCL final, only for Liverpool to come back from 3-0 down',
         answer: 'CRESPO',
         category: 'player',
         difficulty: 1,
         isProperNoun: true,
       },
       {
-        clue: 'Managed Chelsea to the 2021 Champions League title just four months after being appointed — defeating Manchester City 1-0 in Porto',
+        clue: 'Managed Chelsea to the 2021 UCL title just four months after being appointed — defeating Manchester City 1-0 in Porto',
         answer: 'TUCHEL',
         category: 'manager',
         difficulty: 3,
@@ -139,7 +139,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored the winning goal in the 2006 Champions League final for Barcelona against Arsenal',
+        clue: 'Scored the winning goal in the 2006 UCL final for Barcelona against Arsenal',
         answer: 'BELLETTI',
         category: 'player',
         difficulty: 1,
@@ -205,7 +205,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
     date: '2026-06-06',
     questions: [
       {
-        clue: 'Chelsea\'s Spanish playmaker named FWA Footballer of the Year in 2011/12 — the season the club won the Champions League',
+        clue: 'Chelsea\'s Spanish playmaker named FWA Footballer of the Year in 2011/12 — the season the club won the UCL',
         answer: 'MATA',
         category: 'player',
         difficulty: 3,
@@ -259,7 +259,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the World Cup, two European Championships, and three Champions League titles with Barcelona and Spain',
+        clue: 'Won the World Cup, two European Championships, and three UCL titles with Barcelona and Spain',
         answer: 'XAVI',
         category: 'player',
         difficulty: 2,
@@ -285,7 +285,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
     date: '2026-06-08',
     questions: [
       {
-        clue: 'Guided Leeds United to the 2000/01 Champions League semi-finals — the last English club outside the traditional top four to reach that stage',
+        clue: 'Guided Leeds United to the 2000/01 UCL semi-finals — the last English club outside the traditional top four to reach that stage',
         answer: 'OLEARY',
         category: 'manager',
         difficulty: 3,
@@ -393,7 +393,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored twice in the 2019 Champions League semi-final second leg for Liverpool to overturn a 3-0 deficit against Barcelona',
+        clue: 'Scored twice in the 2019 UCL semi-final second leg for Liverpool to overturn a 3-0 deficit against Barcelona',
         answer: 'ORIGI',
         category: 'player',
         difficulty: 5,
@@ -485,7 +485,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
     date: '2026-06-13',
     questions: [
       {
-        clue: 'Chelsea\'s all-time top scorer with 211 goals — won three Premier League titles and scored in the 2012 Champions League final',
+        clue: 'Chelsea\'s all-time top scorer with 211 goals — won three Premier League titles and scored in the 2012 UCL final',
         answer: 'LAMPARD',
         category: 'player',
         difficulty: 1,
@@ -565,14 +565,14 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
     date: '2026-06-15',
     questions: [
       {
-        clue: 'Arsenal\'s German goalkeeper who replaced David Seaman and was sent off in the 2006 Champions League final',
+        clue: 'Arsenal\'s German goalkeeper who replaced David Seaman and was sent off in the 2006 UCL final',
         answer: 'LEHMANN',
         category: 'player',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: 'Top scorer in Sampdoria\'s 1990/91 title-winning season, later won the Champions League with Juventus in 1996',
+        clue: 'Top scorer in Sampdoria\'s 1990/91 title-winning season, later won the UCL with Juventus in 1996',
         answer: 'VIALLI',
         category: 'player',
         difficulty: 3,
@@ -626,7 +626,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Managed Real Madrid to two Champions League titles before guiding Spain to the 2010 World Cup',
+        clue: 'Managed Real Madrid to two UCL titles before guiding Spain to the 2010 World Cup',
         answer: 'DELBOSQUE',
         category: 'manager',
         difficulty: 4,
@@ -685,7 +685,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
     date: '2026-06-18',
     questions: [
       {
-        clue: 'Chelsea left back widely regarded as the best in that position in Premier League history, winning four titles and the 2012 Champions League',
+        clue: 'Chelsea left back widely regarded as the best in that position in Premier League history, winning four titles and the 2012 UCL',
         answer: 'COLE',
         category: 'player',
         difficulty: 4,
@@ -699,7 +699,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Guided Monaco to the 2004 Champions League final, losing to Porto — the only time in the club\'s history they have appeared in a European Cup final',
+        clue: 'Guided Monaco to the 2004 UCL final, losing to Porto — the only time in the club\'s history they have appeared in a European Cup final',
         answer: 'DESCHAMPS',
         category: 'manager',
         difficulty: 4,
@@ -753,7 +753,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the Champions League with three different clubs — Ajax in 1995, Real Madrid in 1998, and AC Milan in 2003 and 2007 — the club\'s second European triumph',
+        clue: 'Won the UCL with three different clubs — Ajax in 1995, Real Madrid in 1998, and AC Milan in 2003 and 2007 — the club\'s second European triumph',
         answer: 'SEEDORF',
         category: 'player',
         difficulty: 5,
@@ -913,7 +913,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Marseille\'s controversial owner whose personal drive delivered the club\'s 1993 Champions League title',
+        clue: 'Marseille\'s controversial owner whose personal drive delivered the club\'s 1993 UCL title',
         answer: 'TAPIE',
         category: 'manager',
         difficulty: 4,
@@ -946,7 +946,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored both goals in the 2007 Champions League final for AC Milan against Liverpool — including a brilliantly taken chip that settled the tie',
+        clue: 'Scored both goals in the 2007 UCL final for AC Milan against Liverpool — including a brilliantly taken chip that settled the tie',
         answer: 'INZAGHI',
         category: 'player',
         difficulty: 2,
@@ -986,14 +986,14 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'First French club to win the Champions League, in 1993',
+        clue: 'First French club to win the UCL, in 1993',
         answer: 'MARSEILLE',
         category: 'club',
         difficulty: 2,
         isProperNoun: true,
       },
       {
-        clue: 'Scored a stunning long-range goal for Porto in the 2004 Champions League final against Monaco',
+        clue: 'Scored a stunning long-range goal for Porto in the 2004 UCL final against Monaco',
         answer: 'DECO',
         category: 'player',
         difficulty: 4,
@@ -1005,14 +1005,14 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
     date: '2026-06-26',
     questions: [
       {
-        clue: 'Slipped while taking the penalty that would have won Chelsea the 2008 Champions League final — missing the shot that could have sealed their first European Cup',
+        clue: 'Slipped while taking the penalty that would have won Chelsea the 2008 UCL final — missing the shot that could have sealed their first European Cup',
         answer: 'TERRY',
         category: 'player',
         difficulty: 4,
         isProperNoun: true,
       },
       {
-        clue: 'Scored twice in the first half of the 1997 Champions League final in Munich — his brace putting Borussia Dortmund in control before Ricken added a third',
+        clue: 'Scored twice in the first half of the 1997 UCL final in Munich — his brace putting Borussia Dortmund in control before Ricken added a third',
         answer: 'RIEDLE',
         category: 'player',
         difficulty: 4,
@@ -1146,7 +1146,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Valencia\'s most expensive outgoing transfer — sold to Lazio in 2001 for €48 million — central to the side that reached consecutive Champions League finals in 2000 and 2001',
+        clue: 'Valencia\'s most expensive outgoing transfer — sold to Lazio in 2001 for €48 million — central to the side that reached consecutive UCL finals in 2000 and 2001',
         answer: 'MENDIETA',
         category: 'player',
         difficulty: 5,
@@ -1186,7 +1186,7 @@ export const PUZZLES_2026_06: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Made over 850 appearances for Inter Milan across two decades — captaining the club to the 2010 Champions League treble',
+        clue: 'Made over 850 appearances for Inter Milan across two decades — captaining the club to the 2010 UCL treble',
         answer: 'ZANETTI',
         category: 'player',
         difficulty: 5,

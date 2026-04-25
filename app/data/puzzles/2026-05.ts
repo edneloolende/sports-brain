@@ -85,7 +85,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-03',
     questions: [
       {
-        clue: 'Beat Bayern Munich in their own Allianz Arena to win the 2012 Champions League — the first London club to lift the trophy',
+        clue: 'Beat Bayern Munich in their own Allianz Arena to win the 2012 UCL — the first London club to lift the trophy',
         answer: 'CHELSEA',
         category: 'club',
         difficulty: 2,
@@ -113,7 +113,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the 2020 Champions League with Bayern Munich and is Germany\'s first-choice central midfielder',
+        clue: 'Won the 2020 UCL with Bayern Munich and is Germany\'s first-choice central midfielder',
         answer: 'KIMMICH',
         category: 'player',
         difficulty: 3,
@@ -285,14 +285,14 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-08',
     questions: [
       {
-        clue: 'Scored the winner as a substitute in injury time of the 1999 Champions League final, completing Manchester United\'s treble',
+        clue: 'Scored the winner as a substitute in injury time of the 1999 UCL final, completing Manchester United\'s treble',
         answer: 'SOLSKJAER',
         category: 'player',
         difficulty: 1,
         isProperNoun: true,
       },
       {
-        clue: 'Won the Inter treble of Serie A, Coppa Italia, and Champions League in 2009/10 — before controversially joining arch-rivals Juventus',
+        clue: 'Won the Inter treble of Serie A, Coppa Italia, and UCL in 2009/10 — before controversially joining arch-rivals Juventus',
         answer: 'TEVEZ',
         category: 'player',
         difficulty: 1,
@@ -386,14 +386,14 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Managed Barcelona to La Liga, the Champions League, and the Copa del Rey in 2008/09 — the start of one of club football\'s most dominant eras',
+        clue: 'Managed Barcelona to La Liga, the UCL, and the Copa del Rey in 2008/09 — the start of one of club football\'s most dominant eras',
         answer: 'GUARDIOLA',
         category: 'manager',
         difficulty: 1,
         isProperNoun: true,
       },
       {
-        clue: 'Scored a hat-trick for Newcastle against Barcelona in the 1997/98 Champions League group stage — one of the competition\'s most famous individual performances',
+        clue: 'Scored a hat-trick for Newcastle against Barcelona in the 1997/98 UCL group stage — one of the competition\'s most famous individual performances',
         answer: 'ASPRILLA',
         category: 'player',
         difficulty: 3,
@@ -492,7 +492,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Led Inter Milan to the treble of Serie A, Coppa Italia, and Champions League in 2009/10',
+        clue: 'Led Inter Milan to the treble of Serie A, Coppa Italia, and UCL in 2009/10',
         answer: 'MOURINHO',
         category: 'manager',
         difficulty: 1,
@@ -513,7 +513,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Guided Borussia Dortmund to the 1997 Champions League title over Juventus — their first and only European Cup',
+        clue: 'Guided Borussia Dortmund to the 1997 UCL title over Juventus — their first and only European Cup',
         answer: 'HITZFELD',
         category: 'manager',
         difficulty: 3,
@@ -579,14 +579,14 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored the penalty shoot-out saves that won Liverpool the 2005 Champions League final in Istanbul',
+        clue: 'Scored the penalty shoot-out saves that won Liverpool the 2005 UCL final in Istanbul',
         answer: 'DUDEK',
         category: 'player',
         difficulty: 2,
         isProperNoun: true,
       },
       {
-        clue: 'Managed Chelsea to the 2012 Champions League title as caretaker — becoming the first manager to win it in their first CL campaign in charge',
+        clue: 'Managed Chelsea to the 2012 UCL title as caretaker — becoming the first manager to win it in their first CL campaign in charge',
         answer: 'DIMATTEO',
         category: 'manager',
         difficulty: 3,
@@ -633,7 +633,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Headed the opening goal in the 2016 Champions League final for Real Madrid against Atletico Madrid — a match eventually decided on penalties',
+        clue: 'Headed the opening goal in the 2016 UCL final for Real Madrid against Atletico Madrid — a match eventually decided on penalties',
         answer: 'RAMOS',
         category: 'player',
         difficulty: 3,
@@ -659,7 +659,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Managed AC Milan to Champions League titles in 2003 and 2007 across an eight-year spell at the club',
+        clue: 'Managed AC Milan to UCL titles in 2003 and 2007 across an eight-year spell at the club',
         answer: 'ANCELOTTI',
         category: 'manager',
         difficulty: 2,
@@ -673,7 +673,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Guided Ajax to the 1995 Champions League title — the last Dutch club to win European football\'s biggest prize',
+        clue: 'Guided Ajax to the 1995 UCL title — the last Dutch club to win European football\'s biggest prize',
         answer: 'VANGAAL',
         category: 'manager',
         difficulty: 3,
@@ -706,14 +706,14 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won seven Bundesliga titles and the 2013 Champions League with Bayern Munich — famous for cutting inside from the right wing to score with his left foot',
+        clue: 'Won seven Bundesliga titles and the 2013 UCL with Bayern Munich — famous for cutting inside from the right wing to score with his left foot',
         answer: 'ROBBEN',
         category: 'player',
         difficulty: 2,
         isProperNoun: true,
       },
       {
-        clue: 'Guided Atletico Madrid to the 2014 and 2016 Champions League finals — losing both to Real Madrid — on a fraction of their budget',
+        clue: 'Guided Atletico Madrid to the 2014 and 2016 UCL finals — losing both to Real Madrid — on a fraction of their budget',
         answer: 'SIMEONE',
         category: 'manager',
         difficulty: 3,
@@ -779,14 +779,14 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Guided Marseille to the 1992/93 Champions League title — the first and (before 2025) only French club to win European football\'s top prize',
+        clue: 'Guided Marseille to the 1992/93 UCL title — the first and (before 2025) only French club to win European football\'s top prize',
         answer: 'GOETHALS',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: 'Guided Bayern Munich to the Champions League treble in 2012/13, their most successful season in history',
+        clue: 'Guided Bayern Munich to the UCL treble in 2012/13, their most successful season in history',
         answer: 'HEYNCKES',
         category: 'manager',
         difficulty: 2,
@@ -819,7 +819,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Opened the scoring in the 2009 Champions League final for Barcelona against Manchester United in Rome',
+        clue: 'Opened the scoring in the 2009 UCL final for Barcelona against Manchester United in Rome',
         answer: 'ETOO',
         category: 'player',
         difficulty: 1,
@@ -845,7 +845,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-22',
     questions: [
       {
-        clue: 'Captained Chelsea between 2002 and 2004 having previously won the Champions League with AC Milan and the World Cup with France',
+        clue: 'Captained Chelsea between 2002 and 2004 having previously won the UCL with AC Milan and the World Cup with France',
         answer: 'DESAILLY',
         category: 'player',
         difficulty: 2,
@@ -859,21 +859,21 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored both goals in Inter Milan\'s 2-0 victory over Bayern Munich in the 2010 Champions League final',
+        clue: 'Scored both goals in Inter Milan\'s 2-0 victory over Bayern Munich in the 2010 UCL final',
         answer: 'MILITO',
         category: 'player',
         difficulty: 1,
         isProperNoun: true,
       },
       {
-        clue: 'Guided Borussia Dortmund to back-to-back Bundesliga titles in 1994/95 and 1995/96 before winning the Champions League the following year',
+        clue: 'Guided Borussia Dortmund to back-to-back Bundesliga titles in 1994/95 and 1995/96 before winning the UCL the following year',
         answer: 'HITZFELD',
         category: 'manager',
         difficulty: 3,
         isProperNoun: true,
       },
       {
-        clue: 'Scored the winning goal in the 2013 Champions League final for Bayern Munich against Borussia Dortmund',
+        clue: 'Scored the winning goal in the 2013 UCL final for Bayern Munich against Borussia Dortmund',
         answer: 'ROBBEN',
         category: 'player',
         difficulty: 3,
@@ -899,7 +899,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored Real Madrid\'s winning goal in the 2002 Champions League final against Bayer Leverkusen with a stunning volley',
+        clue: 'Scored Real Madrid\'s winning goal in the 2002 UCL final against Bayer Leverkusen with a stunning volley',
         answer: 'ZIDANE',
         category: 'player',
         difficulty: 2,
@@ -965,7 +965,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-25',
     questions: [
       {
-        clue: 'Liverpool\'s Spanish goalkeeper between 2005 and 2013, winning the Champions League and FA Cup during his Anfield spell',
+        clue: 'Liverpool\'s Spanish goalkeeper between 2005 and 2013, winning the UCL and FA Cup during his Anfield spell',
         answer: 'REINA',
         category: 'player',
         difficulty: 2,
@@ -993,7 +993,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored within seconds of coming on as a substitute in the 1997 Champions League final — his chip catching Juventus off guard and sealing a 3-1 win for Borussia Dortmund',
+        clue: 'Scored within seconds of coming on as a substitute in the 1997 UCL final — his chip catching Juventus off guard and sealing a 3-1 win for Borussia Dortmund',
         answer: 'RICKEN',
         category: 'player',
         difficulty: 3,
@@ -1012,7 +1012,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Managed Juventus from 2014 to 2019, winning five consecutive Scudettos and reaching two Champions League finals',
+        clue: 'Managed Juventus from 2014 to 2019, winning five consecutive Scudettos and reaching two UCL finals',
         answer: 'ALLEGRI',
         category: 'manager',
         difficulty: 2,
@@ -1066,7 +1066,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored the equaliser in the 94th minute of the 2014 Champions League final for Real Madrid against Atletico, before Madrid won in extra time',
+        clue: 'Scored the equaliser in the 94th minute of the 2014 UCL final for Real Madrid against Atletico, before Madrid won in extra time',
         answer: 'RAMOS',
         category: 'player',
         difficulty: 3,
@@ -1153,7 +1153,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored the decisive penalty in the 2003 Champions League final shootout for AC Milan against Juventus — a tense match that finished 0-0 after extra time',
+        clue: 'Scored the decisive penalty in the 2003 UCL final shootout for AC Milan against Juventus — a tense match that finished 0-0 after extra time',
         answer: 'SHEVCHENKO',
         category: 'player',
         difficulty: 4,

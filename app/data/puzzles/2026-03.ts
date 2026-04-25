@@ -113,7 +113,7 @@ export const PUZZLES_2026_03: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Scored the winner in the 1999 Champions League final',
+        clue: 'Scored the winner in the 1999 UCL final',
         answer: 'SOLSKJAER',
         category: 'player',
         difficulty: 2,
@@ -146,7 +146,7 @@ export const PUZZLES_2026_03: DailyPuzzle[] = [
         isProperNoun: false,
       },
       {
-        clue: 'Scored the equaliser in the 1999 Champions League final',
+        clue: 'Scored the equaliser in the 1999 UCL final',
         answer: 'SHERINGHAM',
         category: 'player',
         difficulty: 3,
@@ -172,7 +172,7 @@ export const PUZZLES_2026_03: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Hat-trick vs Barcelona in the 1997/98 Champions League',
+        clue: 'Hat-trick vs Barcelona in the 1997/98 UCL',
         answer: 'ASPRILLA',
         category: 'player',
         difficulty: 5,
@@ -219,7 +219,7 @@ export const PUZZLES_2026_03: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Led Chelsea to the 2012 Champions League as caretaker manager",
+        clue: "Led Chelsea to the 2012 UCL as caretaker manager",
         answer: 'DIMATTEO',
         category: 'manager',
         difficulty: 3,
@@ -245,7 +245,7 @@ export const PUZZLES_2026_03: DailyPuzzle[] = [
     date: '2026-03-31',
     questions: [
       {
-        clue: "Scored the equaliser in the 2012 Champions League final",
+        clue: "Scored the equaliser in the 2012 UCL final",
         answer: 'DROGBA',
         category: 'player',
         difficulty: 3,
