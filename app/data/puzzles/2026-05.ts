@@ -45,7 +45,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-02',
     questions: [
       {
-        clue: 'Won the 2003/04 Premier League season without losing a single match — the only team to complete an unbeaten top-flight season in English football history',
+        clue: 'Won the 2003/04 Premier League season without losing a single match — the only club to go unbeaten through an entire Premier League season',
         answer: 'ARSENAL',
         category: 'club',
         difficulty: 1,
@@ -205,7 +205,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-06',
     questions: [
       {
-        clue: 'Won the 2018 World Cup with France, scoring in the final against Croatia — and also won La Liga and the Europa League with Atletico Madrid',
+        clue: 'Won the 2018 World Cup with France, scoring in the final against Croatia — and also won the Europa League with Atletico Madrid in 2018',
         answer: 'GRIEZMANN',
         category: 'player',
         difficulty: 2,

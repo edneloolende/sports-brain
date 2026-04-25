@@ -1085,7 +1085,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-28',
     questions: [
       {
-        clue: 'Scored the header that ignited Liverpool\'s 2005 Champions League final comeback, then lifted the trophy as captain in Istanbul',
+        clue: 'Scored the opening goal of Liverpool\'s 2005 Champions League final comeback from 3-0 down, then lifted the trophy as captain in Istanbul',
         answer: 'GERRARD',
         category: 'player',
         difficulty: 2,
