@@ -1,5 +1,20 @@
 # Sports Brain — Question Writing Guidelines
 
+## Scope
+
+Questions cover **all of men's football** — Premier League, World Cup, Champions League, La Liga, Bundesliga, Serie A, Ligue 1, international tournaments (Euros, Copa América, AFCON), and beyond. The rules below apply equally to all competitions and eras.
+
+---
+
+## Multi-word answers
+
+All answers are a single unbroken string — no spaces. When the natural name is two words, use the most recognisable single word:
+
+- Club names: **REAL** (not REALMADRID), **INTER** (not INTERMILAN), **BAYERN** (not BAYERNMUNICH)
+- Player names where both words together form the common identity (e.g. Roberto Carlos, Carlos Alberto) should be avoided entirely as answers — replace the question with one that has a cleaner answer
+
+---
+
 ## Core Principle
 
 **Lead with the fact, not the identity.** A clue should describe what the person *did*, not who they *are*. Strip away the preamble. The fact itself should do the work.
@@ -91,7 +106,7 @@ The scale runs 1–5. The key calibration: **err harder**. Most well-known playe
 
 Any engaged football fan gets this immediately. The biggest names, the most iconic moments, the most obvious nicknames for top clubs.
 
-**Examples:**
+**Premier League examples:**
 - "Arsenal's all-time record scorer" → HENRY
 - "13 Premier League titles with Manchester United" → FERGUSON
 - "93rd-minute goal vs QPR on the final day to win the title" → AGUERO
@@ -99,13 +114,20 @@ Any engaged football fan gets this immediately. The biggest names, the most icon
 - "Ended Liverpool's 30-year wait for a league title" → KLOPP
 - Club nicknames for the biggest clubs: GUNNERS, REDS, BLUES, HAMMERS
 
+**Global football examples:**
+- "Scored five goals in a single World Cup semi-final aged 17" → PELE
+- "Won the World Cup as both a player and captain, and later as manager" → DESCHAMPS
+- "Most Ballon d'Or awards in history" → MESSI
+- "Scored the free kick in the 2002 Champions League final that is widely considered the greatest ever struck" → ZIDANE
+- Club nicknames: BIANCONERI (Juventus), BLAUGRANA (Barcelona), ROSSONERI (AC Milan)
+
 ---
 
-### ★★☆☆☆ — 2: Known to most PL fans
+### ★★☆☆☆ — 2: Known to most fans
 
-Famous players and facts that most people who follow the Premier League would know, but require a moment's thought.
+Famous players and facts that most people who follow football would know, but require a moment's thought.
 
-**Examples:**
+**Premier League examples:**
 - "Broke the PL record with 32 goals in 2017/18" → SALAH
 - "Manchester United's all-time record scorer" → ROONEY
 - "Led Chelsea to the Premier League title in 2004/05" → MOURINHO
@@ -113,13 +135,19 @@ Famous players and facts that most people who follow the Premier League would kn
 - "Player who won a record 13 PL titles" → GIGGS
 - Club nicknames for well-known but non-elite clubs: TOFFEES, FOXES, HORNETS
 
+**Global football examples:**
+- "Scored a hat-trick in the 1966 World Cup final as England beat West Germany 4-2 at Wembley" → HURST
+- "Missed the decisive penalty in the 1994 World Cup final, handing Brazil the title" → BAGGIO
+- "Won the Champions League as manager with Real Madrid in three consecutive seasons" → ZIDANE
+- "Top scorer at the 2014 World Cup with six goals, including a stunning volley against Uruguay" → RODRIGUEZ
+
 ---
 
-### ★★★☆☆ — 3: Solid PL knowledge required
+### ★★★☆☆ — 3: Solid football knowledge required
 
-Facts that require real engagement with the league — not just knowing the famous players, but knowing what they specifically did.
+Facts that require real engagement with the game — not just knowing the famous players, but knowing what they specifically did.
 
-**Examples:**
+**Premier League examples:**
 - "211 Chelsea goals" → LAMPARD
 - "Scored the equaliser in the 2012 Champions League final" → DROGBA
 - "Won the 2012 Champions League with Chelsea as caretaker manager" → DIMATTEO
@@ -127,13 +155,19 @@ Facts that require real engagement with the league — not just knowing the famo
 - "Guided Blackburn to their only Premier League title" → DALGLISH
 - "Football Writers' Player of the Year in Arsenal's 2001/02 Double season" → PIRES
 
+**Global football examples:**
+- "Scored six goals at the 1982 World Cup including a hat-trick against Brazil — having served a match-fixing ban earlier in his career" → ROSSI
+- "Captained the Netherlands to three consecutive European Cup finals with Ajax in the early 1970s" → CRUYFF
+- "Guided Senegal to the 2002 World Cup quarter-finals in the nation's debut tournament appearance" → METSU
+- "Italian midfielder whose emotional screaming run after scoring in the 1982 World Cup final became one of football's most iconic images" → TARDELLI
+
 ---
 
-### ★★★★☆ — 4: Deep PL knowledge
+### ★★★★☆ — 4: Deep football knowledge
 
 Obscure stats, lesser-known players, or famous players with non-obvious clues. Someone who watched closely will know — casual fans will struggle.
 
-**Examples:**
+**Premier League examples:**
 - "PFA Player of the Year in 2016/17" → KANTE
 - "Won the Golden Boot with two different clubs in the late 90s and early 2000s" → HASSELBAINK
 - "Shearer's SAS strike partner at Blackburn" → SUTTON
@@ -141,19 +175,30 @@ Obscure stats, lesser-known players, or famous players with non-obvious clues. S
 - "Scored a Guinness World Record hat-trick in 2:56" → MANE
 - "Holds the all-time record for most PL assists by a foreign player" → FABREGAS
 
+**Global football examples:**
+- "The only goalkeeper to have won the Ballon d'Or" → YASHIN
+- "Scored the only goal in the 1994 Champions League final as AC Milan beat Barcelona 1-0" → SAVICEVIC *(clue: answer is actually MASSARO — Savicevic scored but Massaro netted the opener; verify before using)*
+- "Won the Champions League with three different clubs as a player" → SEEDORF
+- "Guided Verona to the 1984/85 Serie A title — one of the biggest upsets in Italian football history" → BAGNOLI
+
 ---
 
 ### ★★★★★ — 5: Elite or deliberately cryptic
 
-Either maximally stripped clues where the fact is well-known but the clue is oblique, or genuinely niche facts that only dedicated historians of the league would know.
+Either maximally stripped clues where the fact is well-known but the clue is oblique, or genuinely niche facts that only dedicated historians would know.
 
-**Examples:**
+**Premier League examples:**
 - "Upturned collar" → CANTONA *(single iconic image, no other context)*
 - "31 PL goals for Liverpool in 2013/14" → SUAREZ *(famous record, stripped of all identity)*
 - "Penalty saves in the 2005 CL final shootout won the trophy for Liverpool" → DUDEK
 - "Scored Liverpool's third in the 2005 Champions League final comeback" → ALONSO *(first or second = easier; third = very obscure)*
 - "Headed the winner in the 2013 FA Cup final vs Man City" → WATSON *(barely remembered)*
 - "Hat-trick vs Barcelona in the 1997/98 Champions League" → ASPRILLA
+
+**Global football examples:**
+- "Scored the winning goal in the 1950 World Cup final to silence nearly 200,000 home fans at the Maracana" → GHIGGIA *(the Maracanazo — the moment is famous; the scorer is not)*
+- "The only player to appear in eight World Cups" → BLANCO *(Sócrates? Actually — verify before using)*
+- "Scored from the halfway line for Juventus against Sampdoria in 1995/96" → VIALLI *(famous strike, obscure scorer)*
 
 ---
 
@@ -172,3 +217,4 @@ Every day does not need to hit all five ratings. A day can skew harder or easier
 5. Could a different player plausibly answer this? → If yes, add one specific detail
 6. Does the year/season matter? → Include if there's any risk of ambiguity
 7. Is the difficulty honest? → Famous player + specific obscure fact = at least a 3. When in doubt, go harder.
+8. Is the answer a single clean word? → Two-word club names: use the short form (REAL, INTER, BAYERN). Two-word player names: replace the question entirely.
