@@ -1073,7 +1073,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won three UCL titles and three La Liga titles with Real Madrid as their captain in the late 1990s',
+        clue: 'Scored 127 goals for Real Madrid as a central defender — winning three UCL titles between 1998 and 2002',
         answer: 'HIERRO',
         category: 'player',
         difficulty: 3,
@@ -1125,7 +1125,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-29',
     questions: [
       {
-        clue: 'Named European Footballer of the Year in 1968, the same year he helped Manchester United become the first English club to win the European Cup',
+        clue: 'Helped Manchester United become the first English club to win the European Cup in 1968 — and was named European Footballer of the Year the same year',
         answer: 'BEST',
         category: 'player',
         difficulty: 2,

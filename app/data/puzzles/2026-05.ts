@@ -26,14 +26,14 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won Euro 1992 with Denmark as their goalkeeper, shocking tournament favourites Germany in the final',
+        clue: 'Kept a clean sheet in the 1992 European Championship final as Denmark stunned Germany 2-0 — and went on to win five Premier League titles and the 1999 treble with Manchester United',
         answer: 'SCHMEICHEL',
         category: 'player',
         difficulty: 2,
         isProperNoun: true,
       },
       {
-        clue: 'Colombian midfielder who led his country to their best-ever World Cup performance in 1990 and starred at three World Cups with his distinctive afro',
+        clue: 'Captained Colombia to their best-ever World Cup performance in 1990 — instantly recognisable by his distinctive golden afro, he starred at three tournaments',
         answer: 'VALDERRAMA',
         category: 'player',
         difficulty: 3,
@@ -59,7 +59,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won nine Ligue 1 titles with PSG between 2013 and 2022, establishing himself as one of the most technically gifted midfielders of his generation',
+        clue: 'Won Euro 2020 with Italy while serving as PSG\'s midfield fulcrum for over a decade — suffering UCL heartbreak when PSG lost the 2020 final to Bayern Munich',
         answer: 'VERRATTI',
         category: 'player',
         difficulty: 4,
@@ -99,7 +99,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Ended Leeds United's 16-year absence from the Premier League, winning promotion in 2020",
+        clue: "Guided Leeds United back to the Premier League in 2020 after a 16-year absence, winning the Championship title",
         answer: 'BIELSA',
         category: 'manager',
         difficulty: 3,
@@ -113,7 +113,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the 2020 UCL with Bayern Munich and is Germany\'s first-choice central midfielder',
+        clue: 'Crossed for Kingsley Coman\'s winning goal in the 2020 UCL final — having originally been developed as a right-back at Bayern Munich before switching to central midfield',
         answer: 'KIMMICH',
         category: 'player',
         difficulty: 3,
@@ -252,7 +252,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: "Arsenal's record signing, arriving from Lille in 2019 for £72m",
+        clue: "Arsenal's then-record signing, arriving from Lille in 2019 for £72m",
         answer: 'PEPE',
         category: 'player',
         difficulty: 2,
@@ -346,7 +346,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Guided Atletico Madrid to La Liga titles in 2013/14 and 2020/21 — the only manager to break Real Madrid and Barcelona\'s stranglehold on the title in over a decade',
+        clue: 'Guided Atletico Madrid to La Liga titles in 2013/14 and 2020/21 — the only manager to break Real Madrid and Barcelona\'s decade-long grip on the Spanish title',
         answer: 'SIMEONE',
         category: 'manager',
         difficulty: 2,
