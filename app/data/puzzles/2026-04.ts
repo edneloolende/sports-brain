@@ -1066,7 +1066,7 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won two UCL titles with Real Madrid and was instrumental in their victory over Manchester United in 2000',
+        clue: 'Produced an iconic backheel nutmeg to beat a defender at Old Trafford before setting up a goal in Real Madrid\'s 2000 UCL quarter-final win over Manchester United',
         answer: 'REDONDO',
         category: 'player',
         difficulty: 4,
