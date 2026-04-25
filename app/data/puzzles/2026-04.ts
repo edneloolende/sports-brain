@@ -1005,11 +1005,11 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-26',
     questions: [
       {
-        clue: "Reading's nickname",
-        answer: 'ROYALS',
-        category: 'club',
+        clue: 'Scored a Premier League record 260 goals — the most in the competition\'s history',
+        answer: 'SHEARER',
+        category: 'player',
         difficulty: 1,
-        isProperNoun: false,
+        isProperNoun: true,
       },
       {
         clue: 'Captained Brazil to the 1994 World Cup, holding the trophy aloft in the penalty shootout win over Italy',
@@ -1045,11 +1045,11 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-27',
     questions: [
       {
-        clue: "Fulham's nickname",
-        answer: 'COTTAGERS',
-        category: 'club',
-        difficulty: 1,
-        isProperNoun: false,
+        clue: 'Returned from an 8-month ban to inspire Manchester United\'s comeback from 12 points behind Newcastle, winning the 1995/96 Premier League title',
+        answer: 'CANTONA',
+        category: 'player',
+        difficulty: 2,
+        isProperNoun: true,
       },
       {
         clue: "Scored 17 Premier League goals for Manchester United in 2022/23",
@@ -1085,11 +1085,11 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-28',
     questions: [
       {
-        clue: "Wimbledon's nickname",
-        answer: 'DONS',
-        category: 'club',
-        difficulty: 1,
-        isProperNoun: false,
+        clue: 'Scored the header that ignited Liverpool\'s 2005 Champions League final comeback, then lifted the trophy as captain in Istanbul',
+        answer: 'GERRARD',
+        category: 'player',
+        difficulty: 2,
+        isProperNoun: true,
       },
       {
         clue: "Joined Manchester United from Juventus in 2016 for a then world-record fee",
@@ -1125,11 +1125,11 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-29',
     questions: [
       {
-        clue: "Sheffield Wednesday's nickname",
-        answer: 'OWLS',
-        category: 'club',
-        difficulty: 1,
-        isProperNoun: false,
+        clue: 'Named European Footballer of the Year in 1968, the same year he helped Manchester United become the first English club to win the European Cup',
+        answer: 'BEST',
+        category: 'player',
+        difficulty: 2,
+        isProperNoun: true,
       },
       {
         clue: "Scored 15 Premier League goals on loan at Everton in 2013/14",
@@ -1165,11 +1165,11 @@ export const PUZZLES_2026_04: DailyPuzzle[] = [
     date: '2026-04-30',
     questions: [
       {
-        clue: "Luton Town's nickname",
-        answer: 'HATTERS',
-        category: 'club',
-        difficulty: 1,
-        isProperNoun: false,
+        clue: 'Wept after a yellow card in the 1990 World Cup semi-final meant he would miss the final if England progressed — one of the most iconic images in football history',
+        answer: 'GASCOIGNE',
+        category: 'player',
+        difficulty: 2,
+        isProperNoun: true,
       },
       {
         clue: "Joined Liverpool from Benfica in 2022 for a fee that could rise to £85m",

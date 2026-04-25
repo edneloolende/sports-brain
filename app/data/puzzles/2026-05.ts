@@ -5,11 +5,11 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-01',
     questions: [
       {
-        clue: "Liverpool's one-word nickname",
-        answer: 'REDS',
-        category: 'club',
-        difficulty: 1,
-        isProperNoun: false,
+        clue: 'Survived the 1958 Munich air disaster and went on to win the 1966 World Cup and 1968 European Cup — for decades Manchester United\'s all-time top scorer',
+        answer: 'CHARLTON',
+        category: 'player',
+        difficulty: 2,
+        isProperNoun: true,
       },
       {
         clue: "Scored across five Premier League seasons for Manchester City before joining Arsenal in 2022",
@@ -45,11 +45,11 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-02',
     questions: [
       {
-        clue: "Manchester City's nickname",
-        answer: 'CITIZENS',
+        clue: 'Won the 2003/04 Premier League season without losing a single match — the only team to complete an unbeaten top-flight season in English football history',
+        answer: 'ARSENAL',
         category: 'club',
         difficulty: 1,
-        isProperNoun: false,
+        isProperNoun: true,
       },
       {
         clue: "Tottenham Hotspur's top scorer for several consecutive seasons in the late 2000s",
@@ -85,11 +85,11 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-03',
     questions: [
       {
-        clue: "Tottenham Hotspur's one-word nickname",
-        answer: 'SPURS',
+        clue: 'Beat Bayern Munich in their own Allianz Arena to win the 2012 Champions League — the first London club to lift the trophy',
+        answer: 'CHELSEA',
         category: 'club',
-        difficulty: 1,
-        isProperNoun: false,
+        difficulty: 2,
+        isProperNoun: true,
       },
       {
         clue: "Won two Premier League titles with Manchester City before joining Bayern Munich in 2020",
@@ -125,11 +125,11 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-04',
     questions: [
       {
-        clue: "Bradford City's nickname",
-        answer: 'BANTAMS',
+        clue: 'The only country to have qualified for every FIFA World Cup since the tournament began in 1930',
+        answer: 'BRAZIL',
         category: 'club',
         difficulty: 1,
-        isProperNoun: false,
+        isProperNoun: true,
       },
       {
         clue: "West Ham United's all-time Premier League top scorer",
@@ -165,8 +165,8 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-05',
     questions: [
       {
-        clue: "The second word in Brighton and Hove Albion's full club name",
-        answer: 'ALBION',
+        clue: 'Won three consecutive major international tournaments — Euro 2008, the 2010 World Cup and Euro 2012 — a feat never matched by any other nation',
+        answer: 'SPAIN',
         category: 'club',
         difficulty: 1,
         isProperNoun: true,
@@ -205,10 +205,10 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-06',
     questions: [
       {
-        clue: "Club whose home ground is Villa Park",
-        answer: 'VILLA',
-        category: 'club',
-        difficulty: 1,
+        clue: 'Won the 2018 World Cup with France, scoring in the final against Croatia — and also won La Liga and the Europa League with Atletico Madrid',
+        answer: 'GRIEZMANN',
+        category: 'player',
+        difficulty: 2,
         isProperNoun: true,
       },
       {
@@ -245,8 +245,8 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
     date: '2026-05-07',
     questions: [
       {
-        clue: "Liverpool's Merseyside rivals",
-        answer: 'EVERTON',
+        clue: 'Won the World Cup four times and the European Championship in both 1968 and 2020',
+        answer: 'ITALY',
         category: 'club',
         difficulty: 1,
         isProperNoun: true,
