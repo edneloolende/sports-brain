@@ -612,7 +612,7 @@ export const PUZZLES_2026_05: DailyPuzzle[] = [
         isProperNoun: true,
       },
       {
-        clue: 'Won the 2007 Ballon d\'Or while at AC Milan — the last player at a Serie A club to win the award for over 15 years',
+        clue: 'Won the 2007 Ballon d\'Or while at AC Milan — still the last player at a Serie A club to win football\'s top individual honour',
         answer: 'KAKA',
         category: 'player',
         difficulty: 1,

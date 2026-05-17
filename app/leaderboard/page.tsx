@@ -13,9 +13,9 @@ export default async function LeaderboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0c1018] flex flex-col">
+    <div className="min-h-screen bg-[#14161c] flex flex-col">
       {/* Header */}
-      <header className="bg-[#0c1018] border-b border-white/[0.07] px-4 py-4 sticky top-0 z-10">
+      <header className="bg-[#14161c] border-b border-white/[0.07] px-4 py-4 sticky top-0 z-10">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <div>
             <h1 className="text-xl font-black text-white tracking-tight">Sporty Genius</h1>

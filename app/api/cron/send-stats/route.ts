@@ -28,11 +28,13 @@ export async function GET(req: NextRequest) {
     getAllSubscriberEmails(),
   ])
 
-  // Count new subscribers today by checking their subscribedAt date
+  // Count new subscribers today — batch all keys in one mget instead of N sequential gets
   let newSubscribersToday = 0
-  for (const email of allEmails) {
-    const data = await kv.get(`email:sub:${email}`)
-    if (data) {
+  if (allEmails.length > 0) {
+    const keys = allEmails.map((e) => `email:sub:${e}`)
+    const results = await kv.mget<Array<{ subscribedAt?: string } | string | null>>(...keys)
+    for (const data of results) {
+      if (!data) continue
       const sub = typeof data === 'string' ? JSON.parse(data) : data as { subscribedAt?: string }
       if (sub.subscribedAt?.startsWith(today)) newSubscribersToday++
     }

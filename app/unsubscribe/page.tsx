@@ -9,7 +9,7 @@ export default async function UnsubscribePage({ searchParams }: Props) {
   const notFound = status === 'notfound'
 
   return (
-    <div className="min-h-screen bg-[#0c1018] flex flex-col items-center justify-center gap-4 px-6 text-center">
+    <div className="min-h-screen bg-[#14161c] flex flex-col items-center justify-center gap-4 px-6 text-center">
       <p className="text-5xl">{success ? '👋' : '❓'}</p>
       <h1 className="text-xl font-black text-white">
         {success
